@@ -65,6 +65,4 @@ export class HttpEffectsService {
         .map((res: Response) => new actions.RequestSuccessAction({request: req, response: res, action: actions.ActionTypes.PUT}))
         .catch((err: Error) => Observable.of(new actions.RequestFailureAction({action: actions.ActionTypes.PUT, error: err})));
     });
-  
-
 }; // end HttpEffectsService

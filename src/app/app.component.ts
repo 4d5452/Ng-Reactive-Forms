@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 
 @Component({
@@ -7,10 +7,12 @@ import { Title } from '@angular/platform-browser';
     <router-outlet></router-outlet>
   `
 })
-export class AppComponent  {
+export class AppComponent implements OnInit {
   appTitle: string = 'Http Starter App';
 
-  constructor(private titleService: Title) {
+  constructor(private titleService: Title) {}
+
+  ngOnInit() {
     this.setTitle(this.appTitle);
   }
 

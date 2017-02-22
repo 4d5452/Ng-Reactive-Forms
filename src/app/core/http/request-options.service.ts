@@ -1,13 +1,13 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { RequestOptions, RequestMethod, Headers } from '@angular/http';
 
 @Injectable()
-export class RequestOptionsService implements OnInit {
+export class RequestOptionsService {
   options: RequestOptions[] = [];
-  url: string = 'localhost:3000';
+  url: string = '';
   headers: Headers = new Headers({'Content-Type': 'application/json'})
 
-  ngOnInit() {
+  constructor() {
     this.options[RequestMethod.Get] = this._get();
     this.options[RequestMethod.Post] = this._post();
     this.options[RequestMethod.Put] = this._put();
