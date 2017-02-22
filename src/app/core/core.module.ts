@@ -10,7 +10,6 @@ import 'hammerjs';
 
 import { ApiService } from './http/api.service';
 import { RequestOptionsService } from './http/request-options.service';
-import { ResponseService } from './http/response.service';
 
 @NgModule({
   imports: [ 
@@ -25,18 +24,16 @@ import { ResponseService } from './http/response.service';
  ],
   providers: [
     ApiService,
-    RequestOptionsService,
-    ResponseService
+    RequestOptionsService
   ]
 })
 
 export class CoreModule {
-  constructor (@Optional() @SkipSelf() parentModule: CoreModule, private responseService: ResponseService) {
+  constructor (@Optional() @SkipSelf() parentModule: CoreModule) {
     if(parentModule) {
       throw new Error(
         'CoreModule is already loaded.  Import it in the AppModule only'
       );
     }
-    this.responseService.init();
   }
 }

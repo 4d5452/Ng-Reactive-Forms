@@ -36,6 +36,7 @@ import { combineReducers } from '@ngrx/store';
  * notation packages up all of the exports into a single object.
  */
 import * as fromHttp from './http.reducers';
+import * as fromHttpCollection from './http-collections.reducers';
 
 /**
  * As mentioned, we treat each reducer like a table in a database. This means
@@ -43,6 +44,7 @@ import * as fromHttp from './http.reducers';
  */
 export interface State {
   http: fromHttp.State;
+  httpCollection: fromHttpCollection.State;
   router: fromRouter.RouterState;
 }
 
@@ -55,6 +57,7 @@ export interface State {
  */
 const reducers = {
   http: fromHttp.reducer,
+  httpCollection: fromHttpCollection.reducer,
   router: fromRouter.routerReducer
 };
 
@@ -80,3 +83,5 @@ export function reducer(state: any, action: any) {
 export const httpGetState = (state: State) => state.http;
 export const httpGetLatest = createSelector(httpGetState, fromHttp.getLatest);
 export const httpGetLatestError = createSelector(httpGetState, fromHttp.getLatestError);
+
+export const httpCollectionGetState = (state: State) => state.httpCollection;
