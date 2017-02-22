@@ -5,6 +5,9 @@ import { MaterialModule } from '@angular/material';
 import { DashboardComponent } from './dashboard.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 
+import { ItemsComponent } from '../items/items.component';
+import { ItemsService } from '../items/items.service';
+
 @NgModule({
   imports: [ 
     CommonModule,
@@ -13,8 +16,11 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
  ],
   exports: [],
   declarations: [ 
-    DashboardComponent
+    DashboardComponent,
+    ItemsComponent
  ],
-  providers: []
+  providers: [
+    ItemsService
+  ]
 })
 export class DashboardModule {}

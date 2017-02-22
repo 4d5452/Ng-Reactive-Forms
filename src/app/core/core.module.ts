@@ -8,6 +8,9 @@ import { ItemData } from './in-memory-data.service';
 import { MaterialModule } from '@angular/material';
 import 'hammerjs';
 
+import { ApiService } from './http/api.service';
+import { RequestOptionsService } from './http/request-options.service';
+
 @NgModule({
   imports: [ 
     HttpModule,
@@ -16,11 +19,13 @@ import 'hammerjs';
   ],
   declarations: [ ],
   exports: [ 
-    HttpModule,
     InMemoryWebApiModule,
     MaterialModule
  ],
-  providers: []
+  providers: [
+    ApiService,
+    RequestOptionsService
+  ]
 })
 
 export class CoreModule {

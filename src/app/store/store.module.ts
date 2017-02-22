@@ -5,10 +5,13 @@ import { EffectsModule } from '@ngrx/effects';
 
 import { reducer } from './reducers/index';
 
+import { HttpEffectsService } from './effects/http.effects';
+
 @NgModule({
   imports: [
     StoreModule.provideStore(reducer),
-    RouterStoreModule.connectRouter()
+    RouterStoreModule.connectRouter(),
+    EffectsModule.run(HttpEffectsService)
   ],
   providers: []
 })

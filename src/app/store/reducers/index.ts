@@ -35,13 +35,14 @@ import { combineReducers } from '@ngrx/store';
  * the state of the reducer plus any selector functions. The `* as`
  * notation packages up all of the exports into a single object.
  */
-
+import * as fromHttp from './http.reducers';
 
 /**
  * As mentioned, we treat each reducer like a table in a database. This means
  * our top level state interface is just a map of keys to inner state types.
  */
 export interface State {
+  http: fromHttp.State;
   router: fromRouter.RouterState;
 }
 
@@ -53,6 +54,7 @@ export interface State {
  * the result from right to left.
  */
 const reducers = {
+  http: fromHttp.reducer,
   router: fromRouter.routerReducer
 };
 
@@ -74,7 +76,7 @@ export function reducer(state: any, action: any) {
   }
 }*/
 /**------------------------------------------------------------------------------------------------------------------- */
-
+export const getHttpState = (state: State) => state.http;
 /**
  * A selector function is a map function factory. We pass it parameters and it
  * returns a function that maps from the larger state tree into a smaller
