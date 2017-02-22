@@ -11,7 +11,7 @@ export class ResponseService {
   constructor(private store: Store<fromRoot.State>) {}
 
   handleLatest(latest: HTTP.SuccessResponse): void {
-    console.log(latest);
+    
   }
 
   handleLatestError(latestError: HTTP.FailureResponse): void {
