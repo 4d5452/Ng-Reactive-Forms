@@ -2,14 +2,22 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 
-import * as fromRoot from '../store/reducers/http.reducers';
+import * as fromRoot from '../store/reducers/index';
 import * as actions from '../store/actions/http.actions';
 import * as HTTP from '../store/models/http.models';
+import { Item } from '../store/models/items.models';
 
 @Injectable()
 export class ItemsService {
-  constructor(private store: Store<fromRoot.State>) {}
+  items$: Observable<Item[]>;
 
+  constructor(private store: Store<fromRoot.State>) {
+    this.items$ = this.store.select<Item[]>(fromRoot.httpCollectionGetItems);
+  }
+
+  getItemsCollection(): Observable<Item[]> {
+    return this.items$;
+  }
   getAll(): void {
     const _get: HTTP.GetAll = { collection: 'items' }
     this.store.dispatch(new actions.GetAllAction(_get));

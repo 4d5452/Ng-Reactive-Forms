@@ -2,10 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
 import { ItemsService } from './items.service';
+import { Item } from '../store/models/items.models';
 
 @Component({
   selector: 'items',
   template: `
+    <div>
+      <li *ngFor="let item of items$ | async">
+        <span>{{item.id}}</span>
+        <span>{{item.type}}</span>
+      </li>
+    </div>
     <button (click)="getAll()">Get All</button>
     <button (click)="get()">Get</button>
     <button (click)="add()">Add</button>
@@ -14,10 +21,12 @@ import { ItemsService } from './items.service';
   `
 })
 export class ItemsComponent implements OnInit {
+  items$: Observable<Item[]>;
+
   constructor(private itemsService: ItemsService) {}
 
   ngOnInit() {
-
+    this.items$ = this.itemsService.getItemsCollection();
   }
 
   getAll() {
