@@ -102,7 +102,7 @@ export function reducer(state = initialState, action: actions.Actions): State {
     /**
      * Create or update an existing object in the collection.  This is one 
      * scenario I would change on my own api.  DROP THE UPSERT.
-     * The strange turnary operator is required because we get null on updated
+     * The strange ternary operator is required because we get null on updated
      * from server when it successful updates, and data when we get upsert.
      * This will have to do for now...
      */
