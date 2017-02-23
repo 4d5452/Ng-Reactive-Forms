@@ -107,7 +107,7 @@ export function reducer(state = initialState, action: actions.Actions): State {
      * This will have to do for now...
      */
     case actions.ActionTypes.PUT_MAP: {
-      console.log("PUT_MAP", action.payload);
+      //console.log("PUT_MAP", action.payload);
       let collection = {};
       let tmp = state[`${action.payload.request.collection}`]
         .filter((value: any) => value['id'] !== (<HTTP.Put> action.payload.request).id)
