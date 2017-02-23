@@ -13,7 +13,7 @@ import { HttpEffectsService } from './effects/http.effects';
  *  StoreModule: https://github.com/ngrx/store
  *    This module is responsible for the coordnation of dispatched actions.
  *  RouterStoreModule: https://github.com/ngrx/router-store
- *    Replaces Angular 2's built in routing 
+ *    substitute for Angular 2's built in routing 
  *  EffectsModule: https://github.com/ngrx/effects
  *    Intercepts dispatched actions to store allowing finer control of store 
  *    interactions.
