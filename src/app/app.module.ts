@@ -6,6 +6,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppStoreModule } from './store/store.module';
 import { CoreModule } from './core/core.module';
 
+import { DashboardModule } from './dashboard/dashboard.module';
+
 import { PageNotFoundComponent } from './page-not-found.component';
 
 /**
@@ -28,8 +30,9 @@ import { PageNotFoundComponent } from './page-not-found.component';
   imports:      [ 
     BrowserModule,
     CoreModule,
+    AppStoreModule,
+    DashboardModule,
     AppRoutingModule,
-    AppStoreModule
  ],
   declarations: [ 
     AppComponent ,

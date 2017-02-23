@@ -7,17 +7,10 @@ import { ItemDetailComponent } from './item-detail.component';
 
 const itemsRoutes: Routes = [
   {
-    path: '',
-    component: ItemsComponent,
+    path: '', component: ItemsComponent,
     children: [
-      {
-        path: '',
-        component: ItemsListComponent
-      },
-      {
-        path: ':id',
-        component: ItemDetailComponent
-      }
+      { path: '', component: ItemsListComponent },
+      { path: ':id', component: ItemDetailComponent }
     ]
   }
 ];

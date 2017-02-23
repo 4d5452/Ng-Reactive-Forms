@@ -12,7 +12,6 @@ import { ItemsService } from './items.service';
     CommonModule,
     ItemsRoutingModule
  ],
-  exports: [],
   declarations: [
     ItemsComponent,
     ItemsListComponent,

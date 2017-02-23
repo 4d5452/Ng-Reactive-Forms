@@ -12,7 +12,7 @@ import { PageNotFoundComponent } from './page-not-found.component';
  *    block
  */
 export const routes: Routes = [
-  { path: '', loadChildren: 'app/dashboard/dashboard.module#DashboardModule' },
+  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ];
 

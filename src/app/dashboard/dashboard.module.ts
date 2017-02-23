@@ -5,14 +5,11 @@ import { MaterialModule } from '@angular/material';
 import { DashboardComponent } from './dashboard.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 
-import { ItemsModule } from '../items/items.module';
-
 @NgModule({
   imports: [ 
     CommonModule,
     MaterialModule,
-    DashboardRoutingModule,
-    ItemsModule
+    DashboardRoutingModule
  ],
   exports: [],
   declarations: [ 
