@@ -18,6 +18,7 @@ import { Item } from '../store/models/items.models';
     <button (click)="add()">Add</button>
     <button (click)="remove()">Remove</button>
     <button (click)="update()">Update</button>
+    <router-outlet></router-outlet>
   `
 })
 export class ItemsComponent implements OnInit {

@@ -6,7 +6,12 @@ import { DashboardComponent } from './dashboard.component';
 const dashboardRoutes: Routes = [
   { path: '', 
     component: DashboardComponent,
-    children: []
+    children: [
+      {
+        path: 'items',
+        loadChildren: 'app/items/items.module#ItemsModule'
+      }
+    ]
   },
 ];
 
