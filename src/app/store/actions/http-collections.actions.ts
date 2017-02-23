@@ -47,3 +47,10 @@ export type Actions
   | PutMapAction
   | PostMapAction
   | DeleteMapAction
+
+    /**
+   * Find more on this at:
+   * https://github.com/ngrx/store
+   * &&
+   * https://github.com/ngrx/example-app
+   */

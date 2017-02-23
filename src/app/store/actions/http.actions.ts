@@ -4,9 +4,6 @@ import { type } from '../util';
 
 import * as HTTP from '../models/http.models';
 
-/** These actions will be 'caught' by ngrx/effects.  The effects 
- *  will handle all server side api request.
-*/
 export const ActionTypes = {
   GET_ALL: type(`[Http] Get All`),
   GET: type(`[Http] Get`),
@@ -60,3 +57,10 @@ export type Actions
   | DeleteAction
   | RequestFailureAction
   | RequestSuccessAction
+
+  /**
+   * Find more on this at:
+   * https://github.com/ngrx/store
+   * &&
+   * https://github.com/ngrx/example-app
+   */

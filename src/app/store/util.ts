@@ -18,3 +18,8 @@ export function type<T>(label: T | ''): T {
 
   return <T>label;
 }
+
+/**
+ * The source of this document can be found at:
+ *  https://github.com/ngrx/example-app/tree/master/src/app
+ */

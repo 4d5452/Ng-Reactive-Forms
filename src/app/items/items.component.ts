@@ -22,7 +22,7 @@ import { Item } from '../store/models/items.models';
 })
 export class ItemsComponent implements OnInit {
   items$: Observable<Item[]>;
-
+  count: number = 0; //Used to test update...
   constructor(private itemsService: ItemsService) {}
 
   ngOnInit() {
@@ -42,6 +42,7 @@ export class ItemsComponent implements OnInit {
     this.itemsService.remove(4);
   }
   update() {
-    this.itemsService.update(12, {id: 12, type: 'GPU'});
+    this.itemsService.update(12, {id: 12, type: 'GPU' + this.count});
+    this.count = this.count + 1;
   }
 }

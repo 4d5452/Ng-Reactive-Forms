@@ -1,4 +1,4 @@
-import { NgModule }      from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule, Title } from '@angular/platform-browser';
 
 import { AppComponent }  from './app.component';
@@ -7,6 +7,22 @@ import { AppStoreModule } from './store/store.module';
 import { CoreModule } from './core/core.module';
 
 import { PageNotFoundComponent } from './page-not-found.component';
+
+/**
+ * AppModule:
+ *  @imports:
+ *    BrowserModule
+ *    CoreModule 
+ *    AppRoutingModule
+ *    AppStoreModule
+ *  @declarations:
+ *    AppComponent
+ *    PageNotFoundComponent
+ *  @providers:
+ *    Title
+ *  @bootstrap:
+ *    AppComponent
+ */
 
 @NgModule({
   imports:      [ 
@@ -20,6 +36,6 @@ import { PageNotFoundComponent } from './page-not-found.component';
     PageNotFoundComponent
   ],
   providers: [ Title ],
-  bootstrap:    [ AppComponent ]
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }
