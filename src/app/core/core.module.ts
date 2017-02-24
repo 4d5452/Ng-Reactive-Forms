@@ -3,7 +3,7 @@ import { HttpModule } from '@angular/http';
 
 // Imports for loading & configuring the in-memory web api
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { ItemData } from './in-memory-data.service';
+import { AppData } from './in-memory-data.service';
 
 import { MaterialModule } from '@angular/material';
 import 'hammerjs';
@@ -14,7 +14,7 @@ import { RequestOptionsService } from './http/request-options.service';
 @NgModule({
   imports: [ 
     HttpModule,
-    InMemoryWebApiModule.forRoot(ItemData),
+    InMemoryWebApiModule.forRoot(AppData),
     MaterialModule.forRoot()
   ],
   declarations: [],

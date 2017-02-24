@@ -4,8 +4,6 @@ import * as HTTP from '../models/http.models'; // Use for typecast when using ac
 
 import * as actions from '../actions/http-collections.actions';
 
-import { Item } from '../models/items.models';
-
 /**
  * Collection state is used to represent remote collection data.  i.e.
  * if a remote server has documents (mongodb) within the collection itmes, then
@@ -18,11 +16,11 @@ import { Item } from '../models/items.models';
  * and server data.
  */
 export interface State {
-  items: Item[];
+  
 }; // end interface: State
 
 const initialState: State = {
-  items: []
+  
 }; // end: initialState
 
 /**
@@ -121,8 +119,6 @@ export function reducer(state = initialState, action: actions.Actions): State {
   }
 }
 
-// returns Observable<Item[]>
-export const getCollectionItems = (state: State) => state.items;
 
 /** More information may be found at:
  *  https://github.com/ngrx/store

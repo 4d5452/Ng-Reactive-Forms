@@ -85,7 +85,6 @@ export const httpGetLatest = createSelector(httpGetState, fromHttp.getLatest);
 export const httpGetLatestError = createSelector(httpGetState, fromHttp.getLatestError);
 
 export const httpCollectionGetState = (state: State) => state.httpCollection;
-export const httpCollectionGetItems = createSelector(httpCollectionGetState, fromHttpCollection.getCollectionItems);
 
 
 /**The source of this file may be found at:

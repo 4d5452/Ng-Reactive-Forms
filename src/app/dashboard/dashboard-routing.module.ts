@@ -7,7 +7,7 @@ const dashboardRoutes: Routes = [
   { 
     path: 'dashboard', component: DashboardComponent,
     children: [
-      { path: 'items', loadChildren: 'app/items/items.module#ItemsModule' }
+      
     ]
   },
 ];
