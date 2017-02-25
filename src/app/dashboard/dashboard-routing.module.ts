@@ -7,7 +7,7 @@ const dashboardRoutes: Routes = [
   { 
     path: 'dashboard', component: DashboardComponent,
     children: [
-      
+      {path: '', loadChildren: 'app/filters/filters.module#FiltersModule'}
     ]
   },
 ];
