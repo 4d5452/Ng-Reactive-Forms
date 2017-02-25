@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { FiltersRoutingModule } from './filters-routing.module';
 import { FiltersComponent } from './filters.component';
+import { FiltersListComponent } from './filters-list.component';
+import { FiltersService } from './filters.service';
 
 @NgModule({
   imports: [ 
@@ -10,8 +12,9 @@ import { FiltersComponent } from './filters.component';
     FiltersRoutingModule
   ],
   declarations: [
-    FiltersComponent
+    FiltersComponent,
+    FiltersListComponent
   ],
-  exports: [ FiltersComponent ]
+  providers: [ FiltersService ]
 })
 export class FiltersModule {}

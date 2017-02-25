@@ -4,6 +4,8 @@ import * as HTTP from '../models/http.models'; // Use for typecast when using ac
 
 import * as actions from '../actions/http-collections.actions';
 
+import * as appCollections from '../models/app.models';
+
 /**
  * Collection state is used to represent remote collection data.  i.e.
  * if a remote server has documents (mongodb) within the collection itmes, then
@@ -16,11 +18,11 @@ import * as actions from '../actions/http-collections.actions';
  * and server data.
  */
 export interface State {
-  
+  filters: appCollections.Filter[];
 }; // end interface: State
 
 const initialState: State = {
-  
+  filters: []
 }; // end: initialState
 
 /**
@@ -119,7 +121,7 @@ export function reducer(state = initialState, action: actions.Actions): State {
   }
 }
 
-
+export const getCollectionFilters = (state: State) => state.filters;
 /** More information may be found at:
  *  https://github.com/ngrx/store
  *  &&

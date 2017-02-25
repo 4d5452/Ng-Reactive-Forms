@@ -85,7 +85,7 @@ export const httpGetLatest = createSelector(httpGetState, fromHttp.getLatest);
 export const httpGetLatestError = createSelector(httpGetState, fromHttp.getLatestError);
 
 export const httpCollectionGetState = (state: State) => state.httpCollection;
-
+export const httpCollectionGetFilters = createSelector(httpCollectionGetState, fromHttpCollection.getCollectionFilters);
 
 /**The source of this file may be found at:
  *  https://github.com/ngrx/example-app/blob/master/src/app/reducers/index.ts

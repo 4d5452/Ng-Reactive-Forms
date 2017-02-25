@@ -7,6 +7,8 @@ import { AppStoreModule } from './store/store.module';
 import { CoreModule } from './core/core.module';
 
 import { DashboardModule } from './dashboard/dashboard.module';
+import { FiltersModule } from './filters/filters.module';
+import { RecordsModule } from './records/records.module';
 
 import { PageNotFoundComponent } from './page-not-found.component';
 
@@ -33,6 +35,8 @@ import { PageNotFoundComponent } from './page-not-found.component';
     AppStoreModule,
     DashboardModule,
     AppRoutingModule,
+    FiltersModule,
+    RecordsModule
  ],
   declarations: [ 
     AppComponent ,

@@ -11,7 +11,6 @@ import { FiltersModule} from '../filters/filters.module';
   imports: [ 
     CommonModule,
     MaterialModule,
-    FiltersModule,
     DashboardRoutingModule
  ],
   exports: [],
