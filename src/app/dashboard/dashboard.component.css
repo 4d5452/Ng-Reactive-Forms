@@ -1,0 +1,11 @@
+.toolbar-fill {
+  flex: 1 1 auto;
+}
+
+.sidenav {
+  padding: 20px;
+}
+
+md-sidenav {
+  width: 100px;
+}

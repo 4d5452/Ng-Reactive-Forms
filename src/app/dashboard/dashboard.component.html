@@ -1,7 +1,25 @@
-<h1>Application Top Dashboard</h1>
+<md-toolbar color="">
+  <span>Application Top Dashboard</span>
+  <span class="toolbar-fill"></span>
+  <md-menu #appMenu="mdMenu">
+    <button md-menu-item>Settings</button>
+    <button md-menu-item>Help</button>
+  </md-menu>
+  <button md-icon-button [mdMenuTriggerFor]="appMenu">
+    <md-icon>more_vert</md-icon>
+  </button>
+</md-toolbar>
 
-<nav>
-  <a routerLink='filters' routerLinkActive='active'>Filters</a>
-  <a routerLink='records' routerLinkActive='active'>Records</a>
-</nav>
-<router-outlet></router-outlet>
+<md-sidenav-container class="sidenav-container">
+  <md-sidenav #sidenav mode="side" opened="true" class="app-sidenav">
+    <button md-raised-button ><md-icon>add_box</md-icon> Filter</button>
+  </md-sidenav>
+  <div class="app-content">
+    <nav>
+      <a routerLink='filters' routerLinkActive='active'>Filters</a>
+      <a routerLink='records' routerLinkActive='active'>Records</a>
+    </nav>
+    <router-outlet></router-outlet>  
+  </div>
+</md-sidenav-container>
+
