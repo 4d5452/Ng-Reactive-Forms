@@ -9,16 +9,19 @@ export class AppData implements InMemoryDbService {
       {upc: '765809159655'}
     ];
     let filters = [
-      {id: 1001, type: filterTypes[0].upc, created: Date.now(), modified: Date.now()},
-      {id: 1002, type: filterTypes[0].upc, created: Date.now(), modified: Date.now()},
-      {id: 1003, type: filterTypes[3].upc, created: Date.now(), modified: Date.now()},
-      {id: 1005, type: filterTypes[2].upc, created: Date.now(), modified: Date.now()},
-      {id: 1006, type: filterTypes[4].upc, created: Date.now(), modified: Date.now()},
-      {id: 1007, type: filterTypes[2].upc, created: Date.now(), modified: Date.now()},
-      {id: 1008, type: filterTypes[1].upc, created: Date.now(), modified: Date.now()},
-      {id: 1009, type: filterTypes[2].upc, created: Date.now(), modified: Date.now()},
-      {id: 1010, type: filterTypes[1].upc, created: Date.now(), modified: Date.now()},
-      {id: 1011, type: filterTypes[3].upc, created: Date.now(), modified: Date.now()}
+      {id: '1001', type: filterTypes[0].upc, created: Date.now(), modified: Date.now()},
+      {id: '1002', type: filterTypes[0].upc, created: Date.now(), modified: Date.now()},
+      {id: '1003', type: filterTypes[3].upc, created: Date.now(), modified: Date.now()},
+      {id: '1005', type: filterTypes[2].upc, created: Date.now(), modified: Date.now()},
+      {id: '1006', type: filterTypes[4].upc, created: Date.now(), modified: Date.now()},
+      {id: '1007', type: filterTypes[2].upc, created: Date.now(), modified: Date.now()},
+      {id: '1008', type: filterTypes[1].upc, created: Date.now(), modified: Date.now()},
+      {id: '1009', type: filterTypes[2].upc, created: Date.now(), modified: Date.now()},
+      {id: '1010', type: filterTypes[1].upc, created: Date.now(), modified: Date.now()},
+      {id: '1011', type: filterTypes[3].upc, created: Date.now(), modified: Date.now()},
+      {id: '1012', type: filterTypes[1].upc, created: Date.now(), modified: Date.now()},
+      {id: '1013', type: filterTypes[4].upc, created: Date.now(), modified: Date.now()},
+      {id: '1014', type: filterTypes[0].upc, created: Date.now(), modified: Date.now()}
     ];
     let cleaningRecords = [
       {id: 1, created: Date.now(), modified: Date.now(), pre: 7, post: 4, cycles: 6, filter: filters[3].id},

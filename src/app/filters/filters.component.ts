@@ -5,10 +5,8 @@ import { Filter } from '../store/models/app.models';
 import { FiltersService } from './filters.service';
 
 @Component({
-  template: `
-    <h2>Filters</h2>
-    <filters-list [items]="filters$ | async" [selectedId]="" (selected)="setSelected($event)"></filters-list>
-  `
+  moduleId: module.id,
+  templateUrl: './filters.component.html'
 })
 export class FiltersComponent implements OnInit {
   filters$: Observable<Filter[]>;
