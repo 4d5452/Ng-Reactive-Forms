@@ -1,4 +1,6 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+
 import { Filter } from '../store/models/app.models';
 
 @Component({
@@ -10,10 +12,18 @@ import { Filter } from '../store/models/app.models';
 })
 export class FiltersListComponent {
   @Input() filters: Filter[];
-  @Input() selectedId: string;
-  @Output() selected = new EventEmitter<Filter>();
+  @Input() selected: string;  
+  @Output() select = new EventEmitter<Filter>();
+  @Output() clear = new EventEmitter<void>();
 
-  isSelected(index: number): boolean {
-    return false;
+  setSelected(filter: Filter): void {
+    this.select.emit(filter);
+  }
+  clearSelected(): void {
+    this.clear.emit();
+  }
+  checkboxToggle(filter: Filter, event: Event): void {
+    console.log(filter, event);
+    filter.id!==this.selected ? this.setSelected(filter) : this.clearSelected();
   }
 }

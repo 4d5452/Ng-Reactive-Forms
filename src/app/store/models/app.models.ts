@@ -1,5 +1,5 @@
 export interface Filter {
-  id: number,
+  id: string,
   type: FilterType,
   created: Date,
   modified: Date,

@@ -11,16 +11,19 @@ import { FiltersService } from './filters.service';
 })
 export class FiltersComponent implements OnInit {
   filters$: Observable<Filter[]>;
-  selectedId: Observable<number>;
+  selected$: Observable<string>;
 
   constructor(private filtersService: FiltersService) {}
 
   ngOnInit() {
     this.filters$ = this.filtersService.getCollection();
+    this.selected$ = this.filtersService.getSelected();
   }
 
-  setSelected(id: number): void {
-    //this.filtersService.setSelected();
-    console.log("Selected Set", id);
+  setSelected(selected: Filter): void {
+    this.filtersService.setSelected(selected);
+  }
+  clearSelected(): void {
+    this.filtersService.clearSelected();
   }
 }

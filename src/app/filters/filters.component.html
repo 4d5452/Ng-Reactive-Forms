@@ -1,8 +1,9 @@
 <md-card class="filter-content">
   <filters-list 
     [filters]="filters$ | async" 
-    [selectedId]="" 
-    (selected)="setSelected($event)">
+    [selected]="selected$ | async" 
+    (select)="setSelected($event)"
+    (clear)="clearSelected()">
   </filters-list>
 </md-card>
 

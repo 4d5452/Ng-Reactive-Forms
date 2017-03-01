@@ -37,6 +37,7 @@ import { combineReducers } from '@ngrx/store';
  */
 import * as fromHttp from './http.reducers';
 import * as fromHttpCollection from './http-collections.reducers';
+import * as fromFilters from './filters.reducers';
 
 /**
  * As mentioned, we treat each reducer like a table in a database. This means
@@ -45,6 +46,7 @@ import * as fromHttpCollection from './http-collections.reducers';
 export interface State {
   http: fromHttp.State;
   httpCollection: fromHttpCollection.State;
+  filters: fromFilters.State;
   router: fromRouter.RouterState;
 }
 
@@ -58,6 +60,7 @@ export interface State {
 const reducers = {
   http: fromHttp.reducer,
   httpCollection: fromHttpCollection.reducer,
+  filters: fromFilters.reducer,
   router: fromRouter.routerReducer
 };
 
@@ -87,6 +90,8 @@ export const httpGetLatestError = createSelector(httpGetState, fromHttp.getLates
 export const httpCollectionGetState = (state: State) => state.httpCollection;
 export const httpCollectionGetFilters = createSelector(httpCollectionGetState, fromHttpCollection.getCollectionFilters);
 
+export const filtersGetState = (state: State) => state.filters;
+export const filtersGetSelected = createSelector(filtersGetState, fromFilters.getSelected);
 /**The source of this file may be found at:
  *  https://github.com/ngrx/example-app/blob/master/src/app/reducers/index.ts
  */

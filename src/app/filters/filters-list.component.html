@@ -1,0 +1,18 @@
+<table class="filter-table">
+  <tr>
+    <th></th>
+    <th>ID</th>
+    <th>Filter Type</th>
+    <th>Date Created</th>
+    <th>Last Modified</th>
+  </tr>
+  <tr *ngFor="let filter of filters; let i = index;" (click)="setSelected(filter)">
+    <td class="td-checkbox">
+      <md-checkbox (change)="checkboxToggle(filter, $event)" [checked]="filter.id===selected" [disableRipple]="true"></md-checkbox>
+    </td>
+    <td>{{filter.id}}</td>
+    <td>{{filter.type}}</td>
+    <td>{{filter.created | date}}</td>
+    <td>{{filter.modified | date}}</td>
+  </tr>
+</table>
