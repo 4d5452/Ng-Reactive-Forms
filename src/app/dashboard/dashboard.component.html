@@ -1,33 +1,42 @@
-<md-toolbar color="primary" class="app-toolbar">
-  <button md-icon-button (click)="sidenav.toggle()">
-    <md-icon>menu</md-icon>
-  </button>
-  <span>Application Top Dashboard</span>
-  <span class="toolbar-fill"></span>
-  <button md-icon-button [mdMenuTriggerFor]="appMenu">
-    <md-icon>more_vert</md-icon>
-  </button>
-  <md-menu #appMenu="mdMenu" [overlapTrigger]="false">
-    <button md-menu-item>Settings</button>
-    <button md-menu-item>Help</button>
-  </md-menu>
-</md-toolbar>
-<md-sidenav-container>
-  <md-sidenav #sidenav class="sidenav" mode="side" opened="true">
-    <md-nav-list class="nav-list">
-      <a md-line md-raised-button routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
-      <a md-line md-raised-button routerLink="filters" routerLinkActive="active">Filters</a>
-    </md-nav-list>
-  </md-sidenav>
-  <div class="app-content">
-    <router-outlet></router-outlet>
+<div class="container"> <!--All app content resides here-->
+  <!--Toolbar-->
+  <md-toolbar class="app-toolbar mat-elevation-z5" color="primary">
+    <button md-icon-button (click)="sidenav.toggle()">
+      <md-icon>menu</md-icon>
+    </button>
+    Application Toolbar
+    <span class="toolbar-fill"></span>
+    <button md-icon-button [mdMenuTriggerFor]="appMenu">
+      <md-icon>more_vert</md-icon>
+    </button>
+  </md-toolbar>
+
+  <!--Sidenav & content-->
+  <div class="content-wrapper">
+  <md-sidenav-container> <!--Dont let the name fool you... This contains the whole app, and not just the sidenav-->
+    <md-sidenav #sidenav mode="side" opened="true" align="start">
+      <md-nav-list class="app-nav">
+        <a md-line md-raised-button routerLink="filters" routerLinkActive="active">Filters</a>
+        <a md-line md-raised-button routerLink="records" routerLinkActive="active">Records</a>
+      </md-nav-list>
+    </md-sidenav>
+    <md-card class="app-content">
+      <router-outlet></router-outlet>
+    </md-card>
+  </md-sidenav-container>
   </div>
-</md-sidenav-container>
+  
+  <!--Footer-->
+  <md-toolbar class="app-footer-toolbar mat-elevation-z5" color="primary">
+    <span class="toolbar-fill"></span>
+    <md-icon class="material-icons md-18">copyright</md-icon><i>4d5452</i>
+  </md-toolbar>
 
+</div><!--End Container-->
 
-<!--
-      <nav>
-      <a routerLink='filters' routerLinkActive='active'>Filters</a>
-      <a routerLink='records' routerLinkActive='active'>Records</a>
-    </nav>
-    -->
+<!--Will show on button click-->
+<md-menu #appMenu="mdMenu" [overlapTrigger]="false">
+  <a md-menu-item routerLink="/dashboard">Home</a>
+  <button md-menu-item>Settings</button>
+  <button md-menu-item>Help</button>
+</md-menu>
