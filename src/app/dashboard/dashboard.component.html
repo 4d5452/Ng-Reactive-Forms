@@ -12,10 +12,9 @@
   </md-toolbar>
 
   <!--Sidenav & content-->
-  <div class="content-wrapper">
-  <md-sidenav-container> <!--Dont let the name fool you... This contains the whole app, and not just the sidenav-->
-    <md-sidenav #sidenav mode="side" opened="true" align="start">
-      <md-nav-list class="app-nav">
+  <md-sidenav-container class="content"> <!--Dont let the name fool you... This contains the whole app, and not just the sidenav-->
+    <md-sidenav class="nav" #sidenav mode="side" opened="true" align="start">
+      <md-nav-list class="nav-list">
         <a md-line md-raised-button routerLink="filters" routerLinkActive="active">Filters</a>
         <a md-line md-raised-button routerLink="records" routerLinkActive="active">Records</a>
       </md-nav-list>
@@ -24,8 +23,7 @@
       <router-outlet></router-outlet>
     </md-card>
   </md-sidenav-container>
-  </div>
-  
+
   <!--Footer-->
   <md-toolbar class="app-footer-toolbar mat-elevation-z5" color="primary">
     <span class="toolbar-fill"></span>
