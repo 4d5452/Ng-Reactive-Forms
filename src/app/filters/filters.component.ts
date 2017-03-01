@@ -6,7 +6,8 @@ import { FiltersService } from './filters.service';
 
 @Component({
   moduleId: module.id,
-  templateUrl: './filters.component.html'
+  templateUrl: './filters.component.html',
+  styleUrls: [ './filters.component.css' ]
 })
 export class FiltersComponent implements OnInit {
   filters$: Observable<Filter[]>;

@@ -41,9 +41,12 @@
 }
 /***********App Content Styles***********/
 .app-content {
-  height: calc(100% - 9em);
-  margin: 10px 10px 0px 5px;
-  overflow: auto;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  /*margin: 10px 10px 0px 5px;*/
+  /*overflow: auto;*/
+  /*padding: 5px 15px;*/
 }
 /***********App Footer Toolbar Styles***********/
 .app-footer-toolbar {
