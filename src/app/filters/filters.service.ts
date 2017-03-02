@@ -6,6 +6,8 @@ import * as fromRoot from '../store/reducers/index';
 import * as httpActions from '../store/actions/http.actions';
 import * as HTTP from '../store/models/http.models';
 
+import { Position } from '../store/models/position.models';
+
 import { Filter } from '../store/models/app.models'; // copy and paste from item service...
 import * as filterActions from '../store/actions/filters.actions';
 
@@ -13,10 +15,14 @@ import * as filterActions from '../store/actions/filters.actions';
 export class FiltersService {
   filters$: Observable<Filter[]>;
   selected$: Observable<string>;
+  viewAdd$: Observable<boolean>;
+  viewAddPosition$: Observable<Position>;
 
   constructor(private store: Store<fromRoot.State>) {
     this.filters$ = this.store.select<Filter[]>(fromRoot.httpCollectionGetFilters);
     this.selected$ = this.store.select<string>(fromRoot.filtersGetSelected);
+    this.viewAdd$ = this.store.select<boolean>(fromRoot.filtersGetViewAdd);
+    this.viewAddPosition$ = this.store.select<Position>(fromRoot.filtersGetViewAddPosition);
   }
 
   getCollection(): Observable<Filter[]> {
@@ -54,5 +60,17 @@ export class FiltersService {
   }
   clearSelected(): void {
     this.store.dispatch(new filterActions.ClearSelectedAction(null));
+  }
+  getViewAdd(): Observable<boolean> {
+    return this.viewAdd$;
+  }
+  toggleViewAdd(): void {
+    this.store.dispatch(new filterActions.ToggleViewAddAction(null));
+  }
+  getViewAddPosition(): Observable<Position> {
+    return this.viewAddPosition$;
+  }
+  updateViewAddPosition(pos: Position): void{
+    this.store.dispatch(new filterActions.UpdateViewAddPositionAction(pos));
   }
 }

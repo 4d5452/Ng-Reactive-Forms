@@ -92,6 +92,8 @@ export const httpCollectionGetFilters = createSelector(httpCollectionGetState, f
 
 export const filtersGetState = (state: State) => state.filters;
 export const filtersGetSelected = createSelector(filtersGetState, fromFilters.getSelected);
+export const filtersGetViewAdd = createSelector(filtersGetState, fromFilters.getViewAdd);
+export const filtersGetViewAddPosition = createSelector(filtersGetState, fromFilters.getViewAddPosition);
 /**The source of this file may be found at:
  *  https://github.com/ngrx/example-app/blob/master/src/app/reducers/index.ts
  */

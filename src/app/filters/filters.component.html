@@ -1,6 +1,8 @@
 <md-card class="filter-card">
   <div class="card-toolbar">
     <button md-button
+      (click)="toggleViewAdd()"
+      [disabled]="viewAdd$ | async"
       color="primary">
       ADD
     </button>
@@ -16,6 +18,7 @@
       REMOVE
     </button>
   </div>
+  
   <div class="card-content">
     <filters-list
       [filters]="filters$ | async" 
@@ -24,6 +27,15 @@
       (clear)="clearSelected()">
     </filters-list>
   </div>
+
+  <div class="card-overlay" *ngIf="viewAdd$ | async">
+    <filters-add
+      [position]="viewAddPosition$ | async"
+      (changePosition)="updateViewAddPosition($event)"
+      (close)="toggleViewAdd()">
+    </filters-add>
+  </div>
+
   <div class="card-footer">
   </div>
 </md-card>

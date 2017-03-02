@@ -10,6 +10,9 @@
 }
 .card-toolbar {
   padding: 10px;
+  overflow-x: auto;
+  display: inline-block;
+  white-space: nowrap;
 }
 .card-content {
   height: 100%;

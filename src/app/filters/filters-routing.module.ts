@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { FiltersComponent } from './filters.component';
-import { FiltersListComponent } from './filters-list.component';
+import { FiltersListComponent } from './filters_list/filters-list.component';
 
 const routes: Routes = [
   { 

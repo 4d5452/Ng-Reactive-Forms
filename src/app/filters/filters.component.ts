@@ -4,6 +4,8 @@ import { Observable } from 'rxjs/Observable';
 import { Filter } from '../store/models/app.models';
 import { FiltersService } from './filters.service';
 
+import { Position } from '../store/models/position.models';
+
 @Component({
   moduleId: module.id,
   templateUrl: './filters.component.html',
@@ -12,12 +14,16 @@ import { FiltersService } from './filters.service';
 export class FiltersComponent implements OnInit {
   filters$: Observable<Filter[]>;
   selected$: Observable<string>;
+  viewAdd$: Observable<boolean>;
+  viewAddPosition$: Observable<Position>;
 
   constructor(private filtersService: FiltersService) {}
 
   ngOnInit() {
     this.filters$ = this.filtersService.getCollection();
     this.selected$ = this.filtersService.getSelected();
+    this.viewAdd$ = this.filtersService.getViewAdd();
+    this.viewAddPosition$ = this.filtersService.getViewAddPosition();
   }
   removeSelected(): void {
     this.filtersService.removeSelected();
@@ -27,5 +33,11 @@ export class FiltersComponent implements OnInit {
   }
   clearSelected(): void {
     this.filtersService.clearSelected();
+  }
+  toggleViewAdd(): void {
+    this.filtersService.toggleViewAdd();
+  }
+  updateViewAddPosition(pos: Position): void {
+    this.filtersService.updateViewAddPosition(pos)
   }
 }

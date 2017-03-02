@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
-import { Filter } from '../store/models/app.models';
+import { Filter } from '../../store/models/app.models';
 
 @Component({
   moduleId: module.id,
