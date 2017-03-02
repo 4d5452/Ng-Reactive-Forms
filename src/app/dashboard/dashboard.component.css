@@ -38,9 +38,7 @@
 }
 /***********App Content Styles***********/
 .app-content {
-  height: 100%;
-  width: 100%;
-  position: fixed;
+  position: absolute;
 }
 /***********App Footer Toolbar Styles***********/
 .app-footer-toolbar {

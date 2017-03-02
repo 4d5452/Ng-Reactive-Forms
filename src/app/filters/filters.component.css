@@ -3,7 +3,7 @@
   width: calc(100% - 1em);
   margin: 10px 0px 0px 5px;
   position: fixed;
-  overflow: hidden;
+  overflow: hidden; /*Hidden*/
   padding: 0px 0px;
   display: flex;
   flex-direction: column;

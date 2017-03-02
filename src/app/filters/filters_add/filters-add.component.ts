@@ -12,7 +12,7 @@ export class FiltersAddComponent {
   @Input() position: Pos;
   @Output() changePosition = new EventEmitter<Pos>();
 
-  @Output() _close = new EventEmitter<null>();
+  @Output() close = new EventEmitter<void>();
 
   
   handleChangePosition(pos: Pos){
@@ -21,8 +21,8 @@ export class FiltersAddComponent {
     }
   }
 
-  close(): void {
-    this._close.emit();
+  closeView(): void {
+    this.close.emit();
     /**Handle reset of content, and warn if unsaved changes */
   }
 }
