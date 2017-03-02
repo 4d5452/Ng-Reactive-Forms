@@ -65,8 +65,8 @@ body {
   position: relative;
   z-index: 1;
 }
-/***********Header Styles***********/
 
-/***********Navigation Styles***********/
-
-/***********Footer Styles***********/
+/*Material Design Fix*/
+.mat-checkbox-inner-container {
+  margin: 0px !important;
+}

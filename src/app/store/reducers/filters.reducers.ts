@@ -9,16 +9,18 @@ export interface State {
 }; // end interface: State
 
 const initialState: State = {
-  selected: ""
+  selected: ''
 }; // end: initialState
 
 export function reducer(state = initialState, action: actions.Actions): State {
   switch(action.type) {
     case actions.ActionTypes.SET_SELECTED: {
+      console.log("Set Selected", action.payload);
       return Object.assign({}, state, { selected: action.payload });
     }
     case actions.ActionTypes.CLEAR_SELECTED: {
-      return Object.assign({}, state, { selected: "" });
+      console.log("Clear Selected", state.selected);
+      return Object.assign({}, state, { selected: '' });
     }
     default:
       return state;

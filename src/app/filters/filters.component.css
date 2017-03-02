@@ -5,27 +5,16 @@
   position: fixed;
   overflow: hidden;
   padding: 0px 0px;
+  display: flex;
+  flex-direction: column;
 }
-
+.card-toolbar {
+  padding: 10px;
+}
 .card-content {
-  margin: 0;
-}
-
-.card-header-toolbar {
-  z-index: 90 !important;
-  background-color: white;
-}
-.list {
+  height: 100%;
   width: 100%;
-  height: calc(100% - 8.5em);
-  position: absolute;
-  left: 0px; right: 0px;
+  flex: 1;
   overflow: auto;
+  padding: 0px 0px 10px 0px;
 }
-.card-footer-toolbar {
-  z-index: 90 !important;
-  position: absolute;
-  bottom: 0px;
-  background-color: white;
-}
-

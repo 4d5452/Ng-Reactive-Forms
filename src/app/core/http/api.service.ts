@@ -15,7 +15,7 @@ export class ApiService {
       .map((response: Response) => response);
   }
   /**get: returns single item from server db collection */
-  get(collection: string, id: number): Observable<Response> {
+  get(collection: string, id: string): Observable<Response> {
     return this.http.get(`${this.API_ROOT}/${collection}/${id}`, this.requestOptions.method(RequestMethod.Get))
       .map((response: Response) => response);
   }
@@ -25,12 +25,12 @@ export class ApiService {
       .map((response: Response) => response);
   }
   /**remove: removes item from server db  collection */
-  remove(collection: string, id: number): Observable<Response> {
+  remove(collection: string, id: string): Observable<Response> {
     return this.http.delete(`${this.API_ROOT}/${collection}/${id}`, this.requestOptions.method(RequestMethod.Delete))
       .map((response: Response) => response);
   }
   /**update: creates or updates item on server db collection */
-  update(collection: string, id: number ,body: Object): Observable<Response> {
+  update(collection: string, id: string ,body: Object): Observable<Response> {
     return this.http.put(`${this.API_ROOT}/${collection}/${id}`, JSON.stringify(body), this.requestOptions.method(RequestMethod.Put))
       .map((response: Response) => response);
   }

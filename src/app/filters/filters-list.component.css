@@ -6,10 +6,13 @@
 }
 th, td {
   text-align: left;
+  padding: 10px;
   border-bottom: 1px solid #EEEEEE;
 }
 th {
+  border-top: 1px solid #EEEEEE;
   color: hsl(0, 0%, 65%);
+  font-size: 1.25em;
 }
 td {
   color: hsl(0, 0%, 45%);
@@ -19,5 +22,8 @@ tr:hover {
   cursor: default;
 }
 .td-checkbox {
+  text-align: center;
+}
+.center {
   text-align: center;
 }

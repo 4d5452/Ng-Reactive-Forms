@@ -26,7 +26,7 @@ export class FiltersService {
     const _getAll: HTTP.GetAll = { collection: 'filters' }
     this.store.dispatch(new httpActions.GetAllAction(_getAll));
   }
-  get(_id: number): void {
+  get(_id: string): void {
     const _get: HTTP.Get = { collection: 'filters', id: _id }
     this.store.dispatch(new httpActions.GetAction(_get));
   }
@@ -34,15 +34,18 @@ export class FiltersService {
     const _post: HTTP.Post = { collection: 'filters', body: item }
     this.store.dispatch(new httpActions.PostAction(_post));
   }
-  remove(_id: number): void {
+  remove(_id: string): void {
     const _delete: HTTP.Delete = { collection: 'filters', id: _id }
     this.store.dispatch(new httpActions.DeleteAction(_delete));
   }
-  update(_id: number, item: Object): void {
+  update(_id: string, item: Object): void {
     const _put: HTTP.Put = { collection: 'filters', id: _id, body: item }
     this.store.dispatch(new httpActions.PutAction(_put));
   }
-
+  
+  removeSelected(): void {
+    this.store.dispatch(new filterActions.RemoveSelectedAction(null));
+  }
   getSelected(): Observable<string> {
     return this.selected$;
   }

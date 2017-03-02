@@ -7,6 +7,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { reducer } from './reducers/index';
 
 import { HttpEffectsService } from './effects/http.effects';
+import { FiltersEffectsService } from './effects/filters.effects';
 
 /**
  * @imports:
@@ -22,7 +23,8 @@ import { HttpEffectsService } from './effects/http.effects';
   imports: [
     StoreModule.provideStore(reducer),
     RouterStoreModule.connectRouter(),
-    EffectsModule.run(HttpEffectsService)
+    EffectsModule.run(HttpEffectsService),
+    EffectsModule.run(FiltersEffectsService)
   ],
   providers: []
 }) // Configure AppStoreModule to only load one time: error will throw if multiple instances occur

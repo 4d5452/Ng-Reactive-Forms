@@ -8,13 +8,13 @@ export interface GetAll {
 /** Get object with id */
 export interface Get {
   collection: string;
-  id: number;
+  id: string;
 }; // end interface: Get
 
 /** Update object with id on collection */
 export interface Put {
   collection: string;
-  id: number;
+  id: string;
   body: Object;
 }; // end interface: Put
 
@@ -27,7 +27,7 @@ export interface Post {
 /** Remove object with id on collection */
 export interface Delete {
   collection: string;
-  id: number;
+  id: string;
 }; // end interface: Delete
 
 export interface SuccessResponse {

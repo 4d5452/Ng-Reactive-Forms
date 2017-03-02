@@ -19,7 +19,9 @@ export class FiltersComponent implements OnInit {
     this.filters$ = this.filtersService.getCollection();
     this.selected$ = this.filtersService.getSelected();
   }
-
+  removeSelected(): void {
+    this.filtersService.removeSelected();
+  }
   setSelected(selected: Filter): void {
     this.filtersService.setSelected(selected);
   }

@@ -32,7 +32,7 @@ export function reducer(state = initialState, action: actions.Actions): State {
      *  where actions is defined as import * as actions from 'path-to-http.actions';
      */
     case actions.ActionTypes.REQUEST_SUCCESS: {
-      //console.log("REQUEST_SUCCESS", action.payload);
+      console.log("REQUEST_SUCCESS", action.payload);
       return Object.assign({}, state, {
         latest: action.payload,
         latestError: null,
@@ -48,7 +48,7 @@ export function reducer(state = initialState, action: actions.Actions): State {
      * where actions is defined as import * as actions from 'path-to-http.actions';
      */
     case actions.ActionTypes.REQUEST_FAILURE: {
-      //console.log("REQUEST_FAILURE", action.payload);
+      console.log("REQUEST_FAILURE", action.payload);
       return Object.assign({}, state, {
         latest: null,
         latestError: action.payload,
