@@ -1,7 +1,31 @@
-.filter-content {
+.filter-card {
   height: calc(100% - 9em);
   width: calc(100% - 1em);
   margin: 10px 0px 0px 5px;
-  overflow: auto;
-  padding: 24px 0px;
+  position: fixed;
+  overflow: hidden;
+  padding: 0px 0px;
 }
+
+.card-content {
+  margin: 0;
+}
+
+.card-header-toolbar {
+  z-index: 90 !important;
+  background-color: white;
+}
+.list {
+  width: 100%;
+  height: calc(100% - 8.5em);
+  position: absolute;
+  left: 0px; right: 0px;
+  overflow: auto;
+}
+.card-footer-toolbar {
+  z-index: 90 !important;
+  position: absolute;
+  bottom: 0px;
+  background-color: white;
+}
+

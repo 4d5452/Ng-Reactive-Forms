@@ -1,10 +1,30 @@
-<md-card class="filter-content">
-  <filters-list 
-    [filters]="filters$ | async" 
-    [selected]="selected$ | async" 
-    (select)="setSelected($event)"
-    (clear)="clearSelected()">
-  </filters-list>
+<md-card class="filter-card">
+
+  <div class="card-content">
+
+    <md-toolbar class="card-header-toolbar">
+      Card Toolbar
+      <span class="toolbar-fill"></span>
+      Right
+    </md-toolbar>
+    
+    <div class="list">
+      <filters-list 
+        [filters]="filters$ | async" 
+        [selected]="selected$ | async" 
+        (select)="setSelected($event)"
+        (clear)="clearSelected()">
+      </filters-list>
+    </div>
+
+    <md-toolbar class="card-footer-toolbar">
+      Left
+      <span class="toolbar-fill"></span>
+      Card Toolbar
+    </md-toolbar>
+
+  </div>
+
 </md-card>
 
 

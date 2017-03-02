@@ -17,6 +17,10 @@ body {
   padding: 0px;
 }
 
+.toolbar-fill { 
+  flex: 1 1 auto;
+}
+
 .clearfix::after {
   content: "";
   clear: both;

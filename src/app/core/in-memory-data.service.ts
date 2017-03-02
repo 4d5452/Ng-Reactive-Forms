@@ -21,7 +21,20 @@ export class AppData implements InMemoryDbService {
       {id: '1011', type: filterTypes[3].upc, created: Date.now(), modified: Date.now()},
       {id: '1012', type: filterTypes[1].upc, created: Date.now(), modified: Date.now()},
       {id: '1013', type: filterTypes[4].upc, created: Date.now(), modified: Date.now()},
-      {id: '1014', type: filterTypes[0].upc, created: Date.now(), modified: Date.now()}
+      {id: '1014', type: filterTypes[0].upc, created: Date.now(), modified: Date.now()},
+      {id: '2001', type: filterTypes[0].upc, created: Date.now(), modified: Date.now()},
+      {id: '2002', type: filterTypes[0].upc, created: Date.now(), modified: Date.now()},
+      {id: '2003', type: filterTypes[3].upc, created: Date.now(), modified: Date.now()},
+      {id: '2005', type: filterTypes[2].upc, created: Date.now(), modified: Date.now()},
+      {id: '2006', type: filterTypes[4].upc, created: Date.now(), modified: Date.now()},
+      {id: '2007', type: filterTypes[2].upc, created: Date.now(), modified: Date.now()},
+      {id: '2008', type: filterTypes[1].upc, created: Date.now(), modified: Date.now()},
+      {id: '2009', type: filterTypes[2].upc, created: Date.now(), modified: Date.now()},
+      {id: '2010', type: filterTypes[1].upc, created: Date.now(), modified: Date.now()},
+      {id: '2011', type: filterTypes[3].upc, created: Date.now(), modified: Date.now()},
+      {id: '2012', type: filterTypes[1].upc, created: Date.now(), modified: Date.now()},
+      {id: '2013', type: filterTypes[4].upc, created: Date.now(), modified: Date.now()},
+      {id: '2014', type: filterTypes[0].upc, created: Date.now(), modified: Date.now()}
     ];
     let cleaningRecords = [
       {id: 1, created: Date.now(), modified: Date.now(), pre: 7, post: 4, cycles: 6, filter: filters[3].id},

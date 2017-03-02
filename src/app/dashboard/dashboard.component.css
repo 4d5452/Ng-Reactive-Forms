@@ -15,9 +15,6 @@
   z-index: 100 !important; /*High stack order for shadow*/
   padding: 0px;
 }
-.toolbar-fill { 
-  flex: 1 1 auto;
-}
 /***********Nav Styles***********/
 .nav {
   background-color: #fafafa;
@@ -44,9 +41,6 @@
   height: 100%;
   width: 100%;
   position: fixed;
-  /*margin: 10px 10px 0px 5px;*/
-  /*overflow: auto;*/
-  /*padding: 5px 15px;*/
 }
 /***********App Footer Toolbar Styles***********/
 .app-footer-toolbar {
