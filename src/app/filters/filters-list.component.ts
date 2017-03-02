@@ -22,8 +22,10 @@ export class FiltersListComponent {
   clearSelected(): void {
     this.clear.emit();
   }
-  checkboxToggle(filter: Filter, event: Event): void {
-    console.log(filter, event);
-    filter.id!==this.selected ? this.setSelected(filter) : this.clearSelected();
+  toggleSelected(filter: Filter): void {
+    filter.id===this.selected ? this.clearSelected() : this.setSelected(filter);
+  }
+  isSelected(filter: Filter): boolean {
+    return filter.id===this.selected;
   }
 }

@@ -50,6 +50,6 @@ export class FiltersService {
     this.store.dispatch(new filterActions.SetSelectedAction(selected.id));
   }
   clearSelected(): void {
-    this.store.dispatch(new filterActions.ClearSelectedAction());
+    this.store.dispatch(new filterActions.ClearSelectedAction(null));
   }
 }
