@@ -36,10 +36,6 @@
   color: #3f51b5;
   background-color: #f5f5f5;
 }
-/***********App Content Styles***********/
-.app-content {
-  position: absolute;
-}
 /***********App Footer Toolbar Styles***********/
 .app-footer-toolbar {
   z-index: 100 !important;

@@ -1,6 +1,4 @@
-<div class="view-add" [style.top.px] = "position.top" [style.left.px] = "position.left"
-    (draggable)="handleChangePosition($event)">
-
+<md-card class="view-wrapper remove-point">
   <div class="view-toolbar">
     <button md-mini-fab class="add-point" (click)="closeView()"><md-icon>clear</md-icon></button>
   </div>
@@ -8,5 +6,4 @@
   <div class="view-content">
     Content
   </div>
-  
-</div>
+</md-card>

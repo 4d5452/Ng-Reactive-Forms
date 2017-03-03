@@ -3,7 +3,7 @@
   width: calc(100% - 1em);
   margin: 10px 0px 0px 5px;
   position: fixed;
-  overflow: hidden; /*Hidden*/
+  overflow: visible; /*Hidden*/
   padding: 0px 0px;
   display: flex;
   flex-direction: column;
@@ -21,3 +21,11 @@
   overflow: auto;
   padding: 0px 0px 10px 0px;
 }
+
+.draggable-wrapper {
+  width:250px;
+  height:150px;  
+  max-width:520px;
+  max-height:250px;
+}
+

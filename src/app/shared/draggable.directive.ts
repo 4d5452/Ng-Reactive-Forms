@@ -23,7 +23,7 @@ export class DraggableDirective {
       this.element.nativeElement.style.position = 'absolute';
     }
     onMouseDown($event: any) {
-      //console.log("Down");
+      console.log("Down");
       if ($event.target.style.position === "absolute" && $event.target.style.left && $event.target.style.top) {
         this._hasDragged = false;
         this._isDragging = true;
@@ -32,12 +32,12 @@ export class DraggableDirective {
         this._originalClientX = $event.clientX;
         this._originalClientY = $event.clientY;
       }else {
-        //console.log("draggable: Error! the annotated " + $event.target.nodeName + " element needs to be inline styled with position, top and left");
+        console.log("draggable: Error! the annotated " + $event.target.nodeName + " element needs to be inline styled with position, top and left");
       }
     }
 
     onMouseMove($event: any) {
-      //console.log("Move");
+      console.log("Move");
       if (this._isDragging) {
         this._hasDragged = true;
         this.element.nativeElement.style.top  = (this._originalTop + ($event.clientY - this._originalClientY))  + 'px';
@@ -46,7 +46,7 @@ export class DraggableDirective {
     }
 
     onMouseUp($event: any) {
-      //console.log("Up");
+      console.log("Up");
       if (this._isDragging) {
         this._isDragging = false;
         if(this._hasDragged){

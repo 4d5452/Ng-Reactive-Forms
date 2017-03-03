@@ -16,6 +16,7 @@ export class FiltersComponent implements OnInit {
   selected$: Observable<string>;
   viewAdd$: Observable<boolean>;
   viewAddPosition$: Observable<Position>;
+  viewAddPosition: Position;
 
   constructor(private filtersService: FiltersService) {}
 
@@ -24,6 +25,8 @@ export class FiltersComponent implements OnInit {
     this.selected$ = this.filtersService.getSelected();
     this.viewAdd$ = this.filtersService.getViewAdd();
     this.viewAddPosition$ = this.filtersService.getViewAddPosition();
+    this.viewAddPosition$
+      .subscribe((pos: Position) => this.viewAddPosition = pos);
   }
   removeSelected(): void {
     this.filtersService.removeSelected();
@@ -39,5 +42,11 @@ export class FiltersComponent implements OnInit {
   }
   updateViewAddPosition(pos: Position): void {
     this.filtersService.updateViewAddPosition(pos)
+  } 
+  handleChangePosition(pos: Position){
+    console.log("Hanlde");
+    if(this.viewAddPosition.left != pos.left || this.viewAddPosition.top != pos.top){
+      this.filtersService.updateViewAddPosition(pos);
+    }
   }
 }

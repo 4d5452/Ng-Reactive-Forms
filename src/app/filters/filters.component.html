@@ -27,17 +27,13 @@
       (clear)="clearSelected()">
     </filters-list>
   </div>
-
-  <div class="card-overlay" *ngIf="viewAdd$ | async">
-    <filters-add
-      [position]="viewAddPosition$ | async"
-      (changePosition)="updateViewAddPosition($event)"
-      (close)="toggleViewAdd()">
-    </filters-add>
-  </div>
-
   <div class="card-footer">
   </div>
 </md-card>
+
+<filters-add class="draggable-wrapper" [style.top.px]="viewAddPosition.top" [style.left.px]="viewAddPosition.left"
+  (draggable)="handleChangePosition($event)" *ngIf="viewAdd$ | async"
+  (close)="toggleViewAdd()">
+</filters-add>
 
 
