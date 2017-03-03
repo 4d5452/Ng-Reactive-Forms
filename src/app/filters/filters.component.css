@@ -1,10 +1,11 @@
 .filter-card {
-  height: calc(100% - 9em);
+  height: 100%;
   width: calc(100% - 1em);
   margin: 10px 0px 0px 5px;
   position: fixed;
   overflow: visible; /*Hidden*/
-  padding: 0px 0px;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px -10px 0px;
   display: flex;
   flex-direction: column;
 }

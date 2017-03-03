@@ -31,8 +31,8 @@
   </div>
 </md-card>
 
-<filters-add class="draggable-wrapper" [style.top.px]="viewAddPosition.top" [style.left.px]="viewAddPosition.left"
-  (draggable)="handleChangePosition($event)" *ngIf="viewAdd$ | async"
+<filters-add class="draggable-wrapper" [style.top.px]="(viewAddPosition$ | async).top" [style.left.px]="(viewAddPosition$ | async).left"
+  (draggable)="updateViewAddPosition($event)" *ngIf="viewAdd$ | async"
   (close)="toggleViewAdd()">
 </filters-add>
 

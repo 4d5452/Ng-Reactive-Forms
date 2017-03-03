@@ -13,6 +13,7 @@ import { Filter } from '../../store/models/app.models';
 export class FiltersListComponent {
   @Input() filters: Filter[];
   @Input() selected: string;  
+  @Input('filter') _filter: string;
   @Output() select = new EventEmitter<Filter>();
   @Output() clear = new EventEmitter<void>();
 
@@ -27,5 +28,8 @@ export class FiltersListComponent {
   }
   isSelected(filter: Filter): boolean {
     return filter.id===this.selected;
+  }
+  compare(filter: Filter): boolean {
+    return true;
   }
 }

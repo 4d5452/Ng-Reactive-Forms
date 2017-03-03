@@ -1,7 +1,7 @@
 
 .filter-table {
   width: 100%;
-  height: 100%;
+  height: auto;
   border-collapse: collapse;
 }
 th, td {
@@ -9,7 +9,11 @@ th, td {
   padding: 10px;
   border-bottom: 1px solid #EEEEEE;
 }
-th {
+.table-header > th:hover {
+  color: #00bcd4;
+  cursor: default;
+}
+.table-header > th {
   border-top: 1px solid #EEEEEE;
   color: hsl(0, 0%, 65%);
   font-size: 1.25em;
@@ -17,7 +21,8 @@ th {
 td {
   color: hsl(0, 0%, 45%);
 }
-tr:hover {
+
+.td-hover:hover {
   background-color: #EEEEEE;
   cursor: default;
 }
