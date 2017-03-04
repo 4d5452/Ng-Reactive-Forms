@@ -1,5 +1,7 @@
 <md-card class="filter-card">
   <div class="card-toolbar">
+    <md-icon class="material-icons md-18" style="vertical-align: middle">search</md-icon>
+    <input [(ngModel)]="filter"/>
     <button md-button
       (click)="toggleViewAdd()"
       [disabled]="viewAdd$ | async"
@@ -18,13 +20,15 @@
       REMOVE
     </button>
   </div>
-  
   <div class="card-content">
     <filters-list
       [filters]="filters$ | async" 
-      [selected]="selected$ | async" 
+      [sortFilter]="filter"
+      [selected]="selected$ | async"
+      [meta]="tableMetaData$ | async"
       (select)="setSelected($event)"
-      (clear)="clearSelected()">
+      (clear)="clearSelected()"
+      (setSelectedColumn)="setSelectedColumn($event)">
     </filters-list>
   </div>
   <div class="card-footer">

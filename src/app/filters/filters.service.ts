@@ -8,7 +8,7 @@ import * as HTTP from '../store/models/http.models';
 
 import { Position } from '../store/models/position.models';
 
-import { Filter } from '../store/models/app.models'; // copy and paste from item service...
+import { Filter, TableMetaData } from '../store/models/app.models'; // copy and paste from item service...
 import * as filterActions from '../store/actions/filters.actions';
 
 @Injectable()
@@ -17,38 +17,19 @@ export class FiltersService {
   selected$: Observable<string>;
   viewAdd$: Observable<boolean>;
   viewAddPosition$: Observable<Position>;
+  tableMetaData$: Observable<TableMetaData>;
 
   constructor(private store: Store<fromRoot.State>) {
     this.filters$ = this.store.select<Filter[]>(fromRoot.httpCollectionGetFilters);
     this.selected$ = this.store.select<string>(fromRoot.filtersGetSelected);
     this.viewAdd$ = this.store.select<boolean>(fromRoot.filtersGetViewAdd);
     this.viewAddPosition$ = this.store.select<Position>(fromRoot.filtersGetViewAddPosition);
+    this.tableMetaData$ = this.store.select<TableMetaData>(fromRoot.filtersGetTableMetaData);
   }
 
   getCollection(): Observable<Filter[]> {
     return this.filters$;
   }
-  getAll(): void {
-    const _getAll: HTTP.GetAll = { collection: 'filters' }
-    this.store.dispatch(new httpActions.GetAllAction(_getAll));
-  }
-  get(_id: string): void {
-    const _get: HTTP.Get = { collection: 'filters', id: _id }
-    this.store.dispatch(new httpActions.GetAction(_get));
-  }
-  add(item: Object): void {
-    const _post: HTTP.Post = { collection: 'filters', body: item }
-    this.store.dispatch(new httpActions.PostAction(_post));
-  }
-  remove(_id: string): void {
-    const _delete: HTTP.Delete = { collection: 'filters', id: _id }
-    this.store.dispatch(new httpActions.DeleteAction(_delete));
-  }
-  update(_id: string, item: Object): void {
-    const _put: HTTP.Put = { collection: 'filters', id: _id, body: item }
-    this.store.dispatch(new httpActions.PutAction(_put));
-  }
-  
   removeSelected(): void {
     this.store.dispatch(new filterActions.RemoveSelectedAction(null));
   }
@@ -73,4 +54,31 @@ export class FiltersService {
   updateViewAddPosition(pos: Position): void{
     this.store.dispatch(new filterActions.UpdateViewAddPositionAction(pos));
   }
+  getTableMetaData(): Observable<TableMetaData> {
+    return this.tableMetaData$;
+  }
+  setSelectedColumn(column: string): void {
+    this.store.dispatch(new filterActions.SetSelectedColumnAction(column));
+  }
 }
+
+/*getAll(): void {
+    const _getAll: HTTP.GetAll = { collection: 'filters' }
+    this.store.dispatch(new httpActions.GetAllAction(_getAll));
+  }
+  get(_id: string): void {
+    const _get: HTTP.Get = { collection: 'filters', id: _id }
+    this.store.dispatch(new httpActions.GetAction(_get));
+  }
+  add(item: Object): void {
+    const _post: HTTP.Post = { collection: 'filters', body: item }
+    this.store.dispatch(new httpActions.PostAction(_post));
+  }
+  remove(_id: string): void {
+    const _delete: HTTP.Delete = { collection: 'filters', id: _id }
+    this.store.dispatch(new httpActions.DeleteAction(_delete));
+  }
+  update(_id: string, item: Object): void {
+    const _put: HTTP.Put = { collection: 'filters', id: _id, body: item }
+    this.store.dispatch(new httpActions.PutAction(_put));
+  }*/

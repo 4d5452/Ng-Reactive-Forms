@@ -9,19 +9,23 @@ th, td {
   padding: 10px;
   border-bottom: 1px solid #EEEEEE;
 }
+.table-header {
+  color: hsl(0, 0%, 52%);
+}
+th.selected-column {
+  color: #00bcd4;
+}
 .table-header > th:hover {
   color: #00bcd4;
   cursor: default;
 }
 .table-header > th {
   border-top: 1px solid #EEEEEE;
-  color: hsl(0, 0%, 65%);
-  font-size: 1.25em;
+  font-size: 1em;
 }
 td {
   color: hsl(0, 0%, 45%);
 }
-
 .td-hover:hover {
   background-color: #EEEEEE;
   cursor: default;

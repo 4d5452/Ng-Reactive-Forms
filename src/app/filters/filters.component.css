@@ -20,7 +20,7 @@
   width: 100%;
   flex: 1;
   overflow: auto;
-  padding: 0px 0px 10px 0px;
+  padding: 0px 0px 0px 0px;
 }
 
 .draggable-wrapper {

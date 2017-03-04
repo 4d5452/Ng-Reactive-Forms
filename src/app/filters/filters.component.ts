@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
-import { Filter } from '../store/models/app.models';
+import { Filter, TableMetaData } from '../store/models/app.models';
 import { FiltersService } from './filters.service';
 
 import { Position } from '../store/models/position.models';
@@ -16,7 +16,8 @@ export class FiltersComponent implements OnInit {
   selected$: Observable<string>;
   viewAdd$: Observable<boolean>;
   viewAddPosition$: Observable<Position>;
-
+  tableMetaData$: Observable<TableMetaData>;
+  filter: string = '';
   constructor(private filtersService: FiltersService) {}
 
   ngOnInit() {
@@ -24,7 +25,9 @@ export class FiltersComponent implements OnInit {
     this.selected$ = this.filtersService.getSelected();
     this.viewAdd$ = this.filtersService.getViewAdd();
     this.viewAddPosition$ = this.filtersService.getViewAddPosition();
+    this.tableMetaData$ = this.filtersService.getTableMetaData();
   }
+  
   removeSelected(): void {
     this.filtersService.removeSelected();
   }
@@ -39,5 +42,8 @@ export class FiltersComponent implements OnInit {
   }
   updateViewAddPosition(pos: Position): void {
     this.filtersService.updateViewAddPosition(pos)
+  }
+  setSelectedColumn(column: string): void {
+    this.filtersService.setSelectedColumn(column);
   }
 }
