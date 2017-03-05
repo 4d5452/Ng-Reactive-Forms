@@ -6,10 +6,11 @@ import * as fromRoot from '../store/reducers/index';
 import * as httpActions from '../store/actions/http.actions';
 import * as HTTP from '../store/models/http.models';
 
-import { Position } from '../store/models/position.models';
-
-import { Filter, TableMetaData } from '../store/models/app.models'; // copy and paste from item service...
+import { Filter } from '../store/models/app.models'; // copy and paste from item service...
 import * as filterActions from '../store/actions/filters.actions';
+
+import { TableMetaData } from '../store/models/table.models';
+import { Position } from '../store/models/position.models';
 
 @Injectable()
 export class FiltersService {

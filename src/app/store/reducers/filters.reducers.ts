@@ -1,6 +1,8 @@
 import { Observable } from 'rxjs/Observable';
 
-import { Filter, FilterType, TableMetaData }from '../models/app.models';
+import { Filter, FilterType }from '../models/app.models';
+
+import { TableMetaData } from '../models/table.models';
 import { Position } from '../models/position.models';
 
 import * as actions from '../actions/filters.actions';

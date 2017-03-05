@@ -1,4 +1,4 @@
-<table class="filter-table">
+<table class="item-table">
   <tr class="table-header">
     <th></th>
     <ng-container *ngFor="let col of meta.columns; let i = index;">
@@ -8,17 +8,17 @@
       </th>
     </ng-container>
   </tr>
-  <ng-container class="table-data" *ngFor="let filter of filters">
-    <tr class="td-hover" (click)="toggleSelected(filter)" *ngIf="isVisible(filter)">
+  <ng-container class="table-data" *ngFor="let item of items">
+    <tr class="td-hover" (click)="toggleSelected(item)" *ngIf="isVisible(item)">
       <td class="td-checkbox">
         <md-checkbox #checkbox 
           [disabled]="true"
-          [checked]="isSelected(filter)" 
+          [checked]="isSelected(item)" 
           [disableRipple]="true">
         </md-checkbox>
       </td>
       <td *ngFor="let col of meta.columns">
-        {{format(filter[col.selector], col.type)}}
+        {{format(item[col.selector], col.type)}}
       </td>
     </tr>
   </ng-container>

@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
-import { Filter, TableMetaData } from '../store/models/app.models';
+import { Filter } from '../store/models/app.models';
 import { FiltersService } from './filters.service';
+
+import { TableMetaData } from '../store/models/table.models';
 
 import { Position } from '../store/models/position.models';
 
