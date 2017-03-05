@@ -25,11 +25,11 @@ export class AppTableEffectsService {
 
   @Effect() removeSelected$: Observable<Action> = this.action$
     .ofType(actions.ActionTypes.REMOVE_SELECTED_ITEM)
-    .withLatestFrom(this.store$, (action: Action, store: fromRoot.State) => store)
+    .withLatestFrom(this.store$, (action: Action, store: fromRoot.State) => store.table)// need to really rethink this: effects in general
     .distinctUntilChanged()
-    .map((store) => {
-      let collection = store.table.currentCollection;
-      let selected = store.table.selected;
+    .map((table) => {
+      let collection = table.currentCollection;
+      let selected = table.selected;
       return [collection, selected];
     })
     .mergeMap((value: any[]) => {
