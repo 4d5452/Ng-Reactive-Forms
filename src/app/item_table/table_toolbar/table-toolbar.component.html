@@ -1,12 +1,13 @@
 <md-icon class="material-icons md-18" style="vertical-align: middle">search</md-icon>
 <input [ngModel]="_filter"
   (ngModelChange)="setFilter($event)"/>
-<button md-button
+<a md-button
+  [routerLink]="[{ outlets: { addView: ['add'] } }]"
   (click)="toggleAddView()"
   [disabled]="addVisible"
   color="primary">
   ADD
-</button>
+</a>
 <button md-button
   (click)="toggleEditView()"
   [disabled]="!(selected) || editVisible" 
