@@ -8,8 +8,6 @@ import { DashboardComponent } from './dashboard.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardSplashComponent } from './dashboard-splash.component';
 
-import { FiltersModule} from '../filters/filters.module';
-
 @NgModule({
   imports: [ 
     CommonModule,

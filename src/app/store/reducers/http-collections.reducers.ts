@@ -43,7 +43,7 @@ export function reducer(state = initialState, action: actions.Actions): State {
      * a collection key.  Others may include an 'id' or 'body' key.
      */
     case actions.ActionTypes.GET_ALL_MAP: {
-      //console.log("GET_ALL_MAP", action.payload);
+      console.log("GET_ALL_MAP", action.payload);
       let collection = {};
       collection[`${action.payload.request.collection}`] = action.payload.data;
       return Object.assign({}, state, collection);
@@ -56,7 +56,7 @@ export function reducer(state = initialState, action: actions.Actions): State {
      * Once filtered, append new item to end of collection.
      */
     case actions.ActionTypes.GET_MAP: {
-      //console.log("GET_MAP", action.payload);
+      console.log("GET_MAP", action.payload);
       let collection = {};
       let tmp = state[`${action.payload.request.collection}`]
         .filter((value: any) => value['id'] !== (<HTTP.Get> action.payload.request).id)
@@ -74,7 +74,7 @@ export function reducer(state = initialState, action: actions.Actions): State {
      * action.payload.data.
      */
     case actions.ActionTypes.POST_MAP: {
-      //console.log("POST_MAP", action.payload);
+      console.log("POST_MAP", action.payload);
       if(action.payload.data === null) { return state; } // item was previously added
       let collection = {};
       let tmp = [...state[`${action.payload.request.collection}`], action.payload.data];
@@ -90,7 +90,7 @@ export function reducer(state = initialState, action: actions.Actions): State {
      * src/app/store/models/http-colleciton.models.ts
      */
     case actions.ActionTypes.DELETE_MAP: {
-      //console.log("DELETE_MAP", action.payload);
+      console.log("DELETE_MAP", action.payload);
       let collection = {};
       let tmp = state[`${action.payload.request.collection}`]
         .filter((value: any) => value['id'] !== (<HTTP.Delete> action.payload.request).id)
@@ -107,7 +107,7 @@ export function reducer(state = initialState, action: actions.Actions): State {
      * This will have to do for now...
      */
     case actions.ActionTypes.PUT_MAP: {
-      //console.log("PUT_MAP", action.payload);
+      console.log("PUT_MAP", action.payload);
       let collection = {};
       let tmp = state[`${action.payload.request.collection}`]
         .filter((value: any) => value['id'] !== (<HTTP.Put> action.payload.request).id)

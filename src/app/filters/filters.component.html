@@ -21,15 +21,7 @@
     </button>
   </div>
   <div class="card-content">
-    <item-table
-      [items]="filters$ | async" 
-      [meta]="tableMetaData$ | async"
-      [filter]="filter"
-      [selected]="selected$ | async"
-      (select)="setSelected($event)"
-      (clear)="clearSelected()"
-      (setSelectedColumn)="setSelectedColumn($event)">
-    </item-table>
+    <item-table></item-table>
   </div>
   <div class="card-footer">
   </div>

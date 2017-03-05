@@ -1,60 +1,53 @@
-import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
-import { TableMetaData, SortOrder } from '../../store/models/table.models';
+import { ColumnMetaObject, SortOrder } from '../../store/models/table.models';
+
+import { ItemTableService } from './item-table.service';
 
 @Component({
   moduleId: module.id,
   selector: 'item-table',
-  templateUrl: './item-table.component.html',
-  styleUrls: [ './item-table.component.css' ],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  template: `
+    <table-view
+      [items]="items$ | async"
+      [selected]="selected$ | async"
+      [columns]="columns$ | async"
+      [selectedColumn]="selectedColumn$ | async"
+      [filter]="filter$ | async"
+      [order]="order$ | async"
+      (select)="setSelect($event)"
+      (selectColumn)="setSelectedColumn($event)"
+      (setOrder)="setOrder($event)">
+    </table-view>
+  `
 })
-export class ItemTableComponent {
-  @Input() items: any[]; //itrable item array
-  @Input() meta: TableMetaData;
-  @Input() filter: string; //On selected sorting column, compare with each filter: filter[selectedColumn]===sortFilter
-  @Input() selected: string; //Current selected filter
+export class ItemTableComponent implements OnInit {
+  items$: Observable<any[]>;
+  selected$: Observable<string>;
+  columns$: Observable<ColumnMetaObject[]>;
+  selectedColumn$: Observable<number>;
+  filter$: Observable<string>;
+  order$: Observable<SortOrder>;
 
-  @Output() select = new EventEmitter<any>(); //Selected filter
-  @Output() clear = new EventEmitter<void>(); //clear selected filter
-  @Output() setSelectedColumn = new EventEmitter<number>(); //change selected column
-  @Output() sortOrder: SortOrder; //Data updates through 'items' in sorted order...
+  constructor(private itemTableService: ItemTableService) {}
 
-  _setSelectedColumn(column: number): void {
-    this.setSelectedColumn.emit(column);
+  ngOnInit() {
+    this.items$ = this.itemTableService.getItems();
+    this.selected$ = this.itemTableService.getSelected();
+    this.columns$ = this.itemTableService.getColumns();
+    this.selectedColumn$ = this.itemTableService.getSelectedColumn();
+    this.filter$ = this.itemTableService.getFilter();
+    this.order$ = this.itemTableService.getSortOrder();
   }
   
-  isVisible(item: any): boolean {
-    let tmp = '' + item[this.meta.columns[this.meta.selectedColumn].selector];
-    return tmp.includes(this.filter);
+  setSelect(id: string): void {
+    this.itemTableService.setSelected(id);
   }
-
-  setSelected(item: any): void {
-    // set new selected item
-    this.select.emit(item);
+  setSelectedColumn(column: number): void {
+    this.itemTableService.setSelectedColumn(column);
   }
-  clearSelected(): void {
-    // called when selected item equals current selected item: clears selected
-    this.clear.emit();
-  }
-  toggleSelected(item: any): void {
-    // Called in html when user clicks table row:
-    item.id===this.selected ? this.clearSelected() : this.setSelected(item);
-  }
-  isSelected(item: any): boolean {
-    // md-checkbox uses this to set its status to checked
-    return item.id===this.selected;
-  }
-  format(value: any, type: string): any {
-    let tmp: any = null;
-    switch(type) {
-      case 'date': {
-        tmp = new Date(value);
-        return tmp.toLocaleDateString();
-      }
-      default: 
-        return value;
-    }
+  setOrder(order: SortOrder): void {
+    this.itemTableService.setSortOrder(order);
   }
 }

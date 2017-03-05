@@ -38,6 +38,7 @@ import { combineReducers } from '@ngrx/store';
 import * as fromHttp from './http.reducers';
 import * as fromHttpCollection from './http-collections.reducers';
 import * as fromFilters from './filters.reducers';
+import * as fromTable from './table.reducers';
 
 /**
  * As mentioned, we treat each reducer like a table in a database. This means
@@ -47,6 +48,7 @@ export interface State {
   http: fromHttp.State;
   httpCollection: fromHttpCollection.State;
   filters: fromFilters.State;
+  table: fromTable.State;
   router: fromRouter.RouterState;
 }
 
@@ -61,6 +63,7 @@ const reducers = {
   http: fromHttp.reducer,
   httpCollection: fromHttpCollection.reducer,
   filters: fromFilters.reducer,
+  table: fromTable.reducer,
   router: fromRouter.routerReducer
 };
 
@@ -91,10 +94,18 @@ export const httpCollectionGetState = (state: State) => state.httpCollection;
 export const httpCollectionGetFilters = createSelector(httpCollectionGetState, fromHttpCollection.getCollectionFilters);
 
 export const filtersGetState = (state: State) => state.filters;
-export const filtersGetSelected = createSelector(filtersGetState, fromFilters.getSelected);
 export const filtersGetViewAdd = createSelector(filtersGetState, fromFilters.getViewAdd);
 export const filtersGetViewAddPosition = createSelector(filtersGetState, fromFilters.getViewAddPosition);
-export const filtersGetTableMetaData = createSelector(filtersGetState, fromFilters.getTableMetaData);
+export const filtersGetColumnMetaObjectArray = createSelector(filtersGetState, fromFilters.getColumnMetaObjectArray);
+
+export const tableGetState = (state: State) => state.table;
+export const tableGetItems = createSelector(tableGetState, fromTable.getItems);
+export const tableGetSelected = createSelector(tableGetState, fromTable.getSelected);
+export const tableGetFilter = createSelector(tableGetState, fromTable.getFilter);
+export const tableGetColumns = createSelector(tableGetState, fromTable.getColumns);
+export const tableGetSelectedColumn = createSelector(tableGetState, fromTable.getSelectedColumn);
+export const tableGetSortOrder = createSelector(tableGetState, fromTable.getSortOrder);
+
 /**The source of this file may be found at:
  *  https://github.com/ngrx/example-app/blob/master/src/app/reducers/index.ts
  */

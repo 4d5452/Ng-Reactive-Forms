@@ -12,6 +12,7 @@ import 'rxjs/add/operator/distinctUntilChanged';
 import { State as AppState } from '../reducers/index';
 
 import * as httpActions from '../actions/http.actions';
+import * as tableActions from '../actions/table.actions';
 import * as actions from '../actions/filters.actions';
 
 @Injectable()
@@ -22,12 +23,12 @@ export class FiltersEffectsService {
   @Effect() removeSelected$: Observable<Action> = this.action$
     .ofType(actions.ActionTypes.REMOVE_SELECTED)
     .map((action: actions.RemoveSelectedAction) => action)
-    .withLatestFrom(this.state$, (action: Action, state: AppState) => state.filters.selected)
+    .withLatestFrom(this.state$, (action: Action, state: AppState) => state.table.selected)
     .distinctUntilChanged()
     .map((selected: string) => { 
         return Observable.from([
           new httpActions.DeleteAction({collection: 'filters', id: selected}),
-          new actions.ClearSelectedAction(null)
+          new tableActions.ClearSelectedAction(null)
         ]);
       })
       .mergeMap((val) => val)
