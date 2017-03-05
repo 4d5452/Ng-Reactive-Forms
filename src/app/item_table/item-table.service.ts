@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 
 import * as fromRoot from '../store/reducers/index';
 
-import { ColumnMetaObject, SortOrder } from '../store/models/table.models';
+import { ColumnMetaObject } from '../store/models/table.models';
 import * as tableActions from '../store/actions/table.actions';
 
 import { Position } from '../store/models/position.models';
@@ -17,7 +17,7 @@ export class ItemTableService {
   columns$: Observable<ColumnMetaObject[]>;
   selectedColumn$: Observable<number>;
   filter$: Observable<string>;
-  order$: Observable<SortOrder>;
+  order$: Observable<string>;
 
   addView$: Observable<boolean>;
   addViewPosition$: Observable<Position>;
@@ -28,7 +28,7 @@ export class ItemTableService {
     this.columns$ = this.store.select<ColumnMetaObject[]>(fromRoot.tableGetColumns);
     this.selectedColumn$ = this.store.select<number>(fromRoot.tableGetSelectedColumn);
     this.filter$ = this.store.select<string>(fromRoot.tableGetFilter);
-    this.order$ = this.store.select<SortOrder>(fromRoot.tableGetSortOrder);
+    this.order$ = this.store.select<string>(fromRoot.tableGetSortOrder);
 
     this.addView$ = this.store.select<boolean>(fromRoot.tableViewsGetAddView);
     this.addViewPosition$ = this.store.select<Position>(fromRoot.tableViewsGetAddViewPosition);
@@ -61,10 +61,10 @@ export class ItemTableService {
   setFilter(filter: string): void {
     this.store.dispatch(new tableActions.SetFilterAction(filter));
   }
-  getSortOrder(): Observable<SortOrder> {
+  getSortOrder(): Observable<string> {
     return this.order$;
   }
-  setSortOrder(order: SortOrder): void {
+  setSortOrder(order: string): void {
     this.store.dispatch(new tableActions.SetSortOrderAction(order));
   }
 

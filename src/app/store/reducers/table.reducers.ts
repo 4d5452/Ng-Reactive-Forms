@@ -10,7 +10,7 @@ export interface State {
   columns: ColumnMetaObject[];
   selectedColumn: number;
   filter: string;
-  order: SortOrder;
+  order: string;
   currentCollection: string;
 }; // end interface: State
 
@@ -20,7 +20,7 @@ const initialState: State = {
   columns: [],
   selectedColumn: 0,
   filter: '',
-  order: SortOrder.ASC,
+  order: SortOrder.ASCENDING,
   currentCollection: ''
 }; // end: initialState
 

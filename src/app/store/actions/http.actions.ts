@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 
-import { type } from '../util';
+import { type } from '../../shared/util';
 
 import * as HTTP from '../models/http.models';
 

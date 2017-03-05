@@ -1,8 +1,8 @@
 import { Action } from '@ngrx/store';
 
-import { type } from '../util';
+import { type } from '../../shared/util';
 
-import { ColumnMetaObject, SortOrder } from '../models/table.models';
+import { ColumnMetaObject } from '../models/table.models';
 
 export const ActionTypes = {
   SET_ITEMS: type('[Table] Set Items'),
@@ -49,7 +49,7 @@ export class SetColumnsAction implements Action {
 }
 export class SetSortOrderAction implements Action { 
   type = ActionTypes.SET_SORT_ORDER;
-  constructor(public payload: SortOrder) {}
+  constructor(public payload: string) {}
 }
 export class RemoveSelectedItemAction implements Action {
   type = ActionTypes.REMOVE_SELECTED_ITEM;

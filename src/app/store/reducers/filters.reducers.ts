@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs/Observable';
 
 import { Filter, FilterType }from '../models/app.models';
-import { ColumnMetaObject } from '../models/table.models';
+import { ColumnMetaObject, TableDataType } from '../models/table.models';
 
 import * as actions from '../actions/filters.actions';
 
@@ -11,10 +11,10 @@ export interface State {
 
 const initialState: State = {
   columnMeta: [
-    { column: 'ID', selector: 'id', type: 'string' },
-    { column: 'TYPE', selector: 'type', type: 'string' },
-    { column: 'CREATED', selector: 'created', type: 'date' },
-    { column: 'MODIFIED', selector: 'modified', type: 'date' }
+    { column: 'ID', selector: 'id', type: TableDataType.STRING },
+    { column: 'TYPE', selector: 'type', type: TableDataType.STRING },
+    { column: 'CREATED', selector: 'created', type: TableDataType.DATE },
+    { column: 'MODIFIED', selector: 'modified', type: TableDataType.DATE }
   ]
 }; // end: initialState
 

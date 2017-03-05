@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 
-import { ColumnMetaObject, SortOrder } from '../../store/models/table.models';
+import { ColumnMetaObject, TableDataType } from '../../store/models/table.models';
 
 @Component({
   moduleId: module.id,
@@ -15,11 +15,11 @@ export class TableContentComponent {
   @Input() columns: ColumnMetaObject;
   @Input() selectedColumn: number;
   @Input() filter: string;
-  @Input() order: SortOrder;
+  @Input() order: string;
 
   @Output() select = new EventEmitter<string>();
   @Output() selectColumn = new EventEmitter<number>();
-  @Output() setOrder = new EventEmitter<SortOrder>();
+  @Output() setOrder = new EventEmitter<string>();
 
   toggleSelected(item: any): void {
     // Called in html when user clicks table row:
@@ -36,10 +36,12 @@ export class TableContentComponent {
   format(value: any, type: string): any {
     let tmp: any = null;
     switch(type) {
-      case 'date': {
+      case TableDataType.DATE: {
         tmp = new Date(value);
         return tmp.toLocaleDateString();
       }
+      case TableDataType.NUMBER:
+      case TableDataType.STRING:
       default: 
         return value;
     }

@@ -1,3 +1,4 @@
+import { type } from '../../shared/util';
 
 export interface ColumnMetaObject {
   column: string;
@@ -5,7 +6,13 @@ export interface ColumnMetaObject {
   selector: string;
 }
 
-export enum SortOrder {
-  ASC,
-  DES
+export const SortOrder = {
+  ASCENDING: type('[Table Models] Ascending'),
+  DESCENDING: type('[Table Models] Descending')
+}
+
+export const TableDataType = {
+  DATE: type('[Table Models] Date'),
+  STRING: type('[Table Models] String'),
+  NUMBER: type('[Table Models] Number')
 }

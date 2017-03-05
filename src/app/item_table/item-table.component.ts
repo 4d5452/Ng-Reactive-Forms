@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
-import { ColumnMetaObject, SortOrder } from '../store/models/table.models';
+import { ColumnMetaObject } from '../store/models/table.models';
 
 import { ItemTableService } from './item-table.service';
 
@@ -19,7 +19,7 @@ export class ItemTableComponent implements OnInit {
   columns$: Observable<ColumnMetaObject[]>;
   selectedColumn$: Observable<number>;
   filter$: Observable<string>;
-  order$: Observable<SortOrder>;
+  order$: Observable<string>;
 
   addView$: Observable<boolean>;
   addViewPosition$: Observable<Position>;
@@ -46,7 +46,7 @@ export class ItemTableComponent implements OnInit {
   setSelectedColumn(column: number): void {
     this.itemTableService.setSelectedColumn(column);
   }
-  setOrder(order: SortOrder): void {
+  setOrder(order: string): void {
     this.itemTableService.setSortOrder(order);
   }
   setFilter(filter: string): void {
