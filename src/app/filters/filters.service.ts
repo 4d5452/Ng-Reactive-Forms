@@ -23,6 +23,7 @@ export class FiltersService {
     this.store.select<ColumnMetaObject[]>(fromRoot.filtersGetColumnMetaObjectArray)
       .subscribe((meta: ColumnMetaObject[]) => { 
         this.store.dispatch(new tableActions.SetColumnsAction(meta));
-       });
+      });
+    this.store.dispatch(new tableActions.SetCurrentCollectionAction('filters'));
   }
 }

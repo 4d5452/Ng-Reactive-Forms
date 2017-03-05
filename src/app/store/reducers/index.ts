@@ -106,6 +106,7 @@ export const tableGetFilter = createSelector(tableGetState, fromTable.getFilter)
 export const tableGetColumns = createSelector(tableGetState, fromTable.getColumns);
 export const tableGetSelectedColumn = createSelector(tableGetState, fromTable.getSelectedColumn);
 export const tableGetSortOrder = createSelector(tableGetState, fromTable.getSortOrder);
+export const tableGetCurrentCollection = createSelector(tableGetState, fromTable.getCurrentCollection);
 
 export const tableViewsGetState = (state: State) => state.tableViews;
 export const tableViewsGetAddView = createSelector(tableViewsGetState, fromTableViews.getAddView);

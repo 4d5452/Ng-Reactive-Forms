@@ -11,6 +11,7 @@ export interface State {
   selectedColumn: number;
   filter: string;
   order: SortOrder;
+  currentCollection: string;
 }; // end interface: State
 
 const initialState: State = {
@@ -19,7 +20,8 @@ const initialState: State = {
   columns: [],
   selectedColumn: 0,
   filter: '',
-  order: SortOrder.ASC
+  order: SortOrder.ASC,
+  currentCollection: ''
 }; // end: initialState
 
 export function reducer(state = initialState, action: actions.Actions): State {
@@ -40,8 +42,8 @@ export function reducer(state = initialState, action: actions.Actions): State {
       console.log("Set Selected Column", action.payload);
       return Object.assign({}, state, { selectedColumn: action.payload });
     }
-    case actions.ActionTypes.SET_FILTER: {
-      console.log("Set Filter");
+    case actions.ActionTypes.SET_FILTER_AFTER_DEBOUNCE: {
+      console.log("Set Filter After Debounce");
       return Object.assign({}, state, { filter: action.payload });
     }
     case actions.ActionTypes.SET_COLUMNS: {
@@ -51,6 +53,11 @@ export function reducer(state = initialState, action: actions.Actions): State {
     case actions.ActionTypes.SET_SORT_ORDER: {
       console.log("Set Sort Order");
       return Object.assign({}, state, { order: action.payload });
+    }
+
+    case actions.ActionTypes.SET_CURRENT_COLLECTION: {
+      console.log("Set Current Collection");
+      return Object.assign({}, state, { currentCollection: action.payload });
     }
     default:
       return state;
@@ -63,6 +70,8 @@ export const getFilter = (state: State) => state.filter;
 export const getColumns = (state: State) => state.columns;
 export const getSelectedColumn = (state: State) => state.selectedColumn;
 export const getSortOrder = (state: State) => state.order;
+
+export const getCurrentCollection = (state: State) => state.currentCollection;
 /** More information may be found at:
  *  https://github.com/ngrx/store
  *  &&
