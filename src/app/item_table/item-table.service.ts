@@ -81,4 +81,8 @@ export class ItemTableService {
     this.store.dispatch(new tableViewActions.UpdateAddViewPositionAction(pos));
   }
 
+  removeSelectedItem(): void {
+    this.store.dispatch(new tableActions.RemoveSelectedItemAction(null));
+  }
+
 }

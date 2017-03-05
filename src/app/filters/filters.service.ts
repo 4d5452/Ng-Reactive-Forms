@@ -15,6 +15,7 @@ export class FiltersService {
   constructor(private store: Store<fromRoot.State>) {}
 
   configTable(): void {
+    /**Serious potential for memory leak */
     this.store.select<Filter[]>(fromRoot.httpCollectionGetFilters)
       .subscribe((filters: Filter[]) => { 
         this.store.dispatch(new tableActions.SetItemsAction(filters));
@@ -23,8 +24,5 @@ export class FiltersService {
       .subscribe((meta: ColumnMetaObject[]) => { 
         this.store.dispatch(new tableActions.SetColumnsAction(meta));
        });
-  }
-  removeSelected(): void {
-    this.store.dispatch(new filterActions.RemoveSelectedAction(null));
   }
 }

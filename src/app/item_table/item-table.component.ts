@@ -59,6 +59,10 @@ export class ItemTableComponent implements OnInit {
   updateAddViewPosition(pos: Position): void {
     this.itemTableService.updateAddViewPosition(pos);
   }
+    
+  removeSelectedItem(): void {
+    this.itemTableService.removeSelectedItem();
+  }
   /*******RELOCATE */
 
   editVisible$: Observable<boolean> = Observable.of(false);
@@ -66,9 +70,4 @@ export class ItemTableComponent implements OnInit {
     console.log("TODO: editSelected");
     return;
   }
-  removeSelected(): void {
-    console.log("TODO: removeSelected");
-    return;
-  }
-
 }

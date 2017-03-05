@@ -11,7 +11,8 @@ export const ActionTypes = {
   SET_SELECTED_COLUMN: type('[Table] Set Selected Column'),
   SET_FILTER: type('[Table] Set Filter'),
   SET_COLUMNS: type('[Table] Set Columns'),
-  SET_SORT_ORDER: type('[Table] Set Sort Order')
+  SET_SORT_ORDER: type('[Table] Set Sort Order'),
+  REMOVE_SELECTED_ITEM: type('[Table] Remove Selected Item')
 }; // end ActionTypes
 
 
@@ -43,6 +44,10 @@ export class SetSortOrderAction implements Action {
   type = ActionTypes.SET_SORT_ORDER;
   constructor(public payload: SortOrder) {}
 }
+export class RemoveSelectedItemAction implements Action {
+  type = ActionTypes.REMOVE_SELECTED_ITEM;
+  constructor(public payload: void) {}
+}
 
 export type Actions
   = SetItemsAction
@@ -52,6 +57,7 @@ export type Actions
   | SetFilterAction
   | SetColumnsAction
   | SetSortOrderAction
+  | RemoveSelectedItemAction
 
   /**
    * Find more on this at:
