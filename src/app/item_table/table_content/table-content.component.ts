@@ -4,12 +4,12 @@ import { ColumnMetaObject, SortOrder } from '../../store/models/table.models';
 
 @Component({
   moduleId: module.id,
-  selector: 'table-view',
-  templateUrl: './table-view.component.html',
-  styleUrls: [ './table-view.component.css' ],
+  selector: 'table-content',
+  templateUrl: './table-content.component.html',
+  styleUrls: [ './table-content.component.css' ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TableViewComponent {
+export class TableContentComponent {
   @Input() items: any[];
   @Input() selected: string;
   @Input() columns: ColumnMetaObject;

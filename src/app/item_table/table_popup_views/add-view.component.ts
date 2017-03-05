@@ -2,11 +2,11 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   moduleId: module.id,
-  selector: 'filters-add',
-  templateUrl: 'filters-add.component.html',
-  styleUrls: [ 'filters-add.component.css' ]
+  selector: 'add-view',
+  templateUrl: 'add-view.component.html',
+  styleUrls: [ 'add-view.component.css' ]
 })
-export class FiltersAddComponent {
+export class AddViewComponent {
   @Output() close = new EventEmitter<void>();
 
   closeView(): void {

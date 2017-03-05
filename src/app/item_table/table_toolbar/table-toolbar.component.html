@@ -1,0 +1,21 @@
+<md-icon class="material-icons md-18" style="vertical-align: middle">search</md-icon>
+<input [ngModel]="_filter"
+  (ngModelChange)="setFilter($event)"/>
+<button md-button
+  (click)="toggleAddView()"
+  [disabled]="addVisible"
+  color="primary">
+  ADD
+</button>
+<button md-button
+  (click)="toggleEditView()"
+  [disabled]="!(selected) || editVisible" 
+  color="primary">
+  EDIT
+</button>
+<button md-button 
+  (click)="removeSelected()" 
+  [disabled]="!(selected)" 
+  color="primary">
+  REMOVE
+</button>

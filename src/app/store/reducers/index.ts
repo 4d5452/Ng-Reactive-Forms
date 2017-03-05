@@ -39,6 +39,7 @@ import * as fromHttp from './http.reducers';
 import * as fromHttpCollection from './http-collections.reducers';
 import * as fromFilters from './filters.reducers';
 import * as fromTable from './table.reducers';
+import * as fromTableViews from './table-views.reducers';
 
 /**
  * As mentioned, we treat each reducer like a table in a database. This means
@@ -49,6 +50,7 @@ export interface State {
   httpCollection: fromHttpCollection.State;
   filters: fromFilters.State;
   table: fromTable.State;
+  tableViews: fromTableViews.State;
   router: fromRouter.RouterState;
 }
 
@@ -64,6 +66,7 @@ const reducers = {
   httpCollection: fromHttpCollection.reducer,
   filters: fromFilters.reducer,
   table: fromTable.reducer,
+  tableViews: fromTableViews.reducer,
   router: fromRouter.routerReducer
 };
 
@@ -94,8 +97,6 @@ export const httpCollectionGetState = (state: State) => state.httpCollection;
 export const httpCollectionGetFilters = createSelector(httpCollectionGetState, fromHttpCollection.getCollectionFilters);
 
 export const filtersGetState = (state: State) => state.filters;
-export const filtersGetViewAdd = createSelector(filtersGetState, fromFilters.getViewAdd);
-export const filtersGetViewAddPosition = createSelector(filtersGetState, fromFilters.getViewAddPosition);
 export const filtersGetColumnMetaObjectArray = createSelector(filtersGetState, fromFilters.getColumnMetaObjectArray);
 
 export const tableGetState = (state: State) => state.table;
@@ -105,6 +106,10 @@ export const tableGetFilter = createSelector(tableGetState, fromTable.getFilter)
 export const tableGetColumns = createSelector(tableGetState, fromTable.getColumns);
 export const tableGetSelectedColumn = createSelector(tableGetState, fromTable.getSelectedColumn);
 export const tableGetSortOrder = createSelector(tableGetState, fromTable.getSortOrder);
+
+export const tableViewsGetState = (state: State) => state.tableViews;
+export const tableViewsGetAddView = createSelector(tableViewsGetState, fromTableViews.getAddView);
+export const tableViewsGetAddViewPosition = createSelector(tableViewsGetState, fromTableViews.getAddViewPosition);
 
 /**The source of this file may be found at:
  *  https://github.com/ngrx/example-app/blob/master/src/app/reducers/index.ts

@@ -10,19 +10,9 @@ import * as filterActions from '../store/actions/filters.actions';
 import { ColumnMetaObject } from '../store/models/table.models';
 import * as tableActions from '../store/actions/table.actions';
 
-import { Position } from '../store/models/position.models';
-
 @Injectable()
 export class FiltersService {
-  viewAdd$: Observable<boolean>;
-  viewAddPosition$: Observable<Position>;
-  selected$ : Observable<string>;
-
-  constructor(private store: Store<fromRoot.State>) {
-    this.viewAdd$ = this.store.select<boolean>(fromRoot.filtersGetViewAdd);
-    this.viewAddPosition$ = this.store.select<Position>(fromRoot.filtersGetViewAddPosition);
-    this.selected$ = this.store.select<string>(fromRoot.tableGetSelected);
-  }
+  constructor(private store: Store<fromRoot.State>) {}
 
   configTable(): void {
     this.store.select<Filter[]>(fromRoot.httpCollectionGetFilters)
@@ -36,20 +26,5 @@ export class FiltersService {
   }
   removeSelected(): void {
     this.store.dispatch(new filterActions.RemoveSelectedAction(null));
-  }
-  getViewAdd(): Observable<boolean> {
-    return this.viewAdd$;
-  }
-  toggleViewAdd(): void {
-    this.store.dispatch(new filterActions.ToggleViewAddAction(null));
-  }
-  getViewAddPosition(): Observable<Position> {
-    return this.viewAddPosition$;
-  }
-  updateViewAddPosition(pos: Position): void{
-    this.store.dispatch(new filterActions.UpdateViewAddPositionAction(pos));
-  }
-  getSelected(): Observable<string> {
-    return this.selected$;
   }
 }

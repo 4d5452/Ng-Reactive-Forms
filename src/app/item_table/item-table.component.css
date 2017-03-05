@@ -1,0 +1,32 @@
+.table-ui-card {
+  height: 100%;
+  width: calc(100% - 1em);
+  margin: 10px 0px 0px 5px;
+  position: fixed;
+  overflow: visible; /*Hidden*/
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px -10px 0px;
+  display: flex;
+  flex-direction: column;
+}
+.card-toolbar {
+  padding: 10px;
+  overflow-x: auto;
+  display: inline-block;
+  white-space: nowrap;
+}
+.card-content {
+  height: 100%;
+  width: 100%;
+  flex: 1;
+  overflow: auto;
+  padding: 0px 0px 0px 0px;
+}
+
+.draggable-wrapper {
+  width:250px;
+  height:150px;  
+  max-width:520px;
+  max-height:250px;
+}
+

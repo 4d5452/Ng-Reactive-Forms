@@ -2,10 +2,13 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
-import * as fromRoot from '../../store/reducers/index';
+import * as fromRoot from '../store/reducers/index';
 
-import { ColumnMetaObject, SortOrder } from '../../store/models/table.models';
-import * as tableActions from '../../store/actions/table.actions';
+import { ColumnMetaObject, SortOrder } from '../store/models/table.models';
+import * as tableActions from '../store/actions/table.actions';
+
+import { Position } from '../store/models/position.models';
+import * as tableViewActions from '../store/actions/table-views.actions';
 
 @Injectable()
 export class ItemTableService {
@@ -16,6 +19,9 @@ export class ItemTableService {
   filter$: Observable<string>;
   order$: Observable<SortOrder>;
 
+  addView$: Observable<boolean>;
+  addViewPosition$: Observable<Position>;
+
   constructor(private store: Store<fromRoot.State>) {
     this.items$ = this.store.select<any[]>(fromRoot.tableGetItems);
     this.selected$ = this.store.select<string>(fromRoot.tableGetSelected);
@@ -23,6 +29,9 @@ export class ItemTableService {
     this.selectedColumn$ = this.store.select<number>(fromRoot.tableGetSelectedColumn);
     this.filter$ = this.store.select<string>(fromRoot.tableGetFilter);
     this.order$ = this.store.select<SortOrder>(fromRoot.tableGetSortOrder);
+
+    this.addView$ = this.store.select<boolean>(fromRoot.tableViewsGetAddView);
+    this.addViewPosition$ = this.store.select<Position>(fromRoot.tableViewsGetAddViewPosition);
   }
 
   getItems(): Observable<any[]> {
@@ -49,11 +58,27 @@ export class ItemTableService {
   getFilter(): Observable<string> {
     return this.filter$;
   }
+  setFilter(filter: string): void {
+    this.store.dispatch(new tableActions.SetFilterAction(filter));
+  }
   getSortOrder(): Observable<SortOrder> {
     return this.order$;
   }
   setSortOrder(order: SortOrder): void {
     this.store.dispatch(new tableActions.SetSortOrderAction(order));
+  }
+
+  getAddView(): Observable<boolean> {
+    return this.addView$;
+  }
+  toggleAddView(): void {
+    this.store.dispatch(new tableViewActions.ToggleAddViewAction(null));
+  }
+  getAddViewPosition(): Observable<Position> {
+    return this.addViewPosition$;
+  }
+  updateAddViewPosition(pos: Position): void{
+    this.store.dispatch(new tableViewActions.UpdateAddViewPositionAction(pos));
   }
 
 }

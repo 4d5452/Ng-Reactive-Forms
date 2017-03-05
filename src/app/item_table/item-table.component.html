@@ -1,0 +1,37 @@
+<md-card class="table-ui-card">
+  <div class="card-toolbar">
+    <table-toolbar 
+      [selected]="selected$ | async"
+      [addVisible]="addView$ | async"
+      [editVisible]="editVisible$ | async"
+      (add)="toggleAddView()"
+      (edit)="toggleEditView()"
+      (remove)="removeSelected()"
+      (filter)="setFilter($event)">
+    </table-toolbar>
+  </div>
+  <div class="card-content">
+    <table-content
+      [items]="items$ | async"
+      [selected]="selected$ | async"
+      [columns]="columns$ | async"
+      [selectedColumn]="selectedColumn$ | async"
+      [filter]="filter$ | async"
+      [order]="order$ | async"
+      (select)="setSelect($event)"
+      (selectColumn)="setSelectedColumn($event)"
+      (setOrder)="setOrder($event)">
+    </table-content>
+  </div>
+  <div class="card-footer">
+  </div>
+</md-card>
+
+<add-view *ngIf="addView$ | async"
+  class="draggable-wrapper" 
+  [style.top.px]="(addViewPosition$ | async).top" 
+  [style.left.px]="(addViewPosition$ | async).left"
+  (draggable)="updateAddViewPosition($event)" 
+  (close)="toggleAddView()">
+</add-view>
+

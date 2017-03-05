@@ -2,13 +2,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { DashboardComponent } from './dashboard.component';
-import { DashboardSplashComponent } from './dashboard-splash.component';
 
 const dashboardRoutes: Routes = [
   { 
     path: 'dashboard', component: DashboardComponent,
     children: [
-      { path: '', component: DashboardSplashComponent },
+      { path: '', redirectTo: 'filters', pathMatch: 'full' },
       { path: 'filters', loadChildren: 'app/filters/filters.module#FiltersModule' },
       { path: 'records', loadChildren: 'app/records/records.module#RecordsModule' }
     ]

@@ -1,26 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
-import { ColumnMetaObject, SortOrder } from '../../store/models/table.models';
+import { ColumnMetaObject, SortOrder } from '../store/models/table.models';
 
 import { ItemTableService } from './item-table.service';
+
+import { Position } from '../store/models/position.models';
 
 @Component({
   moduleId: module.id,
   selector: 'item-table',
-  template: `
-    <table-view
-      [items]="items$ | async"
-      [selected]="selected$ | async"
-      [columns]="columns$ | async"
-      [selectedColumn]="selectedColumn$ | async"
-      [filter]="filter$ | async"
-      [order]="order$ | async"
-      (select)="setSelect($event)"
-      (selectColumn)="setSelectedColumn($event)"
-      (setOrder)="setOrder($event)">
-    </table-view>
-  `
+  templateUrl: './item-table.component.html',
+  styleUrls: [ './item-table.component.css' ]
 })
 export class ItemTableComponent implements OnInit {
   items$: Observable<any[]>;
@@ -29,6 +20,11 @@ export class ItemTableComponent implements OnInit {
   selectedColumn$: Observable<number>;
   filter$: Observable<string>;
   order$: Observable<SortOrder>;
+
+  addView$: Observable<boolean>;
+  addViewPosition$: Observable<Position>;
+
+  filter: string = '';
 
   constructor(private itemTableService: ItemTableService) {}
 
@@ -39,6 +35,9 @@ export class ItemTableComponent implements OnInit {
     this.selectedColumn$ = this.itemTableService.getSelectedColumn();
     this.filter$ = this.itemTableService.getFilter();
     this.order$ = this.itemTableService.getSortOrder();
+
+    this.addView$ = this.itemTableService.getAddView();
+    this.addViewPosition$ = this.itemTableService.getAddViewPosition();
   }
   
   setSelect(id: string): void {
@@ -50,4 +49,26 @@ export class ItemTableComponent implements OnInit {
   setOrder(order: SortOrder): void {
     this.itemTableService.setSortOrder(order);
   }
+  setFilter(filter: string): void {
+    this.itemTableService.setFilter(filter);
+  }
+
+  toggleAddView(): void {
+    this.itemTableService.toggleAddView();
+  }
+  updateAddViewPosition(pos: Position): void {
+    this.itemTableService.updateAddViewPosition(pos);
+  }
+  /*******RELOCATE */
+
+  editVisible$: Observable<boolean> = Observable.of(false);
+  toggleEditView(): void {
+    console.log("TODO: editSelected");
+    return;
+  }
+  removeSelected(): void {
+    console.log("TODO: removeSelected");
+    return;
+  }
+
 }

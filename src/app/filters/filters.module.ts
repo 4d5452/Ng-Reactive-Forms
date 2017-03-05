@@ -4,7 +4,6 @@ import { SharedModule } from '../shared/shared.module';
 
 import { FiltersRoutingModule } from './filters-routing.module';
 import { FiltersComponent } from './filters.component';
-import { FiltersAddComponent } from './filters_add/filters-add.component';
 import { FiltersService } from './filters.service';
 
 
@@ -14,8 +13,7 @@ import { FiltersService } from './filters.service';
     FiltersRoutingModule
   ],
   declarations: [
-    FiltersComponent,
-    FiltersAddComponent
+    FiltersComponent
   ],
   providers: [ FiltersService ]
 })

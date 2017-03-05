@@ -6,19 +6,18 @@ import { SharedModule } from '../shared/shared.module';
 
 import { DashboardComponent } from './dashboard.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
-import { DashboardSplashComponent } from './dashboard-splash.component';
+
+import { ItemTableModule } from '../item_table/item-table.module';
 
 @NgModule({
   imports: [ 
-    CommonModule,
-    MaterialModule,
     SharedModule,
+    ItemTableModule,
     DashboardRoutingModule
  ],
   exports: [],
   declarations: [ 
-    DashboardComponent,
-    DashboardSplashComponent
+    DashboardComponent
  ],
   providers: []
 })
