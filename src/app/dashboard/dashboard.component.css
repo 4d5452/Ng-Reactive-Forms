@@ -1,50 +1,48 @@
 .container {
   max-width: 180em; /*If default font size is 16px, then max-width = 16  * 75 = 1200px*/
-  min-height: 100vh;
-  position: fixed;
-  margin: 0 auto;
+  min-height: 100vh; /*Fill entire screen height*/
+  position: fixed; /* Disable scroll */
   top: 0; bottom: 0; right: 0; left: 0;
-
-  display: flex;
-  flex-direction: column;
+  /*https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction**/
+  display: flex; /* Display content with flex...*/
+  flex-direction: column; /* stack lines by column*/
 }
 .content {
-  margin: 0;
-  /*height: 100%;*/
-  width: 100%;
-  padding: 10px 0px 10px 0px;
+  margin: 0; /*Let child nodes deside margin*/
+  width: 100%; /* Use full space */
+  padding: 10px 0px 10px 0px; /* Pad from top toolbar*/
 
-  flex: 1;
+  flex: 1; /*Fill inner space (between toolbars) with content*/
 }
 /***********App Toolbar Styles***********/
 .app-toolbar {
-  z-index: 100 !important; /*High stack order for shadow*/
-  padding: 0px;
+  z-index: 100 !important; /*High stack order for shadow and overlay*/
+  padding: 0px; /* menu buttons give enough padding*/
 }
 /***********Nav Styles***********/
 .nav {
   background-color: #fafafa;
 }
 .nav-list {
-  padding: 5px 0px 0px 0px;
+  padding: 5px 0px 0px 0px; /* with nav-list a, sets padding to 10 on top*/
 }
 .nav-list a {
-  font-size: 1.5em;
-  font-weight: 400;
-  text-align: left;
-  color: rgba(0,0,0,.54); 
-  height: 2em; /*Center content*/
-  line-height: 2em; /*Center content*/
-  width: 100%;
-  margin: 5px -5px;
+  font-size: 1.5em; /* Allow buttons to grow with page size*/
+  font-weight: 400; /* Standard weight: normal*/
+  text-align: left; /* Bring the text left*/
+  color: rgba(0,0,0,.54);  /* Set to a grayed color */
+  height: 2em; /*Center content vertical*/
+  line-height: 2em; /*Center content vertical*/
+  width: 100%; /* Use containers full width*/
+  margin: 5px -5px; /* Give top some space, and pull from right margin*/
 }
 .nav-list .active {
-  color: #3f51b5;
-  background-color: #f5f5f5;
+  color: #3f51b5; /* Currently primary color: needs to change dynamically*/
+  background-color: #f5f5f5; 
 }
 /***********App Footer Toolbar Styles***********/
 .app-footer-toolbar {
-  z-index: 100 !important;
+  z-index: 100 !important; /* brings in some shadows */
   /*position: absolute;
   bottom: 0; left: 0; right: 0;*/
 }

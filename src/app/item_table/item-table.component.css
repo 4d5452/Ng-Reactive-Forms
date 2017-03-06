@@ -5,7 +5,7 @@
   position: fixed;
   overflow: visible; /*Hidden*/
   padding: 0px 0px 0px 0px;
-  margin: 0px 0px -10px 0px;
+  margin: 0px 10px -10px 5px; /* Bring bottom up off toolbar, and increase left gap to 10px total*/
   display: flex;
   flex-direction: column;
 }
