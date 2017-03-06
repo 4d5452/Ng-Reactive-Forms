@@ -7,8 +7,9 @@ import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from 
 })
 export class TableToolbarComponent {
   @Input() selected: string;
-  @Input() addVisible: boolean;
-  @Input() editVisible: boolean;
+  @Input() isPopupOpen: boolean;
+
+  @Output() openPopup = new EventEmitter<void>();
 
   @Output() add = new EventEmitter<void>();
   @Output() edit = new EventEmitter<void>();
@@ -16,6 +17,10 @@ export class TableToolbarComponent {
   @Output() filter = new EventEmitter<string>();
 
   _filter: string = '';
+
+  _openPopup(): void {
+    this.openPopup.emit();
+  }
 
   toggleAddView(): void {
     this.add.emit();

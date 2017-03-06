@@ -1,4 +1,4 @@
-.view-wrapper {
+.content-wrapper {
   background: -webkit-linear-gradient(#aacbff, #99c0ff);
   background: -moz-linear-gradient(#aacbff, #99c0ff);
   background: -o-linear-gradient(#aacbff, #99c0ff);
@@ -10,7 +10,7 @@
   width: 100%;
   height: 100%;
 }
-.view-toolbar {
+.content-toolbar {
   padding: 10px;
   overflow-x: auto;
   display: inline-block;
@@ -18,7 +18,7 @@
   border: 1px solid red;
   pointer-events: none;
 }
-.view-content {
+.content {
   flex: 1;
   overflow: auto;
   padding: 0px 0px 10px 0px;

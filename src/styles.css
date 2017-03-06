@@ -66,13 +66,6 @@ body {
   z-index: 1;
 }
 
-.add-point {
-  pointer-events: all;
-}
-.remove-point {
-  pointer-events: none;
-}
-
 /*Material Design Fix*/
 .mat-checkbox-inner-container {
   margin: 0px !important;
@@ -82,4 +75,12 @@ body {
 }
 .mat-sidenav.mat-sidenav-side {
     z-index: -1 !important;
+}
+
+/*Popup pointer events*/
+.add-pointer-events {
+  pointer-events: all;
+}
+.remove-pointer-events {
+  pointer-events: none;
 }

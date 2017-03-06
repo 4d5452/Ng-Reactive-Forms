@@ -4,8 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { ColumnMetaObject } from '../store/models/table.models';
 
 import { ItemTableService } from './item-table.service';
-
-import { Position } from '../store/models/position.models';
+import { PopupService } from '../shared/popup/popup.service';
 
 @Component({
   moduleId: module.id,
@@ -21,12 +20,11 @@ export class ItemTableComponent implements OnInit {
   filter$: Observable<string>;
   order$: Observable<string>;
 
-  addView$: Observable<boolean>;
-  addViewPosition$: Observable<Position>;
+  isPopupOpen$: Observable<boolean>;
 
   filter: string = '';
 
-  constructor(private itemTableService: ItemTableService) {}
+  constructor(private itemTableService: ItemTableService, private popupService: PopupService) {}
 
   ngOnInit() {
     this.items$ = this.itemTableService.getItems();
@@ -36,8 +34,7 @@ export class ItemTableComponent implements OnInit {
     this.filter$ = this.itemTableService.getFilter();
     this.order$ = this.itemTableService.getSortOrder();
 
-    this.addView$ = this.itemTableService.getAddView();
-    this.addViewPosition$ = this.itemTableService.getAddViewPosition();
+    this.isPopupOpen$ = this.popupService.isPopupOpen();
   }
   
   setSelect(id: string): void {
@@ -52,22 +49,10 @@ export class ItemTableComponent implements OnInit {
   setFilter(filter: string): void {
     this.itemTableService.setFilter(filter);
   }
-
-  toggleAddView(): void {
-    this.itemTableService.toggleAddView();
-  }
-  updateAddViewPosition(pos: Position): void {
-    this.itemTableService.updateAddViewPosition(pos);
-  }
-    
   removeSelectedItem(): void {
     this.itemTableService.removeSelectedItem();
   }
-  /*******RELOCATE */
-
-  editVisible$: Observable<boolean> = Observable.of(false);
-  toggleEditView(): void {
-    console.log("TODO: editSelected");
-    return;
+  openPopup(): void {
+    this.popupService.open();
   }
 }

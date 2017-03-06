@@ -7,8 +7,6 @@ import * as fromRoot from '../store/reducers/index';
 import { ColumnMetaObject } from '../store/models/table.models';
 import * as tableActions from '../store/actions/table.actions';
 
-import { Position } from '../store/models/position.models';
-import * as tableViewActions from '../store/actions/table-views.actions';
 
 @Injectable()
 export class ItemTableService {
@@ -19,9 +17,6 @@ export class ItemTableService {
   filter$: Observable<string>;
   order$: Observable<string>;
 
-  addView$: Observable<boolean>;
-  addViewPosition$: Observable<Position>;
-
   constructor(private store: Store<fromRoot.State>) {
     this.items$ = this.store.select<any[]>(fromRoot.tableGetItems);
     this.selected$ = this.store.select<string>(fromRoot.tableGetSelected);
@@ -29,9 +24,6 @@ export class ItemTableService {
     this.selectedColumn$ = this.store.select<number>(fromRoot.tableGetSelectedColumn);
     this.filter$ = this.store.select<string>(fromRoot.tableGetFilter);
     this.order$ = this.store.select<string>(fromRoot.tableGetSortOrder);
-
-    this.addView$ = this.store.select<boolean>(fromRoot.tableViewsGetAddView);
-    this.addViewPosition$ = this.store.select<Position>(fromRoot.tableViewsGetAddViewPosition);
   }
 
   getItems(): Observable<any[]> {
@@ -67,22 +59,7 @@ export class ItemTableService {
   setSortOrder(order: string): void {
     this.store.dispatch(new tableActions.SetSortOrderAction(order));
   }
-
-  getAddView(): Observable<boolean> {
-    return this.addView$;
-  }
-  toggleAddView(): void {
-    this.store.dispatch(new tableViewActions.ToggleAddViewAction(null));
-  }
-  getAddViewPosition(): Observable<Position> {
-    return this.addViewPosition$;
-  }
-  updateAddViewPosition(pos: Position): void{
-    this.store.dispatch(new tableViewActions.UpdateAddViewPositionAction(pos));
-  }
-
   removeSelectedItem(): void {
     this.store.dispatch(new tableActions.RemoveSelectedItemAction(null));
   }
-
 }

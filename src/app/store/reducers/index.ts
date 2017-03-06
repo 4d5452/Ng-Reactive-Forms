@@ -1,6 +1,5 @@
 import { createSelector } from 'reselect';
 import { ActionReducer } from '@ngrx/store';
-import * as fromRouter from '@ngrx/router-store';
 
 /**
  * The compose function is one of our most handy tools. In basic terms, you give
@@ -39,7 +38,8 @@ import * as fromHttp from './http.reducers';
 import * as fromHttpCollection from './http-collections.reducers';
 import * as fromFilters from './filters.reducers';
 import * as fromTable from './table.reducers';
-import * as fromTableViews from './table-views.reducers';
+import * as fromPopup from './popup.reducers';
+import * as fromRouter from '@ngrx/router-store';
 
 /**
  * As mentioned, we treat each reducer like a table in a database. This means
@@ -50,7 +50,7 @@ export interface State {
   httpCollection: fromHttpCollection.State;
   filters: fromFilters.State;
   table: fromTable.State;
-  tableViews: fromTableViews.State;
+  popup: fromPopup.State;
   router: fromRouter.RouterState;
 }
 
@@ -66,7 +66,7 @@ const reducers = {
   httpCollection: fromHttpCollection.reducer,
   filters: fromFilters.reducer,
   table: fromTable.reducer,
-  tableViews: fromTableViews.reducer,
+  popup: fromPopup.reducer,
   router: fromRouter.routerReducer
 };
 
@@ -108,10 +108,9 @@ export const tableGetSelectedColumn = createSelector(tableGetState, fromTable.ge
 export const tableGetSortOrder = createSelector(tableGetState, fromTable.getSortOrder);
 export const tableGetCurrentCollection = createSelector(tableGetState, fromTable.getCurrentCollection);
 
-export const tableViewsGetState = (state: State) => state.tableViews;
-export const tableViewsGetAddView = createSelector(tableViewsGetState, fromTableViews.getAddView);
-export const tableViewsGetAddViewPosition = createSelector(tableViewsGetState, fromTableViews.getAddViewPosition);
-
+export const popupGetState = (state: State) => state.popup;
+export const popupIsOpen = createSelector(popupGetState, fromPopup.isPopupOpen);
+export const popupGetPosition = createSelector(popupGetState, fromPopup.getPopupPosition);
 /**The source of this file may be found at:
  *  https://github.com/ngrx/example-app/blob/master/src/app/reducers/index.ts
  */

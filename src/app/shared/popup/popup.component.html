@@ -1,0 +1,6 @@
+<popup-content  class="draggable-wrapper" 
+  [style.top.px]="(popupPosition$ | async).top" 
+  [style.left.px]="(popupPosition$ | async).left"
+  (draggable)="updatePopupPosition($event)"
+  (close)="close()">
+</popup-content>

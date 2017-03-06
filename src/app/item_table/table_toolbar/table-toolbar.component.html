@@ -2,8 +2,8 @@
 <input [ngModel]="_filter"
   (ngModelChange)="setFilter($event)"/>
 <button md-button
-  (click)="toggleAddView()"
-  [disabled]="addVisible"
+  (click)="_openPopup()"
+  [disabled]="isPopupOpen"
   color="primary">
   ADD
 </button>

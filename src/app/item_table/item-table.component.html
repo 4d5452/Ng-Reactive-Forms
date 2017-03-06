@@ -2,10 +2,8 @@
   <div class="card-toolbar">
     <table-toolbar 
       [selected]="selected$ | async"
-      [addVisible]="addView$ | async"
-      [editVisible]="editVisible$ | async"
-      (add)="toggleAddView()"
-      (edit)="toggleEditView()"
+      [isPopupOpen]="isPopupOpen$ | async"
+      (openPopup)="openPopup()"
       (remove)="removeSelectedItem()"
       (filter)="setFilter($event)">
     </table-toolbar>
@@ -27,11 +25,5 @@
   </div>
 </md-card>
 
-<add-view *ngIf="addView$ | async"
-  class="draggable-wrapper" 
-  [style.top.px]="(addViewPosition$ | async).top" 
-  [style.left.px]="(addViewPosition$ | async).left"
-  (draggable)="updateAddViewPosition($event)" 
-  (close)="toggleAddView()">
-</add-view>
+<popup *ngIf="isPopupOpen$ | async"></popup>
 
