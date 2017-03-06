@@ -16,11 +16,13 @@ import { Position } from '../../store/models/position.models';
 })
 export class PopupComponent implements OnInit{
   popupPosition$: Observable<Position>;
+  isPopupOpen$: Observable<boolean>;
 
   constructor(private popupService: PopupService) {}
 
   ngOnInit() {
     this.popupPosition$ = this.popupService.getPopupPosition();
+    this.isPopupOpen$ = this.popupService.isPopupOpen();
   }
 
   close() {
