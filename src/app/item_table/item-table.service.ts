@@ -7,27 +7,28 @@ import * as fromRoot from '../store/reducers/index';
 import { ColumnMetaObject } from '../store/models/table.models';
 import * as tableActions from '../store/actions/table.actions';
 
+import { CollectionService } from '../core/collection.service';
+
 
 @Injectable()
 export class ItemTableService {
-  items$: Observable<any[]>;
   selected$: Observable<string>;
   columns$: Observable<ColumnMetaObject[]>;
   selectedColumn$: Observable<number>;
   filter$: Observable<string>;
   order$: Observable<string>;
 
-  constructor(private store: Store<fromRoot.State>) {
-    this.items$ = this.store.select<any[]>(fromRoot.tableGetItems);
+  constructor(private store: Store<fromRoot.State>, private collectionService: CollectionService) {
     this.selected$ = this.store.select<string>(fromRoot.tableGetSelected);
     this.columns$ = this.store.select<ColumnMetaObject[]>(fromRoot.tableGetColumns);
+
     this.selectedColumn$ = this.store.select<number>(fromRoot.tableGetSelectedColumn);
     this.filter$ = this.store.select<string>(fromRoot.tableGetFilter);
     this.order$ = this.store.select<string>(fromRoot.tableGetSortOrder);
   }
 
   getItems(): Observable<any[]> {
-    return this.items$;
+    return this.collectionService.getSelectedCollection();
   }
   getSelected(): Observable<string> {
     return this.selected$;

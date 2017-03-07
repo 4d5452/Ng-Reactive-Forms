@@ -39,6 +39,7 @@ import * as fromHttpCollection from './http-collections.reducers';
 import * as fromFilters from './filters.reducers';
 import * as fromTable from './table.reducers';
 import * as fromPopup from './popup.reducers';
+import * as fromCollection from './collection.reducers';
 import * as fromRouter from '@ngrx/router-store';
 
 /**
@@ -51,6 +52,7 @@ export interface State {
   filters: fromFilters.State;
   table: fromTable.State;
   popup: fromPopup.State;
+  collection: fromCollection.State;
   router: fromRouter.RouterState;
 }
 
@@ -67,6 +69,7 @@ const reducers = {
   filters: fromFilters.reducer,
   table: fromTable.reducer,
   popup: fromPopup.reducer,
+  collection: fromCollection.reducer,
   router: fromRouter.routerReducer
 };
 
@@ -95,6 +98,7 @@ export const httpGetLatestError = createSelector(httpGetState, fromHttp.getLates
 
 export const httpCollectionGetState = (state: State) => state.httpCollection;
 export const httpCollectionGetFilters = createSelector(httpCollectionGetState, fromHttpCollection.getCollectionFilters);
+export const httpCollectionGetCollectionSelectors = createSelector(httpCollectionGetState, fromHttpCollection.getCollectionSelectors);
 
 export const filtersGetState = (state: State) => state.filters;
 export const filtersGetColumnMetaObjectArray = createSelector(filtersGetState, fromFilters.getColumnMetaObjectArray);
@@ -111,6 +115,11 @@ export const tableGetCurrentCollection = createSelector(tableGetState, fromTable
 export const popupGetState = (state: State) => state.popup;
 export const popupIsOpen = createSelector(popupGetState, fromPopup.isPopupOpen);
 export const popupGetPosition = createSelector(popupGetState, fromPopup.getPopupPosition);
+
+export const collectionGetState = (state: State) => state.collection;
+export const collectionGetSelectedCollectionId = createSelector(collectionGetState, fromCollection.getSelectedCollectionId);
+export const collectionGetSelectedId = createSelector(collectionGetState, fromCollection.getSelectedItemId);
+export const collectionGetCollection = createSelector(collectionGetState, fromCollection.getCollection);
 /**The source of this file may be found at:
  *  https://github.com/ngrx/example-app/blob/master/src/app/reducers/index.ts
  */

@@ -11,6 +11,8 @@ import * as filterActions from '../store/actions/filters.actions';
 import { ColumnMetaObject } from '../store/models/table.models';
 import * as tableActions from '../store/actions/table.actions';
 
+import { CollectionService } from '../core/collection.service';
+
 @Injectable()
 export class FiltersService {
   /**Tmp fix for leak */
@@ -18,14 +20,16 @@ export class FiltersService {
   filter: Subscription;
 
 
-  constructor(private store: Store<fromRoot.State>) {}
+  constructor(private store: Store<fromRoot.State>, private collectionService: CollectionService) {}
 
   configTable(): void {
     /**Serious potential for memory leak */
-    this.filters$ = this.store.select<Filter[]>(fromRoot.httpCollectionGetFilters);
+    /*this.filters$ = this.store.select<Filter[]>(fromRoot.httpCollectionGetFilters);
     this.filter = this.filters$.subscribe((filters: Filter[]) => { 
         this.store.dispatch(new tableActions.SetItemsAction(filters));
-       });
+       });*/
+    this.collectionService.setSelectedCollectionId('filters');
+
     this.store.select<ColumnMetaObject[]>(fromRoot.filtersGetColumnMetaObjectArray)
       .subscribe((meta: ColumnMetaObject[]) => { 
         this.store.dispatch(new tableActions.SetColumnsAction(meta));

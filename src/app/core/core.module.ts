@@ -11,6 +11,9 @@ import 'hammerjs';
 import { ApiService } from './http/api.service';
 import { RequestOptionsService } from './http/request-options.service';
 
+import { HttpCollectionService } from './http-collection.service';
+import { CollectionService } from './collection.service';
+
 @NgModule({
   imports: [ 
     HttpModule,
@@ -24,7 +27,9 @@ import { RequestOptionsService } from './http/request-options.service';
  ],
   providers: [
     ApiService,
-    RequestOptionsService
+    RequestOptionsService,
+    HttpCollectionService,
+    CollectionService
   ]
 })
 

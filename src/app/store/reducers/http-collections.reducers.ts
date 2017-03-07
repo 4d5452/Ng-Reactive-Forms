@@ -8,7 +8,7 @@ import * as appCollections from '../models/app.models';
 
 /**
  * Collection state is used to represent remote collection data.  i.e.
- * if a remote server has documents (mongodb) within the collection itmes, then
+ * if a remote server has documents (mongodb) within a collection, then
  * this should reflect that collection.  This state is directly used within the
  * application by components.  The user will interact with the UI based upon data
  * help within these containers.  Only after a successful remote api call will these
@@ -19,10 +19,12 @@ import * as appCollections from '../models/app.models';
  */
 export interface State {
   filters: appCollections.Filter[];
+  collectionSelectors: Set<string>;
 }; // end interface: State
 
 const initialState: State = {
-  filters: []
+  filters: [],
+  collectionSelectors: new Set([ 'filters' ])
 }; // end: initialState
 
 /**
@@ -122,6 +124,7 @@ export function reducer(state = initialState, action: actions.Actions): State {
 }
 
 export const getCollectionFilters = (state: State) => state.filters;
+export const getCollectionSelectors = (state: State) => state.collectionSelectors;
 /** More information may be found at:
  *  https://github.com/ngrx/store
  *  &&
