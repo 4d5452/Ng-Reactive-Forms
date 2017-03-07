@@ -9,11 +9,12 @@ import { MetaObject } from '../store/models/collection.models';
 
 @Component({
   moduleId: module.id,
-  selector: 'item-table',
-  templateUrl: './item-table.component.html',
-  styleUrls: [ './item-table.component.css' ]
+  selector: 'data-view',
+  templateUrl: './data-view.component.html',
+  styleUrls: [ './data-view.component.css' ]
 })
-export class ItemTableComponent implements OnInit {
+export class DataViewComponent implements OnInit {
+
   items$: Observable<any[]>;
   selectedItem$: Observable<string>;
   collectionMeta$: Observable<MetaObject[]>;
@@ -24,6 +25,7 @@ export class ItemTableComponent implements OnInit {
     private collectionService: CollectionService) {}
 
   ngOnInit() {
+
     this.items$ = this.collectionService.getSelectedCollection();
     this.selectedItem$ = this.collectionService.getSelectedItemId();
     this.collectionMeta$ = this.collectionService.getCollectionMetaData();
@@ -45,18 +47,3 @@ export class ItemTableComponent implements OnInit {
     this.popupService.open();
   }
 }
-
-/**
- * 
-    <table-content
-      [items]="items$ | async"
-      [selectedItem]="selectedItem$ | async"
-      [collectionMeta]="collectionMeta$ | async"
-      [selectedColumnId]="selectedColumnId$ | async"
-      [sortingFilter]="sortingFilter$ | async"
-      [sortOrder]="srotOrder$ | async"
-      (selectItem)="setSelectedItemId($event)"
-      (selectColumn)="setSelectedColumn($event)"
-      (setSortOrder)="setSortOrder($event)">
-    </table-content>
- */

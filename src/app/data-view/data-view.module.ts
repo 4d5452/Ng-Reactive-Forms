@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 
 import { SharedModule } from '../shared/shared.module';
 
-import { ItemTableComponent } from './item-table.component';
+import { DataViewComponent } from './data-view.component';
 import { TableToolbarComponent } from './table_toolbar/table-toolbar.component';
 
 import { TableModule } from '../table/table.module';
@@ -12,11 +12,11 @@ import { TableModule } from '../table/table.module';
     SharedModule,
     TableModule
   ],
-  exports: [ ItemTableComponent ],
+  exports: [ DataViewComponent ],
   declarations: [ 
-    ItemTableComponent,
+    DataViewComponent,
     TableToolbarComponent
   ],
   providers: [ ]
 })
-export class ItemTableModule {}
+export class DataViewModule {}

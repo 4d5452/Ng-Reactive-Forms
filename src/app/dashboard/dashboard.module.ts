@@ -7,12 +7,12 @@ import { SharedModule } from '../shared/shared.module';
 import { DashboardComponent } from './dashboard.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 
-import { ItemTableModule } from '../item_table/item-table.module';
+import { DataViewModule } from '../data-view/data-view.module';
 
 @NgModule({
   imports: [ 
     SharedModule,
-    ItemTableModule,
+    DataViewModule,
     DashboardRoutingModule
  ],
   exports: [],
