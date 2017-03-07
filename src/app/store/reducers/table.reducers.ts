@@ -1,18 +1,16 @@
 import { Observable } from 'rxjs/Observable';
 
-import { ColumnMetaObject, SortOrder } from '../models/table.models';
+import { SortOrder } from '../models/table.models';
 
 import * as actions from '../actions/table.actions';
 
 export interface State {
-  columns: ColumnMetaObject[];
   selectedColumn: number;
   filter: string;
   order: string;
 }; // end interface: State
 
 const initialState: State = {
-  columns: [],
   selectedColumn: 0,
   filter: '',
   order: SortOrder.ASCENDING
@@ -29,10 +27,6 @@ export function reducer(state = initialState, action: actions.Actions): State {
       console.log("Set Filter After Debounce");
       return Object.assign({}, state, { filter: action.payload });
     }
-    case actions.ActionTypes.SET_COLUMNS: {
-      console.log("Set Columns", action.payload);
-      return Object.assign({}, state, { columns: action.payload });
-    }
     case actions.ActionTypes.SET_SORT_ORDER: {
       console.log("Set Sort Order");
       return Object.assign({}, state, { order: action.payload });
@@ -43,7 +37,6 @@ export function reducer(state = initialState, action: actions.Actions): State {
 }
 
 export const getFilter = (state: State) => state.filter;
-export const getColumns = (state: State) => state.columns;
 export const getSelectedColumn = (state: State) => state.selectedColumn;
 export const getSortOrder = (state: State) => state.order;
 /** More information may be found at:

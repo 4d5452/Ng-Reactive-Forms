@@ -1,24 +1,24 @@
 <table class="item-table">
   <tr class="table-header">
     <th></th>
-    <ng-container *ngFor="let col of columns; let i = index;">
+    <ng-container *ngFor="let meta of collectionMeta; let i = index;">
       <th (click)="setSelectedColumn(i)"
-        [class.selected-column]="selectedColumn===i">
-        {{col.column}}
+        [class.selected-column]="selectedColumnId===i">
+        {{meta.header}}
       </th>
     </ng-container>
   </tr>
   <ng-container class="table-data" *ngFor="let item of items">
-    <tr class="td-hover" (click)="toggleSelected(item)" *ngIf="isVisible(item)">
+    <tr class="td-hover" (click)="toggleSelectedItem(item)" *ngIf="isItemVisible(item)">
       <td class="td-checkbox">
         <md-checkbox #checkbox 
           [disabled]="true"
-          [checked]="isSelected(item)" 
+          [checked]="isItemSelected(item)" 
           [disableRipple]="true">
         </md-checkbox>
       </td>
-      <td *ngFor="let col of columns">
-        {{format(item[col.selector], col.type)}}
+      <td *ngFor="let meta of collectionMeta">
+        {{format(item[meta.selector], meta.type)}}
       </td>
     </tr>
   </ng-container>

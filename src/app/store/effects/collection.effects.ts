@@ -21,9 +21,9 @@ export class CollectionEffectsService {
   constructor(private action$: Actions, private store: Store<fromRoot.State>,
     private httpCollectionService: HttpCollectionService, private httpService: HttpService) {}
 
-  @Effect() setSelectedCollectionId$: Observable<Action> = this.action$
-    .ofType(actions.ActionTypes.SET_SELECTED_COLLECTION_ID)
-    .map((action: actions.SetSelectedCollectionIdAction) => action.payload)
+  @Effect() getCollection$: Observable<Action> = this.action$
+    .ofType(actions.ActionTypes.SET_COLLECTION_META_DATA)
+    .map((action: actions.SetCollectionMetaDataAction) => action.payload['collection'])
     .mergeMap((collection: string) => this.httpCollectionService.getCollection(collection), 
       (id: string, collection: any) => {
         return new actions.SetCollectionAction({

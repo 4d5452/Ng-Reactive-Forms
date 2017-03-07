@@ -6,7 +6,7 @@ import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from 
   templateUrl: './table-toolbar.component.html'
 })
 export class TableToolbarComponent {
-  @Input() selected: string;
+  @Input() selectedItem: string;
   @Input() isPopupOpen: boolean;
 
   @Output() openPopup = new EventEmitter<void>();

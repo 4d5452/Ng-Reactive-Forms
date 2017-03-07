@@ -4,26 +4,20 @@ import { Observable } from 'rxjs/Observable';
 
 import * as fromRoot from '../store/reducers/index';
 
-import { ColumnMetaObject } from '../store/models/table.models';
 import * as tableActions from '../store/actions/table.actions';
 
 @Injectable()
 export class ItemTableService {
-  columns$: Observable<ColumnMetaObject[]>;
   selectedColumn$: Observable<number>;
   filter$: Observable<string>;
   order$: Observable<string>;
 
   constructor(private store: Store<fromRoot.State>) {
-    this.columns$ = this.store.select<ColumnMetaObject[]>(fromRoot.tableGetColumns);
     this.selectedColumn$ = this.store.select<number>(fromRoot.tableGetSelectedColumn);
     this.filter$ = this.store.select<string>(fromRoot.tableGetFilter);
     this.order$ = this.store.select<string>(fromRoot.tableGetSortOrder);
   }
   
-  getColumns(): Observable<ColumnMetaObject[]> {
-    return this.columns$;
-  }
   getSelectedColumn(): Observable<number> {
     return this.selectedColumn$;
   }

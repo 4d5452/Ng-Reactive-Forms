@@ -1,7 +1,7 @@
 <md-card class="table-ui-card">
   <div class="card-toolbar">
     <table-toolbar 
-      [selected]="selected$ | async"
+      [selectedItem]="selectedItem$ | async"
       [isPopupOpen]="isPopupOpen$ | async"
       (openPopup)="openPopup()"
       (remove)="removeSelectedItem()"
@@ -11,14 +11,14 @@
   <div class="card-content">
     <table-content
       [items]="items$ | async"
-      [selected]="selected$ | async"
-      [columns]="columns$ | async"
-      [selectedColumn]="selectedColumn$ | async"
-      [filter]="filter$ | async"
-      [order]="order$ | async"
-      (select)="setSelectedItemId($event)"
+      [selectedItem]="selectedItem$ | async"
+      [collectionMeta]="collectionMeta$ | async"
+      [selectedColumnId]="selectedColumnId$ | async"
+      [sortingFilter]="sortingFilter$ | async"
+      [sortOrder]="srotOrder$ | async"
+      (selectItem)="setSelectedItemId($event)"
       (selectColumn)="setSelectedColumn($event)"
-      (setOrder)="setOrder($event)">
+      (setSortOrder)="setSortOrder($event)">
     </table-content>
   </div>
   <div class="card-footer">

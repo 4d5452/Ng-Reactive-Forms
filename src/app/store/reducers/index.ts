@@ -99,7 +99,6 @@ export const httpCollectionGetCollectionSelectors = createSelector(httpCollectio
 
 export const tableGetState = (state: State) => state.table;
 export const tableGetFilter = createSelector(tableGetState, fromTable.getFilter);
-export const tableGetColumns = createSelector(tableGetState, fromTable.getColumns);
 export const tableGetSelectedColumn = createSelector(tableGetState, fromTable.getSelectedColumn);
 export const tableGetSortOrder = createSelector(tableGetState, fromTable.getSortOrder);
 
@@ -111,6 +110,8 @@ export const collectionGetState = (state: State) => state.collection;
 export const collectionGetSelectedCollectionId = createSelector(collectionGetState, fromCollection.getSelectedCollectionId);
 export const collectionGetSelectedId = createSelector(collectionGetState, fromCollection.getSelectedItemId);
 export const collectionGetCollection = createSelector(collectionGetState, fromCollection.getCollection);
+export const collectionGetMetaData = createSelector(collectionGetState, fromCollection.getMetaData);
+
 /**The source of this file may be found at:
  *  https://github.com/ngrx/example-app/blob/master/src/app/reducers/index.ts
  */
