@@ -9,6 +9,9 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 
 import { DataViewModule } from '../data-view/data-view.module';
 
+import { FiltersComponent } from '../filters/filters.component';
+import { FiltersAddViewComponent } from '../filters/filters-add-view.component';
+
 @NgModule({
   imports: [ 
     SharedModule,
@@ -17,7 +20,9 @@ import { DataViewModule } from '../data-view/data-view.module';
  ],
   exports: [],
   declarations: [ 
-    DashboardComponent
+    DashboardComponent,
+    FiltersComponent,
+    FiltersAddViewComponent
  ],
   providers: []
 })
