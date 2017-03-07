@@ -11,6 +11,7 @@ import 'hammerjs';
 import { ApiService } from './http/api.service';
 import { RequestOptionsService } from './http/request-options.service';
 
+import { HttpService } from './http.service';
 import { HttpCollectionService } from './http-collection.service';
 import { CollectionService } from './collection.service';
 
@@ -28,6 +29,7 @@ import { CollectionService } from './collection.service';
   providers: [
     ApiService,
     RequestOptionsService,
+    HttpService,
     HttpCollectionService,
     CollectionService
   ]

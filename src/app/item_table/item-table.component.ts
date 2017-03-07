@@ -5,6 +5,7 @@ import { ColumnMetaObject } from '../store/models/table.models';
 
 import { ItemTableService } from './item-table.service';
 import { PopupService } from '../shared/popup/popup.service';
+import { CollectionService } from '../core/collection.service';
 
 @Component({
   moduleId: module.id,
@@ -24,11 +25,13 @@ export class ItemTableComponent implements OnInit {
 
   filter: string = '';
 
-  constructor(private itemTableService: ItemTableService, private popupService: PopupService) {}
+  constructor(private itemTableService: ItemTableService, private popupService: PopupService,
+    private collectionService: CollectionService) {}
 
   ngOnInit() {
-    this.items$ = this.itemTableService.getItems();
-    this.selected$ = this.itemTableService.getSelected();
+    this.items$ = this.collectionService.getSelectedCollection();
+    this.selected$ = this.collectionService.getSelectedItemId();
+
     this.columns$ = this.itemTableService.getColumns();
     this.selectedColumn$ = this.itemTableService.getSelectedColumn();
     this.filter$ = this.itemTableService.getFilter();
@@ -36,10 +39,17 @@ export class ItemTableComponent implements OnInit {
 
     this.isPopupOpen$ = this.popupService.isPopupOpen();
   }
-  
-  setSelect(id: string): void {
-    this.itemTableService.setSelected(id);
+
+  setSelectedItemId(selected: string) {
+    this.collectionService.setSelectedItemId(selected);
   }
+  clearSelectedItemId(): void {
+    this.setSelectedItemId('');
+  }
+  removeSelectedItem(): void {
+    this.collectionService.removeSelectedItem();
+  }
+
   setSelectedColumn(column: number): void {
     this.itemTableService.setSelectedColumn(column);
   }
@@ -48,9 +58,6 @@ export class ItemTableComponent implements OnInit {
   }
   setFilter(filter: string): void {
     this.itemTableService.setFilter(filter);
-  }
-  removeSelectedItem(): void {
-    this.itemTableService.removeSelectedItem();
   }
   openPopup(): void {
     this.popupService.open();

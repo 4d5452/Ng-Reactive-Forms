@@ -16,7 +16,7 @@
       [selectedColumn]="selectedColumn$ | async"
       [filter]="filter$ | async"
       [order]="order$ | async"
-      (select)="setSelect($event)"
+      (select)="setSelectedItemId($event)"
       (selectColumn)="setSelectedColumn($event)"
       (setOrder)="setOrder($event)">
     </table-content>

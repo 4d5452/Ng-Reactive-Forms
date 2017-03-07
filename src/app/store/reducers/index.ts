@@ -36,7 +36,6 @@ import { combineReducers } from '@ngrx/store';
  */
 import * as fromHttp from './http.reducers';
 import * as fromHttpCollection from './http-collections.reducers';
-import * as fromFilters from './filters.reducers';
 import * as fromTable from './table.reducers';
 import * as fromPopup from './popup.reducers';
 import * as fromCollection from './collection.reducers';
@@ -49,7 +48,6 @@ import * as fromRouter from '@ngrx/router-store';
 export interface State {
   http: fromHttp.State;
   httpCollection: fromHttpCollection.State;
-  filters: fromFilters.State;
   table: fromTable.State;
   popup: fromPopup.State;
   collection: fromCollection.State;
@@ -66,7 +64,6 @@ export interface State {
 const reducers = {
   http: fromHttp.reducer,
   httpCollection: fromHttpCollection.reducer,
-  filters: fromFilters.reducer,
   table: fromTable.reducer,
   popup: fromPopup.reducer,
   collection: fromCollection.reducer,
@@ -100,17 +97,11 @@ export const httpCollectionGetState = (state: State) => state.httpCollection;
 export const httpCollectionGetFilters = createSelector(httpCollectionGetState, fromHttpCollection.getCollectionFilters);
 export const httpCollectionGetCollectionSelectors = createSelector(httpCollectionGetState, fromHttpCollection.getCollectionSelectors);
 
-export const filtersGetState = (state: State) => state.filters;
-export const filtersGetColumnMetaObjectArray = createSelector(filtersGetState, fromFilters.getColumnMetaObjectArray);
-
 export const tableGetState = (state: State) => state.table;
-export const tableGetItems = createSelector(tableGetState, fromTable.getItems);
-export const tableGetSelected = createSelector(tableGetState, fromTable.getSelected);
 export const tableGetFilter = createSelector(tableGetState, fromTable.getFilter);
 export const tableGetColumns = createSelector(tableGetState, fromTable.getColumns);
 export const tableGetSelectedColumn = createSelector(tableGetState, fromTable.getSelectedColumn);
 export const tableGetSortOrder = createSelector(tableGetState, fromTable.getSortOrder);
-export const tableGetCurrentCollection = createSelector(tableGetState, fromTable.getCurrentCollection);
 
 export const popupGetState = (state: State) => state.popup;
 export const popupIsOpen = createSelector(popupGetState, fromPopup.isPopupOpen);

@@ -12,9 +12,7 @@ import { HttpCollectionService } from './http-collection.service';
 export class CollectionService {
   selectedCollectionId$: Observable<string>;
   selectedItemId$: Observable<string>;
-  collection$: Observable<any[]>;
-
-  selectedCollectionId: string;
+  collection$: Observable<any[]>; //This one little dog...
 
   constructor(private store: Store<fromRoot.State>, private httpCollectionService: HttpCollectionService) {
     this.selectedCollectionId$ = this.store.select<string>(fromRoot.collectionGetSelectedCollectionId);
@@ -36,5 +34,9 @@ export class CollectionService {
   }
   getSelectedCollection(): Observable<any[]> {
     return this.collection$;
+  }
+  /**Require HTTP */
+  removeSelectedItem(): void {
+    this.store.dispatch(new actions.RemoveSelectedItemAction(null));
   }
 }
