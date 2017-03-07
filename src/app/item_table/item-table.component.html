@@ -9,17 +9,12 @@
     </table-toolbar>
   </div>
   <div class="card-content">
-    <table-content
+    <data-table
       [items]="items$ | async"
       [selectedItem]="selectedItem$ | async"
       [collectionMeta]="collectionMeta$ | async"
-      [selectedColumnId]="selectedColumnId$ | async"
-      [sortingFilter]="sortingFilter$ | async"
-      [sortOrder]="srotOrder$ | async"
-      (selectItem)="setSelectedItemId($event)"
-      (selectColumn)="setSelectedColumn($event)"
-      (setSortOrder)="setSortOrder($event)">
-    </table-content>
+      (selectItem)="setSelectedItem($event)">
+    </data-table>
   </div>
   <div class="card-footer">
   </div>

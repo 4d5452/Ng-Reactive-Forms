@@ -4,19 +4,19 @@ import { SharedModule } from '../shared/shared.module';
 
 import { ItemTableComponent } from './item-table.component';
 import { TableToolbarComponent } from './table_toolbar/table-toolbar.component';
-import { TableContentComponent } from './table_content/table-content.component';
-import { ItemTableService } from './item-table.service';
+
+import { TableModule } from '../table/table.module';
 
 @NgModule({
   imports: [ 
-    SharedModule
+    SharedModule,
+    TableModule
   ],
   exports: [ ItemTableComponent ],
   declarations: [ 
     ItemTableComponent,
-    TableToolbarComponent,
-    TableContentComponent
+    TableToolbarComponent
   ],
-  providers: [ ItemTableService ]
+  providers: [ ]
 })
 export class ItemTableModule {}

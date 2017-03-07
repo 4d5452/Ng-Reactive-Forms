@@ -1,0 +1,11 @@
+    <table-view
+      [items]="items"
+      [selectedItem]="selectedItem"
+      [collectionMeta]="collectionMeta"
+      [filter]="filter$ | async"
+      [selectedColumn]="selectedColumn$ | async"
+      [sortOrder]="srotOrder$ | async"
+      (selectItem)="setSelectedItem($event)"
+      (selectColumn)="setSelectedColumn($event)"
+      (setSortOrder)="setSortOrder($event)">
+    </table-view>

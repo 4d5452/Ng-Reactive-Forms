@@ -1,20 +1,20 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 
-import { MetaObject, Type } from '../../store/models/collection.models';
+import { MetaObject, Type } from '../store/models/collection.models';
 
 @Component({
   moduleId: module.id,
-  selector: 'table-content',
-  templateUrl: './table-content.component.html',
-  styleUrls: [ './table-content.component.css' ],
+  selector: 'table-view',
+  templateUrl: './table-view.component.html',
+  styleUrls: [ './table-view.component.css' ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TableContentComponent {
+export class TableViewComponent {
   @Input() items: any[];
   @Input() selectedItem: string;
   @Input() collectionMeta: MetaObject[];
-  @Input() selectedColumnId: number;
-  @Input() sortingFilter: string;
+  @Input() selectedColumn: number;
+  @Input() filter: string;
   @Input() sortOrder: string;
 
   @Output() selectItem = new EventEmitter<string>();
@@ -33,6 +33,9 @@ export class TableContentComponent {
     // md-checkbox uses this to set its status to checked
     return item.id===this.selectedItem;
   }
+  isColumnSelected(column: number): boolean {
+    return column===this.selectedColumn;
+  }
   format(value: any, type: string): any {
     let tmp: any = null;
     switch(type) {
@@ -48,7 +51,7 @@ export class TableContentComponent {
   }
 
   isItemVisible(item: any): boolean {
-    let tmp = '' + item[this.collectionMeta[this.selectedColumnId].selector];
-    return tmp.includes(this.sortingFilter);
+    let tmp = '' + item[this.collectionMeta[this.selectedColumn].selector];
+    return tmp.includes(this.filter);
   }
 }

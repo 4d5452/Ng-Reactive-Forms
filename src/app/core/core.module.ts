@@ -14,6 +14,7 @@ import { RequestOptionsService } from './http/request-options.service';
 import { HttpService } from './http.service';
 import { HttpCollectionService } from './http-collection.service';
 import { CollectionService } from './collection.service';
+import { TableService } from './table.service';
 
 @NgModule({
   imports: [ 
@@ -31,7 +32,8 @@ import { CollectionService } from './collection.service';
     RequestOptionsService,
     HttpService,
     HttpCollectionService,
-    CollectionService
+    CollectionService,
+    TableService
   ]
 })
 
