@@ -19,7 +19,7 @@ export class DataCardComponent implements OnInit {
   selectedItem$: Observable<string>;
   collectionMeta$: Observable<MetaObject[]>;
 
-  popupOpen$: Observable<boolean>;
+  isPopupOpen$: Observable<boolean>;
 
   constructor(private tableService: TableService, private popupService: PopupService,
     private collectionService: CollectionService) {}
@@ -30,7 +30,7 @@ export class DataCardComponent implements OnInit {
     this.selectedItem$ = this.collectionService.getSelectedItemId();
     this.collectionMeta$ = this.collectionService.getCollectionMetaData();
 
-    this.popupOpen$ = this.popupService.isPopupOpen();
+    this.isPopupOpen$ = this.popupService.isPopupOpen();
   }
 
   openAddPopup(): void {

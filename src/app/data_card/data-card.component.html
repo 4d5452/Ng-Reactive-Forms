@@ -1,8 +1,8 @@
 <md-card class="data-ui-card">
   <div class="card-toolbar">
     <table-toolbar 
-      [addActive]="!(popupOpen$ | async)"
-      [editActive]="!(popupOpen$ | async) && (selectedItem$ | async)"
+      [addActive]="!(isPopupOpen$ | async)"
+      [editActive]="!(isPopupOpen$ | async) && (selectedItem$ | async)"
       [removeActive]="selectedItem$ | async"
       (add)="openAddPopup()"
       (edit)="openEditPopup()"
