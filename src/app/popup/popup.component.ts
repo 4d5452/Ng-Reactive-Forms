@@ -2,11 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
-import { PopupService } from './popup.service';
+import { PopupService } from '../core/popup.service';
 
-import * as fromRoot from '../../store/reducers/index';
-
-import { Position } from '../../store/models/position.models';
+import { Position } from '../store/models/position.models';
 
 @Component({
   moduleId: module.id,

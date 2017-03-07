@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
-import * as fromRoot from '../../store/reducers/index';
+import * as fromRoot from '../store/reducers/index';
 
-import { Position } from '../../store/models/position.models';
-import * as popupActions from '../../store/actions/popup.actions';
+import { Position } from '../store/models/position.models';
+import * as popupActions from '../store/actions/popup.actions';
 
 @Injectable()
 export class PopupService {

@@ -1,11 +1,13 @@
 <md-card class="data-ui-card">
   <div class="card-toolbar">
     <table-toolbar 
-      [selectedItem]="selectedItem$ | async"
-      [isPopupOpen]="isPopupOpen$ | async"
-      (openPopup)="openPopup()"
+      [addActive]="!(popupOpen$ | async)"
+      [editActive]="!(popupOpen$ | async) && (selectedItem$ | async)"
+      [removeActive]="selectedItem$ | async"
+      (add)="openAddPopup()"
+      (edit)="openEditPopup()"
       (remove)="removeSelectedItem()"
-      (filter)="setFilter($event)">
+      (search)="setTableFilter($event)">
     </table-toolbar>
   </div>
   <div class="card-content">

@@ -15,6 +15,7 @@ import { HttpService } from './http.service';
 import { HttpCollectionService } from './http-collection.service';
 import { CollectionService } from './collection.service';
 import { TableService } from './table.service';
+import { PopupService } from './popup.service';
 
 @NgModule({
   imports: [ 
@@ -33,7 +34,8 @@ import { TableService } from './table.service';
     HttpService,
     HttpCollectionService,
     CollectionService,
-    TableService
+    TableService,
+    PopupService
   ]
 })
 

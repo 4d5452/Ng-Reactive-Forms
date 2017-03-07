@@ -12,7 +12,7 @@ const dashboardRoutes: Routes = [
     children: [
       { path: '', redirectTo: 'filters', pathMatch: 'full' },
       { path: 'filters', component: FiltersComponent, children: [
-        { path: 'add', component: FiltersAddViewComponent, outlet: 'popupContent'}
+        { path: 'add', component: FiltersAddViewComponent, outlet: 'popup'}
       ] },
       { path: 'records', loadChildren: 'app/records/records.module#RecordsModule' }
     ]

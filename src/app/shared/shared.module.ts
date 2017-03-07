@@ -8,11 +8,6 @@ import { SetHeightDirective } from './set-height.directive';
 import { GetHeightDirective } from './get-height.directive';
 import { DraggableDirective } from './draggable.directive';
 
-/*Popup*/
-import { PopupComponent } from './popup/popup.component';
-import { PopupContentComponent } from './popup/popup-content.component';
-import { PopupService } from './popup/popup.service';
-
 @NgModule({
   imports: [
     RouterModule,
@@ -30,20 +25,13 @@ import { PopupService } from './popup/popup.service';
     /**AppComponents */
     SetHeightDirective,
     GetHeightDirective,
-    DraggableDirective,
-
-    PopupComponent
+    DraggableDirective
   ],
   declarations: [
     SetHeightDirective,
     GetHeightDirective,
-    DraggableDirective,
-
-    PopupComponent,
-    PopupContentComponent
+    DraggableDirective
   ],
-  providers: [
-    PopupService
-  ]
+  providers: []
 })
 export class SharedModule {}

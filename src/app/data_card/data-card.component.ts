@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
-import { PopupService } from '../shared/popup/popup.service';
+import { PopupService } from '../core/popup.service';
 import { CollectionService } from '../core/collection.service';
 import { TableService } from '../core/table.service';
 
@@ -9,17 +9,17 @@ import { MetaObject } from '../store/models/collection.models';
 
 @Component({
   moduleId: module.id,
-  selector: 'data-view',
-  templateUrl: './data-view.component.html',
-  styleUrls: [ './data-view.component.css' ]
+  selector: 'data-card',
+  templateUrl: './data-card.component.html',
+  styleUrls: [ './data-card.component.css' ]
 })
-export class DataViewComponent implements OnInit {
+export class DataCardComponent implements OnInit {
 
   items$: Observable<any[]>;
   selectedItem$: Observable<string>;
   collectionMeta$: Observable<MetaObject[]>;
 
-  isPopupOpen$: Observable<boolean>;
+  popupOpen$: Observable<boolean>;
 
   constructor(private tableService: TableService, private popupService: PopupService,
     private collectionService: CollectionService) {}
@@ -30,20 +30,23 @@ export class DataViewComponent implements OnInit {
     this.selectedItem$ = this.collectionService.getSelectedItemId();
     this.collectionMeta$ = this.collectionService.getCollectionMetaData();
 
-    this.isPopupOpen$ = this.popupService.isPopupOpen();
+    this.popupOpen$ = this.popupService.isPopupOpen();
   }
 
+  openAddPopup(): void {
+    console.log("TODO: Add New Item");
+  }
+  openEditPopup(): void {
+    console.log("TODO: Edit Selected Item");
+  }
   setSelectedItem(selected: string) {
     this.collectionService.setSelectedItemId(selected);
   }
   removeSelectedItem(): void {
     this.collectionService.removeSelectedItem();
   }
-  setFilter(filter: string): void {
+  setTableFilter(filter: string): void {
     this.tableService.setFilter(filter);
   }
   
-  openPopup(): void {
-    this.popupService.open();
-  }
 }

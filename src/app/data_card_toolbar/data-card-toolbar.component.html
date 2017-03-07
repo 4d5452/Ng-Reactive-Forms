@@ -1,0 +1,26 @@
+
+<md-icon class="material-icons md-18" 
+  style="vertical-align: middle">search</md-icon>
+<input [ngModel]="value"
+  (ngModelChange)="setSearch($event)"/>
+
+<button md-button
+  (click)="toggle('add')"
+  [disabled]="!addActive"
+  color="primary">
+  ADD
+</button>
+
+<button md-button
+  (click)="toggle('edit')"
+  [disabled]="!editActive" 
+  color="primary">
+  EDIT
+</button>
+
+<button md-button 
+  (click)="toggle('remove')" 
+  [disabled]="!removeActive" 
+  color="primary">
+  REMOVE
+</button>
