@@ -1,22 +1,15 @@
 import { Injectable } from '@angular/core';
-import { CanActivate } from '@angular/router';
+import { CanActivateChild, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
 import { PopupService } from './popup.service';
 
 @Injectable()
-export class PopupGuardService implements CanActivate {
+export class PopupGuardService implements CanActivateChild {
 
-  isPopupOpen$: Observable<boolean>;
+  constructor(private popupService: PopupService) {}
 
-  constructor(private popupService: PopupService) {
-    this.isPopupOpen$ = this.popupService.isPopupOpen();
-  }
-
-  canActivate() {
-    return this.isPopupOpen$.map((isOpen) => {
-      console.log("PopupGuard#canActivate Called");
-      return isOpen ? false:true;
-    });
+  canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
+    return this.popupService.isPopupOpen().map(v=>!v);
   }
 }

@@ -16,6 +16,8 @@ import { TableViewComponent } from '../table/table-view.component';
 import { FiltersComponent } from '../filters/filters.component';
 import { FiltersModifyComponent } from '../filters/filters-modify.component';
 
+import { RecordsComponent } from '../records/records.component';
+
 import { PopupComponent } from '../popup/popup.component';
 
 @NgModule({
@@ -30,6 +32,7 @@ import { PopupComponent } from '../popup/popup.component';
     DataCardToolbarComponent,
     TableComponent,
     TableViewComponent,
+    RecordsComponent,
     FiltersComponent,
     FiltersModifyComponent,
     PopupComponent
