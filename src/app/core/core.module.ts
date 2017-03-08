@@ -16,6 +16,7 @@ import { HttpCollectionService } from './http-collection.service';
 import { CollectionService } from './collection.service';
 import { TableService } from './table.service';
 import { PopupService } from './popup.service';
+import { PopupGuardService } from './popup-guard.service';
 
 @NgModule({
   imports: [ 
@@ -35,7 +36,8 @@ import { PopupService } from './popup.service';
     HttpCollectionService,
     CollectionService,
     TableService,
-    PopupService
+    PopupService,
+    PopupGuardService
   ]
 })
 

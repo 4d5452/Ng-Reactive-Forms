@@ -14,7 +14,7 @@ import { TableComponent } from '../table/table.component';
 import { TableViewComponent } from '../table/table-view.component';
 
 import { FiltersComponent } from '../filters/filters.component';
-import { FiltersAddViewComponent } from '../filters/filters-add-view.component';
+import { FiltersModifyComponent } from '../filters/filters-modify.component';
 
 import { PopupComponent } from '../popup/popup.component';
 
@@ -31,7 +31,7 @@ import { PopupComponent } from '../popup/popup.component';
     TableComponent,
     TableViewComponent,
     FiltersComponent,
-    FiltersAddViewComponent,
+    FiltersModifyComponent,
     PopupComponent
  ],
   providers: []

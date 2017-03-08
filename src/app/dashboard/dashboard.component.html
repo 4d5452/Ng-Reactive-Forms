@@ -25,6 +25,13 @@
           routerLinkActive="active">
           Records
         </a>
+        <a md-line md-raised-button 
+          [routerLink]="['popup',{
+              outlets: { 'collection': ['filters']}
+            }]" 
+          routerLinkActive="active">
+          test
+        </a>
       </md-nav-list>
     </md-sidenav>
 
