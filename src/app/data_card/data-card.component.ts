@@ -33,10 +33,7 @@ export class DataCardComponent implements OnInit {
     this.isPopupOpen$ = this.popupService.isPopupOpen();
   }
 
-  openAddPopup(): void {
-    this.popupService.openPopup();
-  }
-  openEditPopup(): void {
+  openPopup(): void {
     this.popupService.openPopup();
   }
   setSelectedItem(selected: string) {

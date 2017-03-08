@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { MaterialModule } from '@angular/material';
 
 import { SetHeightDirective } from './set-height.directive';
@@ -13,6 +13,7 @@ import { DraggableDirective } from './draggable.directive';
     RouterModule,
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     MaterialModule
   ],
   exports: [ 
@@ -20,6 +21,7 @@ import { DraggableDirective } from './draggable.directive';
     RouterModule,
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     MaterialModule,
 
     /**AppComponents */

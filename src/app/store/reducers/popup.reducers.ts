@@ -5,7 +5,7 @@ import * as actions from '../actions/popup.actions';
 import { Position } from '../models/position.models';
 
 export interface State {
-  popupOpen: boolean,
+  popupOpen: boolean;
   popupPosition: Position;
 }; // end interface: State
 

@@ -13,11 +13,11 @@ import { PopupGuardService } from '../core/popup-guard.service';
 
 const dashboardRoutes: Routes = [
   { 
-    path: 'dashboard', component: DashboardComponent, canActivateChild: [PopupGuardService],
+    path: 'dashboard', component: DashboardComponent,
     children: [
-      { path: '', redirectTo: 'filters', pathMatch: 'full' },
-      { path: 'filters', component: FiltersComponent },
-      { path: 'records', component: RecordsComponent },
+      { path: '', redirectTo: 'filters', pathMatch: 'full', canActivate: [PopupGuardService] },
+      { path: 'filters', component: FiltersComponent, canActivate: [PopupGuardService] },
+      { path: 'records', component: RecordsComponent, canActivate: [PopupGuardService] },
       { path: 'popup', 
         children: [
           { path: 'filters', component: FiltersModifyComponent, outlet: 'collection'}

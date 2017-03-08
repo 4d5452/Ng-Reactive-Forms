@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
-  template: `Filter Add View`
+  moduleId: module.id,
+  templateUrl: './filters-modify.component.html'
 })
-export class FiltersModifyComponent implements OnInit {
-  ngOnInit(): void {
-    console.log("Fired Up");
-  }
+export class FiltersModifyComponent {
+  id = new FormControl();
 }

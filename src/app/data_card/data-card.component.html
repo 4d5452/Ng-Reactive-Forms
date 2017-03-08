@@ -4,8 +4,8 @@
       [addActive]="!(isPopupOpen$ | async)"
       [editActive]="!(isPopupOpen$ | async) && (selectedItem$ | async)"
       [removeActive]="selectedItem$ | async"
-      (add)="openAddPopup()"
-      (edit)="openEditPopup()"
+      (add)="openPopup()"
+      (edit)="openPopup()"
       (remove)="removeSelectedItem()"
       (search)="setTableFilter($event)">
     </table-toolbar>
