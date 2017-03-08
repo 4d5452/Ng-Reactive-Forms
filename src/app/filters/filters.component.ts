@@ -8,7 +8,7 @@ import { CollectionService } from '../core/collection.service'
 
 @Component({
   moduleId: module.id,
-  template: ``
+  template: `<router-outlet name="popup"></router-outlet>`
 })
 export class FiltersComponent implements OnInit {
   meta: MetaObject[] = [

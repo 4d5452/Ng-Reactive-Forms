@@ -17,7 +17,6 @@ import { FiltersComponent } from '../filters/filters.component';
 import { FiltersAddViewComponent } from '../filters/filters-add-view.component';
 
 import { PopupComponent } from '../popup/popup.component';
-import { PopupContentComponent } from '../popup/popup-content.component';
 
 @NgModule({
   imports: [ 
@@ -33,8 +32,7 @@ import { PopupContentComponent } from '../popup/popup-content.component';
     TableViewComponent,
     FiltersComponent,
     FiltersAddViewComponent,
-    PopupComponent,
-    PopupContentComponent
+    PopupComponent
  ],
   providers: []
 })

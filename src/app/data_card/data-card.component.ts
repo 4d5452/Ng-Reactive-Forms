@@ -34,11 +34,10 @@ export class DataCardComponent implements OnInit {
   }
 
   openAddPopup(): void {
-    console.log("TODO: Add New Item");
-    this.popupService.open();
+    this.popupService.openPopup();
   }
   openEditPopup(): void {
-    console.log("TODO: Edit Selected Item");
+    this.popupService.openPopup();
   }
   setSelectedItem(selected: string) {
     this.collectionService.setSelectedItemId(selected);

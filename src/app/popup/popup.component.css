@@ -4,3 +4,31 @@
   max-width:520px;
   max-height:250px;
 }
+
+.content-wrapper {
+  background: -webkit-linear-gradient(#aacbff, #99c0ff);
+  background: -moz-linear-gradient(#aacbff, #99c0ff);
+  background: -o-linear-gradient(#aacbff, #99c0ff);
+  background: -ms-linear-gradient(#aacbff, #99c0ff);
+  background: linear-gradient(#aacbff, #99c0ff);
+  overflow:hidden;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+.content-toolbar {
+  padding: 10px;
+  overflow-x: auto;
+  display: inline-block;
+  white-space: nowrap;
+  border: 1px solid red;
+  pointer-events: none;
+}
+.content {
+  flex: 1;
+  overflow: auto;
+  padding: 0px 0px 10px 0px;
+  border: 1px solid green;
+  pointer-events: none;
+}

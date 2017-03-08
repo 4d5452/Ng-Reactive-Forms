@@ -15,12 +15,23 @@
   <md-sidenav-container class="content"> <!--Dont let the name fool you... This contains the whole app, and not just the sidenav-->
     <md-sidenav class="nav" #sidenav mode="side" opened="true" align="start">
       <md-nav-list class="nav-list">
-        <a md-line md-raised-button routerLink="filters" routerLinkActive="active">Filters</a>
-        <a md-line md-raised-button routerLink="records" routerLinkActive="active">Records</a>
+        <a md-line md-raised-button 
+          routerLink="filters" 
+          routerLinkActive="active">
+          Filters
+        </a>
+        <a md-line md-raised-button 
+          routerLink="records" 
+          routerLinkActive="active">
+          Records
+        </a>
       </md-nav-list>
     </md-sidenav>
+
     <data-card></data-card>
+    <data-popup></data-popup>
     <router-outlet></router-outlet>
+    
   </md-sidenav-container>
 
   <!--Footer-->

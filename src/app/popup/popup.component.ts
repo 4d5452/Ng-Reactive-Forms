@@ -8,7 +8,7 @@ import { Position } from '../store/models/position.models';
 
 @Component({
   moduleId: module.id,
-  selector: 'popup',
+  selector: 'data-popup',
   templateUrl: './popup.component.html',
   styleUrls: [ './popup.component.css' ]
 })
@@ -24,7 +24,7 @@ export class PopupComponent implements OnInit{
   }
 
   close() {
-    this.popupService.close();
+    this.popupService.closePopup();
   }
   updatePopupPosition(pos: Position): void {
     this.popupService.updatePopupPosition(pos);

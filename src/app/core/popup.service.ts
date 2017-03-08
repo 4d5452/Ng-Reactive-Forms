@@ -17,10 +17,10 @@ export class PopupService {
     this.popupPosition$ = this.store.select<Position>(fromRoot.popupGetPosition);
   }
 
-  close(): void {
+  closePopup(): void {
     this.store.dispatch(new popupActions.ClosePopupAction(null));
   }
-  open(): void {
+  openPopup(): void {
     this.store.dispatch(new popupActions.OpenPopupAction(null));
   }
   getPopupPosition(): Observable<Position> {
