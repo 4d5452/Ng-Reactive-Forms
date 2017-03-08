@@ -11,21 +11,6 @@ import { RecordsModule } from './records/records.module';
 
 import { PageNotFoundComponent } from './page-not-found.component';
 
-/**
- * AppModule:
- *  @imports:
- *    BrowserModule
- *    CoreModule 
- *    AppRoutingModule
- *    AppStoreModule
- *  @declarations:
- *    AppComponent
- *    PageNotFoundComponent
- *  @providers:
- *    Title
- *  @bootstrap:
- *    AppComponent
- */
 
 @NgModule({
   imports:      [ 

@@ -35,6 +35,7 @@ export class DataCardComponent implements OnInit {
 
   openAddPopup(): void {
     console.log("TODO: Add New Item");
+    this.popupService.open();
   }
   openEditPopup(): void {
     console.log("TODO: Edit Selected Item");
