@@ -10,6 +10,7 @@ export class PopupGuardService implements CanActivate {
   constructor(private popupService: PopupService) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
+    console.log(route);
     return this.popupService.isPopupOpen().map(v=>!v);
   }
 }

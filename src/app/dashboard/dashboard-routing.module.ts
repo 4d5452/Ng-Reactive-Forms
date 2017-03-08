@@ -10,6 +10,7 @@ import { RecordsComponent } from '../records/records.component';
 
 import { PopupComponent } from '../popup/popup.component';
 import { PopupGuardService } from '../core/popup-guard.service';
+import { PopupGuardNotService } from '../core/popup-guard-not.service';
 
 const dashboardRoutes: Routes = [
   { 
@@ -20,7 +21,7 @@ const dashboardRoutes: Routes = [
       { path: 'records', component: RecordsComponent, canActivate: [PopupGuardService] },
       { path: 'popup', 
         children: [
-          { path: 'filters', component: FiltersModifyComponent, outlet: 'collection'}
+          { path: 'filters', component: FiltersModifyComponent, outlet: 'collection', canActivate: [PopupGuardNotService]}
         ]
       }
     ]
