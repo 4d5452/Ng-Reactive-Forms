@@ -16,7 +16,7 @@ export class ClosePopupAction implements Action {
 }
 export class OpenPopupAction implements Action {
   type = ActionTypes.OPEN_POPUP;
-  constructor(public payload: void) {}
+  constructor(public payload: string) {}
 }
 export class UpdatePopupPosition implements Action {
   type = ActionTypes.UPDATE_POPUP_POSITION;

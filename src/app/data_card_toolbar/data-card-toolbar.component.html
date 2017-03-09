@@ -1,8 +1,11 @@
 
 <md-icon class="material-icons md-18" 
   style="vertical-align: middle">search</md-icon>
-<input [ngModel]="value"
-  (ngModelChange)="setSearch($event)"/>
+
+<md-input-container class="full-width" type="search">
+  <input mdInput placeholder= "search" [ngModel]="value"
+    (ngModelChange)="setSearch($event)"/>
+</md-input-container>
 
 <button md-button
   (click)="toggle('add')"

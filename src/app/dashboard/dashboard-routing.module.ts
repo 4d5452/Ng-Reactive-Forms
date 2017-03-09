@@ -6,6 +6,8 @@ import { DashboardComponent } from './dashboard.component';
 import { FiltersComponent } from '../filters/filters.component';
 import { FiltersModifyComponent } from '../filters/filters-modify.component';
 
+import { FilterTypesComponent } from '../filter_types/filter-types.component';
+
 import { RecordsComponent } from '../records/records.component';
 
 import { PopupComponent } from '../popup/popup.component';
@@ -19,6 +21,7 @@ const dashboardRoutes: Routes = [
       { path: '', redirectTo: 'filters', pathMatch: 'full', canActivate: [PopupGuardService] },
       { path: 'filters', component: FiltersComponent, canActivate: [PopupGuardService] },
       { path: 'records', component: RecordsComponent, canActivate: [PopupGuardService] },
+      { path: 'filter-types', component: FilterTypesComponent, canActivate: [PopupGuardService] },
       { path: 'popup', 
         children: [
           { path: 'filters', component: FiltersModifyComponent, outlet: 'collection', canActivate: [PopupGuardNotService]}

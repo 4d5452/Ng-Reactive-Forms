@@ -95,6 +95,7 @@ export const httpGetLatestError = createSelector(httpGetState, fromHttp.getLates
 
 export const httpCollectionGetState = (state: State) => state.httpCollection;
 export const httpCollectionGetFilters = createSelector(httpCollectionGetState, fromHttpCollection.getCollectionFilters);
+export const httpCollectionGetFilterTypes = createSelector(httpCollectionGetState, fromHttpCollection.getCollectionFilterTypes);
 export const httpCollectionGetCollectionSelectors = createSelector(httpCollectionGetState, fromHttpCollection.getCollectionSelectors);
 
 export const tableGetState = (state: State) => state.table;
@@ -105,6 +106,7 @@ export const tableGetSortOrder = createSelector(tableGetState, fromTable.getSort
 export const popupGetState = (state: State) => state.popup;
 export const popupIsOpen = createSelector(popupGetState, fromPopup.isPopupOpen);
 export const popupGetPosition = createSelector(popupGetState, fromPopup.getPopupPosition);
+export const popupGetTask = createSelector(popupGetState, fromPopup.getPopupTask);
 
 export const collectionGetState = (state: State) => state.collection;
 export const collectionGetSelectedCollectionId = createSelector(collectionGetState, fromCollection.getSelectedCollectionId);

@@ -6,6 +6,7 @@ export interface Filter {
 }
 
 export interface FilterType {
+  id: string,
   upc: string
 }
 

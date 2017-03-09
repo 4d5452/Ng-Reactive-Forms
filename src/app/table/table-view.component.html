@@ -8,7 +8,7 @@
       </th>
     </ng-container>
   </tr>
-  <ng-container class="table-data" *ngFor="let item of items">
+  <ng-container class="table-data" *ngFor="let item of items; let i = index;">
     <tr class="td-hover" (click)="toggleSelectedItem(item)" *ngIf="isItemVisible(item)">
       <td class="td-checkbox">
         <md-checkbox #checkbox 
@@ -18,7 +18,7 @@
         </md-checkbox>
       </td>
       <td *ngFor="let meta of collectionMeta">
-        {{format(item[meta.selector], meta.type)}}
+        {{format(item[meta.selector[0]], meta.type, meta.selector)}}
       </td>
     </tr>
   </ng-container>

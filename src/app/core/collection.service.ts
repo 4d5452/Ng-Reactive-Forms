@@ -29,6 +29,16 @@ export class CollectionService {
   getSelectedItemId(): Observable<string> {
     return this.selectedItemId$;
   }
+  getSelectedItem(): Observable<any> {
+    return this.selectedItemId$
+      .mergeMap((item: string) => this.selectedCollectionId$, 
+        (id: string, collection: string) => {
+          return this.httpCollectionService.getItemById(id, collection);
+        })
+        .switchMap((item)=>{
+          return item;
+        })
+  }
   getSelectedCollectionId(): Observable<string> {
     return this.selectedCollectionId$;
   }
@@ -42,6 +52,10 @@ export class CollectionService {
   }
   getCollectionMetaData(): Observable<MetaObject[]> {
     return this.meta$;
+  }
+  /**Non-selected collection */
+  getCollection(collection: string): Observable<any[]> {
+    return this.httpCollectionService.getCollection(collection);
   }
   /**Require HTTP */
   removeSelectedItem(): void {

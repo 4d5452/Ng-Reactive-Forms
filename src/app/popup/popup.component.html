@@ -5,15 +5,17 @@
   (draggable)="updatePopupPosition($event)">
 
   <md-card class="content-wrapper remove-pointer-events">
-    <div class="content">
+    <md-icon class="drag-handle">drag_handle</md-icon>
+    
+    <div class="content add-pointer-events">
       <router-outlet name="collection"></router-outlet>
     </div>
-    <div class="content-toolbar">
-      <button md-button class="add-pointer-events" 
+    <div class="content-toolbar remove-pointer-events">
+      <button md-button class="add-pointer-events" style="width: 50%;" 
+        color="warn"
         (click)="close()">
         Cancel
       </button>
     </div>
   </md-card>
-
 </div>

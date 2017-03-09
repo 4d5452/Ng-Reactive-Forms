@@ -19,11 +19,13 @@ import * as appCollections from '../models/app.models';
  */
 export interface State {
   filters: appCollections.Filter[];
+  filterTypes: appCollections.FilterType[];
   collectionSelectors: Set<string>;
 }; // end interface: State
 
 const initialState: State = {
   filters: [],
+  filterTypes: [],
   collectionSelectors: new Set([ 'filters' ])
 }; // end: initialState
 
@@ -124,6 +126,8 @@ export function reducer(state = initialState, action: actions.Actions): State {
 }
 
 export const getCollectionFilters = (state: State) => state.filters;
+export const getCollectionFilterTypes = (state: State) => state.filterTypes;
+
 export const getCollectionSelectors = (state: State) => state.collectionSelectors;
 /** More information may be found at:
  *  https://github.com/ngrx/store

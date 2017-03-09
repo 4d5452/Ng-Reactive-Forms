@@ -14,7 +14,6 @@ export class PopupGuardNotService implements CanActivate {
     /**Needs lots of work: merge this with popup-guard.service and handle
      * logic based on current route.
      */
-    console.log(route);
     return this.popupService.isPopupOpen()
       .switchMap((isOpen)=> {
         if(isOpen){

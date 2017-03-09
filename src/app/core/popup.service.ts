@@ -14,10 +14,12 @@ import * as popupActions from '../store/actions/popup.actions';
 export class PopupService {
   popupPosition$: Observable<Position>;
   isPopupOpen$: Observable<boolean>;
+  popupTask$: Observable<string>;
 
   constructor(private store: Store<fromRoot.State>, private router: Router, private collection: CollectionService) {
     this.isPopupOpen$ = this.store.select<boolean>(fromRoot.popupIsOpen);
     this.popupPosition$ = this.store.select<Position>(fromRoot.popupGetPosition);
+    this.popupTask$ = this.store.select<string>(fromRoot.popupGetTask);
   }
 
   closePopup(): void {
@@ -30,8 +32,8 @@ export class PopupService {
       })
     }).unsubscribe();
   }
-  openPopup(): void {    
-    this.store.dispatch(new popupActions.OpenPopupAction(null));
+  openPopup(task: string): void {    
+    this.store.dispatch(new popupActions.OpenPopupAction(task));
     this.isPopupOpen$.subscribe((isOpen) => {
       setTimeout(()=>{
         this.router.navigate(['dashboard/popup', 
@@ -48,5 +50,8 @@ export class PopupService {
   }
   isPopupOpen(): Observable<boolean> {
     return this.isPopupOpen$;
+  }
+  getPopupTask(): Observable<string> {
+    return this.popupTask$;
   }
 }

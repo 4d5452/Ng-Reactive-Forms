@@ -14,6 +14,8 @@ import { TableViewComponent } from '../table/table-view.component';
 import { FiltersComponent } from '../filters/filters.component';
 import { FiltersModifyComponent } from '../filters/filters-modify.component';
 
+import { FilterTypesComponent } from '../filter_types/filter-types.component';
+
 import { RecordsComponent } from '../records/records.component';
 
 import { PopupComponent } from '../popup/popup.component';
@@ -33,6 +35,7 @@ import { PopupComponent } from '../popup/popup.component';
     RecordsComponent,
     FiltersComponent,
     FiltersModifyComponent,
+    FilterTypesComponent,
     PopupComponent
  ],
   providers: []
