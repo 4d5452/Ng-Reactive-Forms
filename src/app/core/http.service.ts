@@ -10,6 +10,7 @@ import * as HTTP from '../store/models/http.models';
 @Injectable()
 export class HttpService {
 
+  /**interface to make http request: services and directives should use this interface, over the http store */
   constructor(private store: Store<fromRoot.State>) {}
 
   getAll(args: HTTP.GetAll): void {

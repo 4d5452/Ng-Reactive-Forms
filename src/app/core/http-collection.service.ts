@@ -18,18 +18,21 @@ export class HttpCollectionService {
     this.collectionSelectors$ = store.select<Set<string>>(fromRoot.httpCollectionGetCollectionSelectors);
   }
 
+  /**Returns Observable of collection if it exist: throws otherwise */
   getCollection(collection: string): Observable<any[]> {
     if(!this.collections.has(collection)){
       throw new Error("Collection Does Not Exist: Http-Collection-Service");
     }
     return this.collections.get(collection);
   }
+  /**Returns item matching the passed id, from the passed collection: TODO: relocate so http request may be requested, if needed */
   getItemById(id: string, collection: string): Observable<any> {
     return this.collections.get(collection)
       .map((items)=> {
         return items.filter(item => item['id']===id)[0];
       });
   }
+  /**TODO: Remove, these are not needed */
   getCollectionSelectors(): Observable<Set<string>> {
     return this.collectionSelectors$;
   }

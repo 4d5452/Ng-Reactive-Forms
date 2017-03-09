@@ -8,7 +8,7 @@ import { PopupService } from './popup.service';
 export class PopupGuardService implements CanActivate {
 
   constructor(private popupService: PopupService) {}
-
+  /**If the popup is open, don't allow a redirect */
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
     return this.popupService.isPopupOpen().map(v=>!v);
   }

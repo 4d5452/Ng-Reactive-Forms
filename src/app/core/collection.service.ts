@@ -12,9 +12,13 @@ import { MetaObject } from '../store/models/collection.models';
 
 @Injectable()
 export class CollectionService {
+  /**Identifier of the currently selected collection.  Will relate to http-colleciton.service mapping of application collections */
   selectedCollectionId$: Observable<string>;
+  /**The selected item ID of the currently selected collection */
   selectedItemId$: Observable<string>;
+  /**An Observable of the selected collection */
   collection$: Observable<any[]>; //This one little dog...
+  /**Meta data set for the currently active collection */
   meta$: Observable<MetaObject[]>;
 
   constructor(private store: Store<fromRoot.State>, private httpCollectionService: HttpCollectionService) {
@@ -24,12 +28,14 @@ export class CollectionService {
     this.meta$ = this.store.select<MetaObject[]>(fromRoot.collectionGetMetaData);
   }
   
+  /**getters/setters for selectedItemId$ */
   setSelectedItemId(id: string): void {
     this.store.dispatch(new actions.SetSelectedItemIdAction(id));
   }
   getSelectedItemId(): Observable<string> {
     return this.selectedItemId$;
   }
+  /**Calls the httpCollectionService the selected item, within the selectedCollection */
   getSelectedItem(): Observable<any> {
     return this.selectedItemId$
       .mergeMap((item: string) => this.selectedCollectionId$, 
@@ -40,12 +46,15 @@ export class CollectionService {
           return item;
         })
   }
+  /**getter for selectedCollectionId$ */
   getSelectedCollectionId(): Observable<string> {
     return this.selectedCollectionId$;
   }
+  /**getter for currently selected collection */
   getSelectedCollection(): Observable<any[]> {
     return this.collection$;
   }
+  /**getter/setter for collection meta data */
   setCollectionMetaData(collection: string, meta: MetaObject[]): void {
     this.store.dispatch(new actions.SetCollectionMetaDataAction(
       {collection: collection, meta: meta}
@@ -54,14 +63,16 @@ export class CollectionService {
   getCollectionMetaData(): Observable<MetaObject[]> {
     return this.meta$;
   }
-  /**Non-selected collection */
+
+  /**Non-selected collection: return 'any' collection from httpCollectionService */
   getCollection(collection: string): Observable<any[]> {
     return this.httpCollectionService.getCollection(collection);
   }
-  /**Require HTTP */
+  /**Require HTTP: removes selected item; effect will take over once called */
   removeSelectedItem(): void {
     this.store.dispatch(new actions.RemoveSelectedItemAction(null));
   }
+  /**TODO: Create effect to handle this procedure */
   addEditItem(item: any, collection: string): void {
     this.store.dispatch(new httpActions.PutAction({
       id: item['id'],
