@@ -38,14 +38,29 @@ export class FiltersModifyComponent {
   }
 
   onSubmit(): void {
+    this.collectionService.addEditItem(this.prepareSave(), 'filters');
     this.popupService.closePopup();
   }
 
+  prepareSave(): Filter {
+    const formModel = this.filterForm.value;
+    const filterTypeDeepCopy: FilterType = Object.assign({}, 
+      { id: this.filter.id },
+      { upc: formModel.filterType }
+    );
+    const saveFilter: Filter = {
+      id: formModel.id,
+      type: filterTypeDeepCopy,
+      created: this.filter.created,
+      modified: Date.now()
+    }
+    return saveFilter;
+  }
   getFilter(): Observable<Filter> {
     return this.popupTask$
       .switchMap((task)=> {
         return task==='edit' ? this.collectionService.getSelectedItem() : Observable.of(<Filter>{
-          id: '', type: { id: '', upc: '' }, created: new Date(), modified: new Date()
+          id: '', type: { id: '', upc: '' }, created: Date.now(), modified: Date.now()
         })
       })
   }

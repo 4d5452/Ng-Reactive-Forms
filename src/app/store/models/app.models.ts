@@ -1,8 +1,8 @@
 export interface Filter {
   id: string,
   type: FilterType,
-  created: Date,
-  modified: Date,
+  created: number,
+  modified: number,
 }
 
 export interface FilterType {

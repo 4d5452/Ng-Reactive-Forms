@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 import * as fromRoot from '../store/reducers/index';
 
 import * as actions from '../store/actions/collection.actions';
+import * as httpActions from '../store/actions/http.actions';
 
 import { HttpCollectionService } from './http-collection.service';
 import { MetaObject } from '../store/models/collection.models';
@@ -60,5 +61,12 @@ export class CollectionService {
   /**Require HTTP */
   removeSelectedItem(): void {
     this.store.dispatch(new actions.RemoveSelectedItemAction(null));
+  }
+  addEditItem(item: any, collection: string): void {
+    this.store.dispatch(new httpActions.PutAction({
+      id: item['id'],
+      collection: collection,
+      body: item
+    }));
   }
 }
