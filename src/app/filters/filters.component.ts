@@ -13,7 +13,7 @@ import { CollectionService } from '../core/collection.service';
 export class FiltersComponent implements OnInit {
   meta: MetaObject[] = [
     { header: 'ID', selector: ['id'], type: Type.STRING },
-    { header: 'TYPE', selector: ['type', 'upc'], type: Type.OBJECT },
+    { header: 'TYPE', selector: ['type'], type: Type.STRING },
     { header: 'CREATED', selector: ['created'], type: Type.DATE },
     { header: 'MODIFIED', selector: ['modified'], type: Type.DATE }
   ];

@@ -36,15 +36,12 @@ export class TableViewComponent {
   isColumnSelected(column: number): boolean {
     return column===this.selectedColumn;
   }
-  format(value: any, type: string, selector: string[]): any {
+  format(value: any, type: string): any {
     let tmp: any = null;
     switch(type) {
       case Type.DATE: {
         tmp = new Date(value);
         return tmp.toLocaleDateString();
-      }
-      case Type.OBJECT: {
-        return value[selector[1]];
       }
       case Type.NUMBER:
       case Type.STRING:
@@ -55,11 +52,7 @@ export class TableViewComponent {
   /**THIS IS GARBAGE: TODO: MUST CHANGE AS SOON AS POSSIBLE!!!!!!!!!!!!!!!!!!!!!! */
   isItemVisible(item: any): boolean {
     let tmp = '';
-    if(this.collectionMeta[this.selectedColumn].type===Type.OBJECT){
-      tmp = '' + item[this.collectionMeta[this.selectedColumn].selector[0]][this.collectionMeta[this.selectedColumn].selector[1]];
-    }else{
-      tmp = '' + item[this.collectionMeta[this.selectedColumn].selector[0]];
-    }
+    tmp = '' + item[this.collectionMeta[this.selectedColumn].selector[0]];
     return tmp.includes(this.filter);
   }
 }

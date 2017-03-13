@@ -33,7 +33,7 @@ export class FiltersModifyComponent {
   createForm() {
     this.filterForm = this.fb.group({
       id: [this.filter['id'], Validators.required ],
-      filterType: [this.filter['type'].upc, Validators.required ]
+      filterType: [this.filter['type'], Validators.required ]
     });
   }
 
@@ -44,13 +44,9 @@ export class FiltersModifyComponent {
 
   prepareSave(): Filter {
     const formModel = this.filterForm.value;
-    const filterTypeDeepCopy: FilterType = Object.assign({}, 
-      { id: this.filter.id },
-      { upc: formModel.filterType }
-    );
     const saveFilter: Filter = {
       id: formModel.id,
-      type: filterTypeDeepCopy,
+      type: formModel.filterType,
       created: this.filter.created,
       modified: Date.now()
     }
@@ -60,7 +56,7 @@ export class FiltersModifyComponent {
     return this.popupTask$
       .switchMap((task)=> {
         return task==='edit' ? this.collectionService.getSelectedItem() : Observable.of(<Filter>{
-          id: '', type: { id: '', upc: '' }, created: Date.now(), modified: Date.now()
+          id: '', type: '', created: Date.now(), modified: Date.now()
         })
       })
   }

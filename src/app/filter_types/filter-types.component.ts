@@ -12,8 +12,7 @@ import { CollectionService } from '../core/collection.service'
 })
 export class FilterTypesComponent implements OnInit {
   meta: MetaObject[] = [
-    { header: 'ID', selector: ['id'], type: Type.STRING },
-    { header: 'UPC', selector: ['upc'], type: Type.STRING }
+    { header: 'UPC', selector: ['id'], type: Type.STRING }
   ];
 
   constructor(private collectionService: CollectionService) {}
