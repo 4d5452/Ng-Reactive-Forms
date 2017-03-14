@@ -25,7 +25,7 @@ export class HttpCollectionService {
     }
     return this.collections.get(collection);
   }
-  /**Returns item matching the passed id, from the passed collection: TODO: relocate so http request may be requested, if needed */
+  /**Returns item matching the passed id, from the passed collection: TODO: relocate so http request may be used, if needed */
   getItemById(id: string, collection: string): Observable<any> {
     return this.collections.get(collection)
       .map((items)=> {

@@ -29,7 +29,7 @@
 </div>
 
 <md-autocomplete #filterAuto="mdAutocomplete">
-  <md-option *ngFor="let type of filterTypes$ | async" [value]="type.upc">
-    {{type.upc}}
+  <md-option *ngFor="let type of filterTypes$ | async" [value]="type.id">
+    {{type.id}}
   </md-option>
 </md-autocomplete>

@@ -41,6 +41,9 @@ export class AppData implements InMemoryDbService {
       {id: 2, created: Date.now(), modified: Date.now(), pre: 3, post: 3, cycles: 1, filter: filters[2].id},
       {id: 3, created: Date.now(), modified: Date.now(), pre: 5, post: 3, cycles: 10, filter: filters[5].id}
     ];
+    let equipment = [
+      {id: "FL50-01", meter: 'miles', initialMeterPerGallon: 9, initialMeter: '170000'}
+    ]
     return {filterTypes, filters, cleaningRecords};
   }
 }

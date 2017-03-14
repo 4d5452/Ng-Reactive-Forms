@@ -12,6 +12,7 @@ export interface FilterType {
 export interface CleaningRecord {
   id: number,
   filter: string,
+  currentEquipmentMeter: string,
   pre: number,
   post: number,
   cycles: number,
@@ -26,7 +27,10 @@ export enum MeterUnit {
 
 export interface Equipment {
   id: string,
-  meter: MeterUnit
+  meter: MeterUnit,
+  initalMeterPerGallon: number,
+  initialMeter: string
+
 }
 
 export interface EquipmentAssignment {
