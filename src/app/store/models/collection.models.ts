@@ -9,5 +9,5 @@ export interface MetaObject {
 export const Type = {
   DATE: type('[Data Models] Date'),
   STRING: type('[Data Models] String'),
-  NUMBER: type('[Data Models] Number'
+  NUMBER: type('[Data Models] Number')
 }

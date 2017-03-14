@@ -1,0 +1,22 @@
+<div class="collection-form">
+  <div class="header">
+    Filter Type
+  </div>
+  <form [formGroup]="formGroup" novalidate>
+    <div class="form-group">
+      <md-input-container class="full-width" type="text">
+        <input mdInput placeholder="UPC" formControlName="id"/>
+      </md-input-container>
+    </div>
+  </form>
+  <p>Form Value: {{formGroup.value | json }}</p>
+  <p>Form Status: {{formGroup.status | json}}</p>
+
+  <button class="modify-submit-button" 
+    md-button (click)="onSubmit()"
+    style="width: 50%;"
+    color="primary"
+    [disabled]="formGroup.status==='INVALID' || formGroup.pristine">
+    Submit
+  </button>
+</div>

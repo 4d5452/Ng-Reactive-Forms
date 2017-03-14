@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
+import { Subscription} from 'rxjs/Subscription';
 
 import { Filter, FilterType } from '../store/models/app.models';
 
@@ -12,24 +13,29 @@ import { PopupService } from '../core/popup.service';
   templateUrl: './filters-modify.component.html',
   styleUrls: ['./filters-modify.component.css']
 })
-export class FiltersModifyComponent {
+export class FiltersModifyComponent implements OnInit, OnDestroy{
   filterForm: FormGroup;
   filterTypes$: Observable<FilterType[]>;
   popupTask$: Observable<string>;
-
+  filter$: Subscription;
   filter: Filter;
 
   constructor(private fb: FormBuilder, private collectionService: CollectionService,
     private popupService: PopupService) {
     this.filterTypes$ = this.collectionService.getCollection('filterTypes');
     this.popupTask$ = this.popupService.getPopupTask();
-    this.getFilter()
-      .subscribe((filter)=> {
-        this.filter = filter;
-      }).unsubscribe();
-    this.createForm();
   }
   
+  ngOnInit() {
+    this.filter$ = this.getFilter().subscribe((filter)=> {
+      this.filter = filter;
+    });
+    this.createForm();
+  }
+  ngOnDestroy() {
+    this.filter$.unsubscribe();
+  }
+
   createForm() {
     this.filterForm = this.fb.group({
       id: [this.filter['id'], Validators.required ],

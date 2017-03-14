@@ -15,6 +15,7 @@ import { FiltersComponent } from '../filters/filters.component';
 import { FiltersModifyComponent } from '../filters/filters-modify.component';
 
 import { FilterTypesComponent } from '../filter_types/filter-types.component';
+import { FilterTypesModifyComponent } from '../filter_types/filter-types-modify.component';
 
 import { RecordsComponent } from '../records/records.component';
 
@@ -36,6 +37,7 @@ import { PopupComponent } from '../popup/popup.component';
     FiltersComponent,
     FiltersModifyComponent,
     FilterTypesComponent,
+    FilterTypesModifyComponent,
     PopupComponent
  ],
   providers: []

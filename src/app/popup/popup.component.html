@@ -1,4 +1,4 @@
-<div  *ngIf="isPopupOpen$ | async"
+<div *ngIf="isPopupOpen$ | async"
   class="draggable-wrapper" 
   [style.top.px]="(popupPosition$ | async).top" 
   [style.left.px]="(popupPosition$ | async).left"
@@ -8,14 +8,7 @@
     <md-icon class="drag-handle">drag_handle</md-icon>
     
     <div class="content add-pointer-events">
-      <router-outlet name="collection"></router-outlet>
-    </div>
-    <div class="content-toolbar remove-pointer-events">
-      <button md-button class="add-pointer-events" style="width: 50%;" 
-        color="warn"
-        (click)="close()">
-        Cancel
-      </button>
+      <router-outlet name="popup"></router-outlet>
     </div>
   </md-card>
 </div>

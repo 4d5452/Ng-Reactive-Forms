@@ -6,7 +6,7 @@ export interface Filter {
 }
 
 export interface FilterType {
-  upc: string
+  id: string
 }
 
 export interface CleaningRecord {
@@ -20,17 +20,16 @@ export interface CleaningRecord {
   modified: Date
 }
 
-export enum MeterUnit {
-  HOURS,
-  MILES
+export interface MeterUnit {
+  hours: 'hours',
+  miles: 'miles'
 }
 
 export interface Equipment {
   id: string,
-  meter: MeterUnit,
-  initalMeterPerGallon: number,
-  initialMeter: string
-
+  meter: string, //MeterUnit
+  initalMeterPerGallon: number, //e.g. 9mpg or 30hours/gallon
+  initialMeter: string // initial equipment reading: 12000miles or 300hours
 }
 
 export interface EquipmentAssignment {

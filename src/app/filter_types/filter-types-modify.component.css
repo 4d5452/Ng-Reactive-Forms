@@ -1,0 +1,21 @@
+.collection-form .header {
+  font-size: 1.2em;
+  font-weight: 300;
+  color: hsl(0, 0%, 45%);
+  margin: 0px 0px 10px 0px;
+}
+form {
+  
+}
+form .form-group {
+  
+}
+
+.full-width {
+  width: 100%;
+}
+
+.modify-submit-button {
+  position: absolute;
+  bottom: 0px; right: 0px;
+}

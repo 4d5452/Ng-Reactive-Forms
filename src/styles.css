@@ -74,7 +74,7 @@ body {
   overflow: visible !important;
 }
 .mat-sidenav.mat-sidenav-side {
-    z-index: -1 !important;
+  z-index: -1 !important;
 }
 
 /*Popup pointer events*/
