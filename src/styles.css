@@ -75,6 +75,7 @@ body {
 }
 .mat-sidenav.mat-sidenav-side {
   z-index: -1 !important;
+  width: 20%;
 }
 
 /*Popup pointer events*/

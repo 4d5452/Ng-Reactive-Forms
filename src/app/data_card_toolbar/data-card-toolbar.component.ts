@@ -4,6 +4,7 @@ import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from 
   moduleId: module.id,
   selector: 'table-toolbar',
   templateUrl: './data-card-toolbar.component.html',
+  styleUrls: ['./data-card-toolbar.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DataCardToolbarComponent {

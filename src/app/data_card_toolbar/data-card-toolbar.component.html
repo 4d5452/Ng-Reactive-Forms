@@ -1,29 +1,34 @@
+<div class="toolbar-wrapper">
+  <div class="toolbar-search">
+    <md-icon class="material-icons md-18" 
+      style="vertical-align: middle">search</md-icon>
 
-<md-icon class="material-icons md-18" 
-  style="vertical-align: middle">search</md-icon>
+    <md-input-container type="search">
+      <input mdInput placeholder= "search" [ngModel]="value"
+        (ngModelChange)="setSearch($event)"/>
+    </md-input-container>
+  </div>
+  <span class="toolbar-fill"></span>
+  <div class="toolbar-buttons">
+    <button md-button
+      (click)="toggle('add')"
+      [disabled]="!addActive"
+      color="primary">
+      ADD
+    </button>
 
-<md-input-container type="search">
-  <input mdInput placeholder= "search" [ngModel]="value"
-    (ngModelChange)="setSearch($event)"/>
-</md-input-container>
+    <button md-button
+      (click)="toggle('edit')"
+      [disabled]="!editActive" 
+      color="primary">
+      EDIT
+    </button>
 
-<button md-button
-  (click)="toggle('add')"
-  [disabled]="!addActive"
-  color="primary">
-  ADD
-</button>
-
-<button md-button
-  (click)="toggle('edit')"
-  [disabled]="!editActive" 
-  color="primary">
-  EDIT
-</button>
-
-<button md-button 
-  (click)="toggle('remove')" 
-  [disabled]="!removeActive" 
-  color="primary">
-  REMOVE
-</button>
+    <button md-button 
+      (click)="toggle('remove')" 
+      [disabled]="!removeActive" 
+      color="primary">
+      REMOVE
+    </button>
+  </div>
+</div>
