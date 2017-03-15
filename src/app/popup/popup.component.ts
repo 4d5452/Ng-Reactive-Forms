@@ -8,7 +8,7 @@ import { Position } from '../store/models/position.models';
 
 @Component({
   moduleId: module.id,
-  selector: 'data-popup',
+  selector: 'popup',
   templateUrl: './popup.component.html',
   styleUrls: [ './popup.component.css' ]
 })

@@ -25,6 +25,7 @@ export class AppComponent implements OnInit {
     this.setTitle(this.appTitle);
     this.store.dispatch({type: '[Http] Get All', payload: {collection: 'filters'}}); // relocate to init effect/reducer
     this.store.dispatch({type: '[Http] Get All', payload: {collection: 'filterTypes'}});
+    this.store.dispatch({type: '[Http] Get All', payload: {collection: 'records'}});
   }
 
   // helper function used to set application title

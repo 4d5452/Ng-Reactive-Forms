@@ -15,7 +15,6 @@ const initialState: State = {
   collectionId: '',
   selectedId: '',
   meta: [] 
-  
 }; // end: initialState
 
 export function reducer(state = initialState, action: actions.Actions): State {
@@ -24,20 +23,14 @@ export function reducer(state = initialState, action: actions.Actions): State {
       console.log("Set Selected Id");
       return Object.assign({}, state, { selectedId: action.payload });
     }
-    case(actions.ActionTypes.SET_COLLECTION): {
-      console.log("Set Collection");
+    case(actions.ActionTypes.SET_COLLECTION_COMPLETE): {
+      console.log("Set Collection Complete", action.payload['id'],action.payload['collection'],action.payload['meta']);
       let obj = Object.assign({}, {
         collectionId: action.payload['id'],
-        collection: [...action.payload['collection']]
+        collection: [...action.payload['collection']],
+        meta: [...<MetaObject[]>action.payload['meta']]
       });
       return Object.assign({}, state, obj);
-    }
-    case(actions.ActionTypes.SET_COLLECTION_META_DATA): {
-      console.log("Set Collection Meta Data");
-      return Object.assign({}, state, 
-        { collectionId: action.payload['collectionId'] },
-        { meta: [...<MetaObject[]>action.payload['meta']] }
-      );
     }
     default:
       return state;

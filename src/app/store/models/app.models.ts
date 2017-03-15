@@ -10,7 +10,7 @@ export interface FilterType {
 }
 
 export interface CleaningRecord {
-  id: number,
+  id: string,
   filter: string,
   currentEquipmentMeter: string,
   pre: number,

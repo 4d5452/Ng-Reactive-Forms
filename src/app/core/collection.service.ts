@@ -55,10 +55,8 @@ export class CollectionService {
     return this.collection$;
   }
   /**getter/setter for collection meta data */
-  setCollectionMetaData(collection: string, meta: MetaObject[]): void {
-    this.store.dispatch(new actions.SetCollectionMetaDataAction(
-      {collection: collection, meta: meta}
-    ));
+  setCollection(collection: string): void {
+    this.store.dispatch(new actions.SetCollectionAction(collection));
   }
   getCollectionMetaData(): Observable<MetaObject[]> {
     return this.meta$;

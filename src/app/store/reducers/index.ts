@@ -94,9 +94,12 @@ export const httpGetLatest = createSelector(httpGetState, fromHttp.getLatest);
 export const httpGetLatestError = createSelector(httpGetState, fromHttp.getLatestError);
 
 export const httpCollectionGetState = (state: State) => state.httpCollection;
-export const httpCollectionGetFilters = createSelector(httpCollectionGetState, fromHttpCollection.getCollectionFilters);
-export const httpCollectionGetFilterTypes = createSelector(httpCollectionGetState, fromHttpCollection.getCollectionFilterTypes);
-export const httpCollectionGetCollectionSelectors = createSelector(httpCollectionGetState, fromHttpCollection.getCollectionSelectors);
+export const httpCollectionGetFilters = createSelector(httpCollectionGetState, fromHttpCollection.getFilters);
+export const httpCollectionGetFilterTypes = createSelector(httpCollectionGetState, fromHttpCollection.getFilterTypes);
+export const httpCollectionGetFiltersMeta = createSelector(httpCollectionGetState, fromHttpCollection.getFiltersMeta);
+export const httpCollectionGetFilterTypesMeta = createSelector(httpCollectionGetState, fromHttpCollection.getFilterTypesMeta);
+export const httpCollectionGetRecords = createSelector(httpCollectionGetState, fromHttpCollection.getRecords);
+export const httpCollectionGetRecordsMeta = createSelector(httpCollectionGetState, fromHttpCollection.getRecordsMeta);
 
 export const tableGetState = (state: State) => state.table;
 export const tableGetFilter = createSelector(tableGetState, fromTable.getFilter);

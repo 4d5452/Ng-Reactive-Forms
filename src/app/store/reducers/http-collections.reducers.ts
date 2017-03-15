@@ -5,6 +5,7 @@ import * as HTTP from '../models/http.models'; // Use for typecast when using ac
 import * as actions from '../actions/http-collections.actions';
 
 import * as appCollections from '../models/app.models';
+import { MetaObject, Type } from '../models/http-collections.models';
 
 /**
  * Collection state is used to represent remote collection data.  i.e.
@@ -19,14 +20,36 @@ import * as appCollections from '../models/app.models';
  */
 export interface State {
   filters: appCollections.Filter[];
+  filtersMeta: MetaObject[];
   filterTypes: appCollections.FilterType[];
-  collectionSelectors: Set<string>;
+  filterTypesMeta: MetaObject[];
+  records: appCollections.CleaningRecord[];
+  recordsMeta: MetaObject[];
 }; // end interface: State
 
 const initialState: State = {
   filters: [],
+  filtersMeta: [
+    { header: 'ID', selector: ['id'], type: Type.STRING },
+    { header: 'TYPE', selector: ['type'], type: Type.STRING },
+    { header: 'CREATED', selector: ['created'], type: Type.DATE },
+    { header: 'MODIFIED', selector: ['modified'], type: Type.DATE }
+  ],
   filterTypes: [],
-  collectionSelectors: new Set([ 'filters' ])
+  filterTypesMeta: [
+    { header: 'UPC', selector: ['id'], type: Type.STRING }
+  ],
+  records: [],
+  recordsMeta: [
+    { header: 'ID', selector: ['id'], type: Type.STRING },
+    { header: 'FILTER', selector: ['filter'], type: Type.STRING },
+    { header: 'METER', selector: ['currentEquipmentMeter'], type: Type.STRING },
+    { header: 'PRE CLEAN', selector: ['pre'], type: Type.NUMBER },
+    { header: 'POST CLEAN', selector: ['post'], type: Type.NUMBER},
+    { header: 'CYCLES', selector: ['cycles'], type: Type.NUMBER },
+    { header: 'CREATED', selector: ['created'], type: Type.DATE },
+    { header: 'MODIFIED', selector: ['modified'], type: Type.DATE }
+  ]
 }; // end: initialState
 
 /**
@@ -125,10 +148,14 @@ export function reducer(state = initialState, action: actions.Actions): State {
   }
 }
 
-export const getCollectionFilters = (state: State) => state.filters;
-export const getCollectionFilterTypes = (state: State) => state.filterTypes;
+export const getFilters = (state: State) => state.filters;
+export const getFilterTypes = (state: State) => state.filterTypes;
+export const getRecords = (state: State) => state.records;
 
-export const getCollectionSelectors = (state: State) => state.collectionSelectors;
+export const getFiltersMeta = (state: State) => state.filtersMeta;
+export const getFilterTypesMeta = (state: State) => state.filterTypesMeta;
+export const getRecordsMeta = (state: State) => state.recordsMeta;
+
 /** More information may be found at:
  *  https://github.com/ngrx/store
  *  &&

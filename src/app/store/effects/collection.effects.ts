@@ -14,6 +14,7 @@ import { HttpCollectionService } from '../../core/http-collection.service';
 import { HttpService } from '../../core/http.service';
 
 import * as HTTP from '../models/http.models';
+import { MetaObject } from '../models/collection.models';
 
 @Injectable()
 export class CollectionEffectsService {
@@ -21,15 +22,17 @@ export class CollectionEffectsService {
   constructor(private action$: Actions, private store: Store<fromRoot.State>,
     private httpCollectionService: HttpCollectionService, private httpService: HttpService) {}
 
-  @Effect() getCollection$: Observable<Action> = this.action$
-    .ofType(actions.ActionTypes.SET_COLLECTION_META_DATA)
-    .map((action: actions.SetCollectionMetaDataAction) => action.payload['collection'])
-    .mergeMap((collection: string) => this.httpCollectionService.getCollection(collection), 
-      (id: string, collection: any) => {
-        return new actions.SetCollectionAction({
-          id: id,
-          collection: collection
-        })
+  @Effect() setCollection$: Observable<Action> = this.action$
+    .ofType(actions.ActionTypes.SET_COLLECTION)
+    .map((action: actions.SetCollectionAction) => action.payload)
+    .mergeMap((collection: string) => this.httpCollectionService.getCollectionAndMeta(collection),
+      (id: string, collectionData: any) => {
+        let fin = Object.assign({}, 
+          {id: id},
+          {collection: collectionData.collection},
+          {meta: collectionData.meta}
+        );
+        return new actions.SetCollectionCompleteAction(fin);
       })
     .map((val) => {
       return val;
