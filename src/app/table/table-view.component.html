@@ -3,13 +3,14 @@
     <th></th>
     <ng-container *ngFor="let meta of collectionMeta; let i = index;">
       <th (click)="setSelectedColumn(i)"
-        [class.selected-column]="isColumnSelected(i)">
+        [class.selected-column]="isColumnSelected(i)"
+        [class.numeric]="isNumber(meta.type)">
         {{meta.header}}
       </th>
     </ng-container>
   </tr>
   <ng-container class="table-data" *ngFor="let item of items; let i = index;">
-    <tr class="td-hover" (click)="toggleSelectedItem(item)" *ngIf="isItemVisible(item)">
+    <tr (click)="toggleSelectedItem(item)" *ngIf="isItemVisible(item)">
       <td class="td-checkbox">
         <md-checkbox #checkbox 
           [disabled]="true"
@@ -17,7 +18,7 @@
           [disableRipple]="true">
         </md-checkbox>
       </td>
-      <td *ngFor="let meta of collectionMeta">
+      <td *ngFor="let meta of collectionMeta" [class.numeric]="isNumber(meta.type)">
         {{format(item[meta.selector[0]], meta.type)}}
       </td>
     </tr>

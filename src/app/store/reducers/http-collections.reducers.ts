@@ -34,7 +34,7 @@ export interface State {
 const initialState: State = {
   filters: [],
   filtersMeta: [
-    { header: 'ID', selector: ['id'], type: Type.STRING },
+    { header: 'FILTER ID', selector: ['id'], type: Type.STRING },
     { header: 'TYPE', selector: ['type'], type: Type.STRING },
     { header: 'CREATED', selector: ['created'], type: Type.DATE },
     { header: 'MODIFIED', selector: ['modified'], type: Type.DATE }
@@ -46,8 +46,8 @@ const initialState: State = {
   records: [],
   recordsMeta: [
     { header: 'ID', selector: ['id'], type: Type.STRING },
-    { header: 'FILTER', selector: ['filter'], type: Type.STRING },
-    { header: 'METER', selector: ['currentEquipmentMeter'], type: Type.STRING },
+    { header: 'FILTER ID', selector: ['filter'], type: Type.STRING },
+    { header: 'METER', selector: ['currentEquipmentMeter'], type: Type.NUMBER },
     { header: 'PRE CLEAN', selector: ['pre'], type: Type.NUMBER },
     { header: 'POST CLEAN', selector: ['post'], type: Type.NUMBER},
     { header: 'CYCLES', selector: ['cycles'], type: Type.NUMBER },
@@ -56,9 +56,9 @@ const initialState: State = {
   ],
   equipment: [],
   equipmentMeta: [
-    { header: 'ID', selector: ['id'], type: Type.STRING },
+    { header: 'EQUIPMENT ID', selector: ['id'], type: Type.STRING },
     { header: 'METER UNIT', selector: ['meter'], type: Type.STRING },
-    { header: 'INI METER', selector: ['initialMeter'], type: Type.STRING },
+    { header: 'INI METER', selector: ['initialMeter'], type: Type.NUMBER },
     { header: 'INI PER GALLON', selector: ['initialMeterPerGallon'], type: Type.NUMBER }
   ],
   assignments: [],

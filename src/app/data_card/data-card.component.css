@@ -12,6 +12,7 @@
 .card-toolbar {
   padding: 8px 10px 0px 10px;
   overflow-x: auto;
+  overflow-y: hidden;
   display: inline-block;
   white-space: nowrap;
 }

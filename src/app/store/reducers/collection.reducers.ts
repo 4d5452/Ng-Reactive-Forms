@@ -28,7 +28,8 @@ export function reducer(state = initialState, action: actions.Actions): State {
       let obj = Object.assign({}, {
         collectionId: action.payload['id'],
         collection: [...action.payload['collection']],
-        meta: [...<MetaObject[]>action.payload['meta']]
+        meta: [...<MetaObject[]>action.payload['meta']],
+        selectedId: ''
       });
       return Object.assign({}, state, obj);
     }

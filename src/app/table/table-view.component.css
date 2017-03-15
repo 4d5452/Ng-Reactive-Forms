@@ -26,13 +26,19 @@ th.selected-column {
 td {
   color: hsl(0, 0%, 45%);
 }
-.td-hover:hover {
+tr {
+  width: 100%;
+}
+tr:hover {
   background-color: #EEEEEE;
   cursor: default;
 }
 .td-checkbox {
-  text-align: center;
+  width: 40px;
 }
 .center {
   text-align: center;
+}
+.numeric {
+  text-align: right;
 }

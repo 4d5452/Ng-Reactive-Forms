@@ -8,12 +8,12 @@ export class AppData implements InMemoryDbService {
       {id: '1001', type: filterTypes[0].id, created: Date.now(), modified: Date.now()}
     ];
     let records = [
-      {id: '1', currentEquipmentMeter: '1000', created: Date.now(), modified: Date.now(), pre: 7, post: 4, cycles: 4, filter: filters[0].id},
-      {id: '2', currentEquipmentMeter: '2000', created: Date.now(), modified: Date.now(), pre: 6, post: 4, cycles: 3, filter: filters[0].id},
-      {id: '3', currentEquipmentMeter: '3000', created: Date.now(), modified: Date.now(), pre: 7, post: 5, cycles: 4, filter: filters[0].id}
+      {id: '1', currentEquipmentMeter: 180000, created: Date.now(), modified: Date.now(), pre: 7, post: 4, cycles: 4, filter: filters[0].id},
+      {id: '2', currentEquipmentMeter: 190000, created: Date.now(), modified: Date.now(), pre: 6, post: 4, cycles: 3, filter: filters[0].id},
+      {id: '3', currentEquipmentMeter: 200000, created: Date.now(), modified: Date.now(), pre: 7, post: 5, cycles: 4, filter: filters[0].id}
     ];
     let equipment = [
-      {id: "FL50-01", meter: 'miles', initialMeterPerGallon: 9, initialMeter: '170000'}
+      {id: "FL50-01", meter: 'miles', initialMeterPerGallon: 9, initialMeter: 170000}
     ]
     let assignments = [
       {id: '1', equipment: equipment[0].id, filter: filters[0].id, active: true}

@@ -61,4 +61,14 @@ export class TableViewComponent {
     tmp = '' + item[this.collectionMeta[this.selectedColumn].selector[0]];
     return tmp.includes(this.filter.toUpperCase());
   }
+  isNumber(type: string): boolean {
+    switch(type) {
+      case Type.DATE:
+      case Type.NUMBER: {
+        return true;
+      }
+      default:
+        return false;
+    }
+  }
 }

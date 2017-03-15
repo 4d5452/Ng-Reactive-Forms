@@ -12,7 +12,7 @@ export interface FilterType {
 export interface CleaningRecord {
   id: string,
   filter: string,
-  currentEquipmentMeter: string,
+  currentEquipmentMeter: number,
   pre: number,
   post: number,
   cycles: number,
@@ -29,7 +29,7 @@ export interface Equipment {
   id: string,
   meter: string, //MeterUnit
   initalMeterPerGallon: number, //e.g. 9mpg or 30hours/gallon
-  initialMeter: string // initial equipment reading: 12000miles or 300hours
+  initialMeter: number // initial equipment reading: 12000miles or 300hours
 }
 
 export interface EquipmentAssignment {
