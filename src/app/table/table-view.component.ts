@@ -59,6 +59,6 @@ export class TableViewComponent {
   isItemVisible(item: any): boolean {
     let tmp = '';
     tmp = '' + item[this.collectionMeta[this.selectedColumn].selector[0]];
-    return tmp.includes(this.filter);
+    return tmp.includes(this.filter.toUpperCase());
   }
 }
