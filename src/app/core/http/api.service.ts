@@ -11,8 +11,7 @@ export class ApiService {
   constructor(private http: Http, private requestOptions: RequestOptionsService) { }
   /**getAll: returns all items from server db collection */
   getAll(collection: string): Observable<Response> {
-    return this.http.get(`${this.API_ROOT}/${collection}`, this.requestOptions.method(RequestMethod.Get))
-      .map((response: Response) => response);
+    return this.http.get(`${this.API_ROOT}/${collection}`);
   }
   /**get: returns single item from server db collection */
   get(collection: string, id: string): Observable<Response> {

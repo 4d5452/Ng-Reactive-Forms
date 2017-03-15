@@ -68,24 +68,25 @@ export class HttpEffectsService {
   @Effect() getAll$: Observable<Action> = this.action$
     .ofType(actions.ActionTypes.GET_ALL)
     .map((action: actions.GetAllAction) => action.payload)
-    .mergeMap((req: HTTP.GetAll) => this.service.getAll(req.collection), // need to redo as switchMap
-      (req: HTTP.GetAll, res: Response) => {
-        const successObj: HTTP.SuccessResponse = {
+    .flatMap((req: HTTP.GetAll) => { //TODO: Change all to the flatMap/swtichMap pattern
+      return this.service.getAll(req.collection)
+        .switchMap((res: Response) => {
+          const successObj: HTTP.SuccessResponse = {
             request: req,
             response: Object.assign({}, res, {_body: null}), // no need for body object in RequestSuccessAction
             action: actions.ActionTypes.GET_ALL
           }
-        const collectionObj: collection.GetAllMap = {
-          request: req,
-          data: res['_body'] ? res.json().data : null
-        }
-        return Observable.from([
-          new actions.RequestSuccessAction(successObj),
-          new collectionActions.GetAllMapAction(collectionObj)
-        ]);
-      })
-      .mergeMap((val) => val)
-      .catch((err: Error) => Observable.of(new actions.RequestFailureAction({action: actions.ActionTypes.GET_ALL, error: err})))
+          const collectionObj: collection.GetAllMap = {
+            request: req,
+            data: res['_body'] ? res.json().data : null
+          }
+          return Observable.from([
+            new actions.RequestSuccessAction(successObj),
+            new collectionActions.GetAllMapAction(collectionObj)
+          ]);
+        })
+    })
+    .catch((err: Error) => Observable.of(new actions.RequestFailureAction({action: actions.ActionTypes.GET_ALL, error: err})))
   
   @Effect() get$: Observable<Action> = this.action$
     .ofType(actions.ActionTypes.GET)
