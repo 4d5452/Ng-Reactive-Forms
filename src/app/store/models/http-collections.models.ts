@@ -10,7 +10,8 @@ export interface MetaObject {
 export const Type = {
   DATE: type('[Data Models] Date'),
   STRING: type('[Data Models] String'),
-  NUMBER: type('[Data Models] Number')
+  NUMBER: type('[Data Models] Number'),
+  BOOLEAN: type('[Data Models] Boolean')
 }
 
 /** Get all objects from collection */

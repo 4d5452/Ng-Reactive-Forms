@@ -100,6 +100,10 @@ export const httpCollectionGetFiltersMeta = createSelector(httpCollectionGetStat
 export const httpCollectionGetFilterTypesMeta = createSelector(httpCollectionGetState, fromHttpCollection.getFilterTypesMeta);
 export const httpCollectionGetRecords = createSelector(httpCollectionGetState, fromHttpCollection.getRecords);
 export const httpCollectionGetRecordsMeta = createSelector(httpCollectionGetState, fromHttpCollection.getRecordsMeta);
+export const httpCollectionGetEquipment = createSelector(httpCollectionGetState, fromHttpCollection.getEquipment);
+export const httpCollectionGetEquipmentMeta = createSelector(httpCollectionGetState, fromHttpCollection.getEquipmentMeta);
+export const httpCollectionGetAssignments = createSelector(httpCollectionGetState, fromHttpCollection.getAssignments);
+export const httpCollectionGetAssignmentsMeta = createSelector(httpCollectionGetState, fromHttpCollection.getAssignmentsMeta);
 
 export const tableGetState = (state: State) => state.table;
 export const tableGetFilter = createSelector(tableGetState, fromTable.getFilter);

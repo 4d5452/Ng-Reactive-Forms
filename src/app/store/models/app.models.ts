@@ -33,6 +33,7 @@ export interface Equipment {
 }
 
 export interface EquipmentAssignment {
+  id: string,
   equipment: string,
   filter: string,
   active: boolean

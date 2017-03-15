@@ -16,11 +16,15 @@ export class HttpCollectionService {
     this.collections.set('filters', store.select<any[]>(fromRoot.httpCollectionGetFilters));
     this.collections.set('filterTypes', store.select<any[]>(fromRoot.httpCollectionGetFilterTypes));
     this.collections.set('records', store.select<any[]>(fromRoot.httpCollectionGetRecords));
+    this.collections.set('equipment', store.select<any[]>(fromRoot.httpCollectionGetEquipment));
+    this.collections.set('assignments', store.select<any[]>(fromRoot.httpCollectionGetAssignments));
 
     this.collectionMeta = new Map<string, Observable<MetaObject[]>>();
     this.collectionMeta.set('filters', store.select<MetaObject[]>(fromRoot.httpCollectionGetFiltersMeta));
     this.collectionMeta.set('filterTypes', store.select<MetaObject[]>(fromRoot.httpCollectionGetFilterTypesMeta));
     this.collectionMeta.set('records', store.select<any[]>(fromRoot.httpCollectionGetRecordsMeta));
+    this.collectionMeta.set('equipment', store.select<MetaObject[]>(fromRoot.httpCollectionGetEquipmentMeta));
+    this.collectionMeta.set('assignments', store.select<MetaObject[]>(fromRoot.httpCollectionGetAssignmentsMeta));
   }
 
   /**Returns Observable of collection if it exist: throws otherwise */

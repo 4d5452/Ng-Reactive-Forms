@@ -19,6 +19,10 @@ import { FilterTypesModifyComponent } from '../filter_types/filter-types-modify.
 
 import { RecordsComponent } from '../records/records.component';
 
+import { EquipmentComponent } from '../equipment/equipment.component';
+
+import { EquipmentAssignmentsComponent } from '../equipment_assignments/assignments.component';
+
 import { PopupComponent } from '../popup/popup.component';
 
 @NgModule({
@@ -38,6 +42,8 @@ import { PopupComponent } from '../popup/popup.component';
     FiltersModifyComponent,
     FilterTypesComponent,
     FilterTypesModifyComponent,
+    EquipmentComponent,
+    EquipmentAssignmentsComponent,
     PopupComponent
  ],
   providers: []

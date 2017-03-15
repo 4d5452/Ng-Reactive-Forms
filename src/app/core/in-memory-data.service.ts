@@ -15,9 +15,9 @@ export class AppData implements InMemoryDbService {
     let equipment = [
       {id: "FL50-01", meter: 'miles', initialMeterPerGallon: 9, initialMeter: '170000'}
     ]
-    let assignment = [
-      {equipment: equipment[0].id, filter: filters[0].id, active: true}
+    let assignments = [
+      {id: '1', equipment: equipment[0].id, filter: filters[0].id, active: true}
     ]
-    return {filterTypes, filters, records, equipment, assignment};
+    return {filterTypes, filters, records, equipment, assignments};
   }
 }

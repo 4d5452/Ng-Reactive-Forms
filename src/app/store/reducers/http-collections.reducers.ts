@@ -25,6 +25,10 @@ export interface State {
   filterTypesMeta: MetaObject[];
   records: appCollections.CleaningRecord[];
   recordsMeta: MetaObject[];
+  equipment: appCollections.Equipment[];
+  equipmentMeta: MetaObject[];
+  assignments: appCollections.EquipmentAssignment[];
+  assignmentsMeta: MetaObject[];
 }; // end interface: State
 
 const initialState: State = {
@@ -49,6 +53,20 @@ const initialState: State = {
     { header: 'CYCLES', selector: ['cycles'], type: Type.NUMBER },
     { header: 'CREATED', selector: ['created'], type: Type.DATE },
     { header: 'MODIFIED', selector: ['modified'], type: Type.DATE }
+  ],
+  equipment: [],
+  equipmentMeta: [
+    { header: 'ID', selector: ['id'], type: Type.STRING },
+    { header: 'METER UNIT', selector: ['meter'], type: Type.STRING },
+    { header: 'INI METER', selector: ['initialMeter'], type: Type.STRING },
+    { header: 'INI PER GALLON', selector: ['initialMeterPerGallon'], type: Type.NUMBER }
+  ],
+  assignments: [],
+  assignmentsMeta: [
+    { header: 'ID', selector: ['id'], type: Type.STRING },
+    { header: 'EQUIPMENT ID', selector: ['equipment'], type: Type.STRING },
+    { header: 'FILTER ID', selector: ['filter'], type: Type.STRING },
+    { header: 'ACTIVE', selector: ['active'], type: Type.BOOLEAN }
   ]
 }; // end: initialState
 
@@ -151,10 +169,14 @@ export function reducer(state = initialState, action: actions.Actions): State {
 export const getFilters = (state: State) => state.filters;
 export const getFilterTypes = (state: State) => state.filterTypes;
 export const getRecords = (state: State) => state.records;
+export const getEquipment = (state: State) => state.equipment;
+export const getAssignments = (state: State) => state.assignments;
 
 export const getFiltersMeta = (state: State) => state.filtersMeta;
 export const getFilterTypesMeta = (state: State) => state.filterTypesMeta;
 export const getRecordsMeta = (state: State) => state.recordsMeta;
+export const getEquipmentMeta = (state: State) => state.equipmentMeta;
+export const getAssignmentsMeta = (state: State) => state.assignmentsMeta;
 
 /** More information may be found at:
  *  https://github.com/ngrx/store

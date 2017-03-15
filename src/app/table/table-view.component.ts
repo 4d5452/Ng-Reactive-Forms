@@ -43,8 +43,14 @@ export class TableViewComponent {
         tmp = new Date(value);
         return tmp.toLocaleDateString();
       }
+      case Type.BOOLEAN: {
+        return value ? 'TRUE' : 'FALSE'
+      }
+      case Type.STRING: {
+        tmp = "" + value;
+        return tmp.toUpperCase();
+      }
       case Type.NUMBER:
-      case Type.STRING:
       default: 
         return value;
     }
