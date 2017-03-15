@@ -68,7 +68,7 @@ export class HttpEffectsService {
   @Effect() getAll$: Observable<Action> = this.action$
     .ofType(actions.ActionTypes.GET_ALL)
     .map((action: actions.GetAllAction) => action.payload)
-    .mergeMap((req: HTTP.GetAll) => this.service.getAll(req.collection),
+    .mergeMap((req: HTTP.GetAll) => this.service.getAll(req.collection), // need to redo as switchMap
       (req: HTTP.GetAll, res: Response) => {
         const successObj: HTTP.SuccessResponse = {
             request: req,
@@ -90,7 +90,7 @@ export class HttpEffectsService {
   @Effect() get$: Observable<Action> = this.action$
     .ofType(actions.ActionTypes.GET)
     .map((action: actions.GetAction) => action.payload)
-    .mergeMap((req: HTTP.Get) => this.service.get(req.collection, req.id),
+    .mergeMap((req: HTTP.Get) => this.service.get(req.collection, req.id), 
       (req: HTTP.Get, res: Response) => {
         const successObj: HTTP.SuccessResponse = {
             request: req,

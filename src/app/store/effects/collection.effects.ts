@@ -25,17 +25,15 @@ export class CollectionEffectsService {
   @Effect() setCollection$: Observable<Action> = this.action$
     .ofType(actions.ActionTypes.SET_COLLECTION)
     .map((action: actions.SetCollectionAction) => action.payload)
-    .mergeMap((collection: string) => this.httpCollectionService.getCollectionAndMeta(collection),
-      (id: string, collectionData: any) => {
-        let fin = Object.assign({}, 
-          {id: id},
-          {collection: collectionData.collection},
-          {meta: collectionData.meta}
-        );
-        return new actions.SetCollectionCompleteAction(fin);
-      })
-    .map((val) => {
-      return val;
+    .switchMap((collection: string)=> {
+      return this.httpCollectionService.getCollectionAndMeta(collection)
+        .map((data: any) => {
+          let fin = Object.assign({}, 
+            {id: collection}, {collection: data.collection},
+            {meta: data.meta}
+          );
+          return new actions.SetCollectionCompleteAction(fin);
+        })
     });
 
   @Effect() removeSelected$: Observable<Action> = this.action$
