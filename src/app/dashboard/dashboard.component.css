@@ -20,6 +20,7 @@
   padding: 0px; /* menu buttons give enough padding*/
 }
 /***********Nav Styles***********/
+/**TODO: Fix this ugly mess*/
 .nav {
   background-color: #fafafa;
 }
@@ -35,9 +36,11 @@
   line-height: 2em; /*Center content vertical*/
   width: 100%; /* Use containers full width*/
   margin: 5px -5px; /* Give top some space, and pull from right margin*/
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .nav-list .active {
-  color: #3f51b5; /* Currently primary color: needs to change dynamically*/
+  color: #2196f3; /* Currently primary color: needs to change dynamically*/
   background-color: #f5f5f5; 
 }
 /***********App Footer Toolbar Styles***********/
