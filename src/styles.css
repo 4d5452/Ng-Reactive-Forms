@@ -20,7 +20,9 @@ body {
 .toolbar-fill { 
   flex: 1 1 auto;
 }
-
+.full-width {
+  width: 100%;
+}
 .clearfix::after {
   content: "";
   clear: both;

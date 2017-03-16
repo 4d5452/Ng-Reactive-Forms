@@ -11,10 +11,10 @@ import { PopupService } from '../core/popup.service';
 @Component({
   moduleId: module.id,
   templateUrl: './filters-modify.component.html',
-  styleUrls: ['./filters-modify.component.css']
+  styleUrls: ['../shared/form-modify.css']
 })
 export class FiltersModifyComponent implements OnInit, OnDestroy{
-  filterForm: FormGroup;
+  formGroup: FormGroup;
   filterTypes$: Observable<FilterType[]>;
   popupTask$: Observable<string>;
   filter$: Subscription;
@@ -37,19 +37,14 @@ export class FiltersModifyComponent implements OnInit, OnDestroy{
   }
 
   createForm() {
-    this.filterForm = this.fb.group({
+    this.formGroup = this.fb.group({
       id: [this.filter['id'], Validators.required ],
       filterType: [this.filter['type'], Validators.required ]
     });
   }
 
-  onSubmit(): void {
-    this.collectionService.addEditItem(this.prepareSave(), 'filters');
-    this.popupService.closePopup();
-  }
-
   prepareSave(): Filter {
-    const formModel = this.filterForm.value;
+    const formModel = this.formGroup.value;
     const saveFilter: Filter = {
       id: formModel.id,
       type: formModel.filterType,
@@ -58,6 +53,7 @@ export class FiltersModifyComponent implements OnInit, OnDestroy{
     }
     return saveFilter;
   }
+
   getFilter(): Observable<Filter> {
     return this.popupTask$
       .switchMap((task)=> {
@@ -65,5 +61,14 @@ export class FiltersModifyComponent implements OnInit, OnDestroy{
           id: '', type: '', created: Date.now(), modified: Date.now()
         })
       })
+  }
+  
+  onSubmit(): void {
+    this.collectionService.addEditItem(this.prepareSave(), 'filters');
+    this.popupService.closePopup();
+  }
+  onCancel(): void {
+    this.formGroup.reset();
+    this.popupService.closePopup();
   }
 }

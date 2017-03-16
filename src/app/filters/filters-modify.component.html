@@ -2,10 +2,10 @@
   <div class="header">
     Filter
   </div>
-  <form [formGroup]="filterForm" novalidate>
+  <form [formGroup]="formGroup" novalidate>
     <div class="form-group">
       <md-input-container class="full-width" type="text">
-        <input mdInput placeholder="ID" formControlName="id"/>
+        <input mdInput placeholder="Filter ID" formControlName="id"/>
       </md-input-container>
     </div>
     <div class="form-group">
@@ -16,14 +16,17 @@
       </md-input-container>
     </div>
   </form>
-  <p>Form Value: {{filterForm.value | json }}</p>
-  <p>Form Status: {{filterForm.status | json}}</p>
+
+  <button class="modify-cancel-button"
+    md-button (click)="onCancel()"
+    color="warn">
+    Cancel
+  </button>
 
   <button class="modify-submit-button" 
     md-button (click)="onSubmit()"
-    style="width: 50%;"
     color="primary"
-    [disabled]="filterForm.status==='INVALID' || filterForm.pristine">
+    [disabled]="formGroup.status==='INVALID' || formGroup.pristine">
     Submit
   </button>
 </div>
@@ -33,3 +36,6 @@
     {{type.id}}
   </md-option>
 </md-autocomplete>
+
+<!--<p>Form Value: {{formGroup.value | json }}</p>-->
+<!--<p>Form Status: {{formGroup.status | json}}</p>-->

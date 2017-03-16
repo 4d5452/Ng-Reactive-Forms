@@ -14,7 +14,7 @@ export class PopupControllerComponent implements OnInit, OnDestroy {
   */
   constructor(private router: Router, private route: ActivatedRoute) {}
   /**Open the modify outlet on the current route */
-  ngOnInit() {
+  ngOnInit() {/**TODO: Based upon task, route to specific popups */
     this.router.navigate([this.router.url,
       { outlets: { popup: [ 'modify' ] } }
     ]);
