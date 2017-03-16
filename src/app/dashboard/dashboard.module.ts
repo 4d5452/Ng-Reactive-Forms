@@ -24,6 +24,7 @@ import { EquipmentComponent } from '../equipment/equipment.component';
 import { EquipmentAssignmentsComponent } from '../equipment_assignments/assignments.component';
 
 import { PopupComponent } from '../popup/popup.component';
+import { PopupContentComponent } from '../popup_controller/controller.component';
 
 @NgModule({
   imports: [ 
@@ -44,7 +45,8 @@ import { PopupComponent } from '../popup/popup.component';
     FilterTypesModifyComponent,
     EquipmentComponent,
     EquipmentAssignmentsComponent,
-    PopupComponent
+    PopupComponent,
+    PopupContentComponent
  ],
   providers: []
 })

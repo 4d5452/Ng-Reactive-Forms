@@ -1,0 +1,19 @@
+<div>
+  <div>
+
+  </div>
+
+  <div>
+    <button md-button 
+      (click)="closePopup()"
+      color="warn">
+      Cancel
+    </button>
+    <button md-button
+      (click)="submit()"
+      color="primary"
+      [disabled]="formGroup.status==='INVALID' || formGroup.pristine">
+      Submit
+    </button>
+  <div>
+</div>

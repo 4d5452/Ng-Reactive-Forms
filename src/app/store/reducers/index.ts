@@ -39,6 +39,7 @@ import * as fromHttpCollection from './http-collections.reducers';
 import * as fromTable from './table.reducers';
 import * as fromPopup from './popup.reducers';
 import * as fromCollection from './collection.reducers';
+import * as fromFormGroups from './form-groups.reducers';
 import * as fromRouter from '@ngrx/router-store';
 
 /**
@@ -51,6 +52,7 @@ export interface State {
   table: fromTable.State;
   popup: fromPopup.State;
   collection: fromCollection.State;
+  formGroups: fromFormGroups.State;
   router: fromRouter.RouterState;
 }
 
@@ -67,6 +69,7 @@ const reducers = {
   table: fromTable.reducer,
   popup: fromPopup.reducer,
   collection: fromCollection.reducer,
+  formGroups: fromFormGroups.reducer,
   router: fromRouter.routerReducer
 };
 
@@ -120,6 +123,9 @@ export const collectionGetSelectedCollectionId = createSelector(collectionGetSta
 export const collectionGetSelectedId = createSelector(collectionGetState, fromCollection.getSelectedItemId);
 export const collectionGetCollection = createSelector(collectionGetState, fromCollection.getCollection);
 export const collectionGetMetaData = createSelector(collectionGetState, fromCollection.getMetaData);
+
+export const formGroupsGetState = (state: State) => state.formGroups;
+export const formGroupsGetFilterGroup = createSelector(formGroupsGetState, fromFormGroups.getFilterGroup);
 
 /**The source of this file may be found at:
  *  https://github.com/ngrx/example-app/blob/master/src/app/reducers/index.ts
