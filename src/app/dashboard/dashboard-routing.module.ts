@@ -23,7 +23,10 @@ const dashboardRoutes: Routes = [
     path: 'dashboard', component: DashboardComponent, canActivateChild: [PopupGuardService],
     children: [
       { path: '', redirectTo: 'filters', pathMatch: 'full' },
-      { path: 'filters', component: FiltersComponent },
+      { path: 'filters', children: [
+        { path: '', component: FiltersComponent },
+        { path: 'modify', component: FiltersModifyComponent, outlet: 'popup'}
+      ] },
       { path: 'records', component: RecordsComponent },
       { path: 'filter-types', component: FilterTypesComponent },
       { path: 'equipment', component: EquipmentComponent },
