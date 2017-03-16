@@ -10,10 +10,10 @@ import { MetaObject } from '../store/models/collection.models';
 
 @Component({
   moduleId: module.id,
-  selector: 'popup-content-controller',
-  templateUrl: './controller.component.html'
+  selector: 'popup-collection-controller',
+  templateUrl: './collection-controller.component.html'
 })
-export class PopupContentComponent {
+export class PopupCollectionControllerComponent {
   selectedCollectionId$: Observable<string>;
   selectedItemId$: Observable<string>;
   selectedCollectionMeta$: Observable<MetaObject[]>;
