@@ -16,8 +16,8 @@ export interface CleaningRecord {
   pre: number,
   post: number,
   cycles: number,
-  created: Date,
-  modified: Date
+  created: number,
+  modified: number
 }
 
 export interface MeterUnit {
@@ -28,7 +28,7 @@ export interface MeterUnit {
 export interface Equipment {
   id: string,
   meter: string, //MeterUnit
-  initalMeterPerGallon: number, //e.g. 9mpg or 30hours/gallon
+  initialMeterPerGallon: number, //e.g. 9mpg or 30hours/gallon
   initialMeter: number // initial equipment reading: 12000miles or 300hours
 }
 

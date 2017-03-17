@@ -10,8 +10,10 @@ import { FilterTypesComponent } from '../filter_types/filter-types.component';
 import { FilterTypesModifyComponent } from '../filter_types/filter-types-modify.component';
 
 import { RecordsComponent } from '../records/records.component';
+import { RecordsModifyComponent } from '../records/records-modify.component';
 
 import { EquipmentComponent } from '../equipment/equipment.component';
+import { EquipmentModifyComponent } from '../equipment/equipment-modify.component';
 
 import { EquipmentAssignmentsComponent } from '../equipment_assignments/assignments.component';
 
@@ -27,9 +29,18 @@ const dashboardRoutes: Routes = [
         { path: '', component: FiltersComponent },
         { path: 'modify', component: FiltersModifyComponent, outlet: 'popup'}
       ] },
-      { path: 'records', component: RecordsComponent },
-      { path: 'filter-types', component: FilterTypesComponent },
-      { path: 'equipment', component: EquipmentComponent },
+      { path: 'records', children: [
+        { path: '', component: RecordsComponent },
+        { path: 'modify', component: RecordsModifyComponent, outlet: 'popup'}
+      ] },
+      { path: 'filter-types', children: [
+        { path: '', component: FilterTypesComponent },
+        { path: 'modify', component: FilterTypesModifyComponent, outlet: 'popup' }
+      ] },
+      { path: 'equipment', children: [
+        { path: '', component: EquipmentComponent },
+        { path: 'modify', component: EquipmentModifyComponent, outlet: 'popup' }
+      ] },
       { path: 'assignments', component: EquipmentAssignmentsComponent }
     ]
   }

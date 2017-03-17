@@ -1,0 +1,71 @@
+<div class="collection-form">
+  <div class="header">
+    Cleaning Record
+  </div>
+  <form [formGroup]="formGroup" novalidate>
+
+    <div class="form-group">
+      <md-input-container class="full-width" type="text">
+        <input mdInput placeholder="Record ID" formControlName="id"/>
+      </md-input-container>
+    </div>
+
+    <div class="form-group">
+      <md-input-container class="full-width" type="text">
+        <input mdInput placeholder="Filter ID" 
+          [mdAutocomplete]="autoComplete"
+          formControlName="filter">
+      </md-input-container>
+    </div>
+
+    <div class="form-group">
+      <md-input-container class="full-width" type="number">
+        <input mdInput placeholder="Current Equipment Meter" 
+          formControlName="currentEquipmentMeter">
+      </md-input-container>
+    </div>
+
+    <div class="form-group">
+      <md-input-container class="full-width" type="number">
+        <input mdInput placeholder="Pre-Clean Value" 
+          formControlName="pre">
+      </md-input-container>
+    </div>
+
+    <div class="form-group">
+      <md-input-container class="full-width" type="number">
+        <input mdInput placeholder="Post-Clean Value" 
+          formControlName="post">
+      </md-input-container>
+    </div>
+
+    <div class="form-group">
+      <md-input-container class="full-width" type="number">
+        <input mdInput placeholder="# of Cycles" 
+          formControlName="cycles">
+      </md-input-container>
+    </div>
+  </form>
+
+  <button class="modify-cancel-button"
+    md-button (click)="onCancel()"
+    color="warn">
+    Cancel
+  </button>
+
+  <button class="modify-submit-button" 
+    md-button (click)="onSubmit()"
+    color="primary"
+    [disabled]="formGroup.status==='INVALID' || formGroup.pristine">
+    Submit
+  </button>
+</div>
+
+<md-autocomplete #autoComplete="mdAutocomplete">
+  <md-option *ngFor="let filter of filters$ | async" [value]="filter.id">
+    {{filter.id}}
+  </md-option>
+</md-autocomplete>
+
+<!--<p>Form Value: {{formGroup.value | json }}</p>-->
+<!--<p>Form Status: {{formGroup.status | json}}</p>-->

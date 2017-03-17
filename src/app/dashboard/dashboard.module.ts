@@ -18,8 +18,10 @@ import { FilterTypesComponent } from '../filter_types/filter-types.component';
 import { FilterTypesModifyComponent } from '../filter_types/filter-types-modify.component';
 
 import { RecordsComponent } from '../records/records.component';
+import { RecordsModifyComponent } from '../records/records-modify.component';
 
 import { EquipmentComponent } from '../equipment/equipment.component';
+import { EquipmentModifyComponent } from '../equipment/equipment-modify.component';
 
 import { EquipmentAssignmentsComponent } from '../equipment_assignments/assignments.component';
 
@@ -39,11 +41,13 @@ import { PopupControllerComponent } from '../popup/popup-controller.component';
     TableComponent,
     TableViewComponent,
     RecordsComponent,
+    RecordsModifyComponent,
     FiltersComponent,
     FiltersModifyComponent,
     FilterTypesComponent,
     FilterTypesModifyComponent,
     EquipmentComponent,
+    EquipmentModifyComponent,
     EquipmentAssignmentsComponent,
     PopupComponent,
     PopupControllerComponent

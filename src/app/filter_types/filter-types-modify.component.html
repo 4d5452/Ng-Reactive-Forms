@@ -9,14 +9,20 @@
       </md-input-container>
     </div>
   </form>
-  <p>Form Value: {{formGroup.value | json }}</p>
-  <p>Form Status: {{formGroup.status | json}}</p>
+
+  <button class="modify-cancel-button"
+    md-button (click)="onCancel()"
+    color="warn">
+    Cancel
+  </button>
 
   <button class="modify-submit-button" 
     md-button (click)="onSubmit()"
-    style="width: 50%;"
     color="primary"
     [disabled]="formGroup.status==='INVALID' || formGroup.pristine">
     Submit
   </button>
 </div>
+
+<!--<p>Form Value: {{formGroup.value | json }}</p>-->
+<!--<p>Form Status: {{formGroup.status | json}}</p>-->

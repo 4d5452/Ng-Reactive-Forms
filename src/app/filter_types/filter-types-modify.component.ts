@@ -11,7 +11,7 @@ import { PopupService } from '../core/popup.service';
 @Component({
   moduleId: module.id,
   templateUrl: './filter-types-modify.component.html',
-  styleUrls: ['./filter-types-modify.component.css']
+  styleUrls: ['../shared/form-modify.css']
 })
 export class FilterTypesModifyComponent implements OnInit, OnDestroy{
   formGroup: FormGroup;
