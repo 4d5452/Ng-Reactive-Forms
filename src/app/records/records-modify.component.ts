@@ -53,6 +53,10 @@ export class RecordsModifyComponent implements OnInit, OnDestroy{
     this.collectionService.addEditItem(this.prepareSave(), 'records');
     this.popupService.closePopup();
   }
+  onCancel(): void {
+    this.formGroup.reset();
+    this.popupService.closePopup();
+  }
 
   prepareSave(): CleaningRecord {
     const formModel = this.formGroup.value;

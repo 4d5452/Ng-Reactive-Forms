@@ -44,6 +44,10 @@ export class FilterTypesModifyComponent implements OnInit, OnDestroy{
     this.collectionService.addEditItem(this.prepareSave(), 'filterTypes');
     this.popupService.closePopup();
   }
+  onCancel(): void {
+    this.formGroup.reset();
+    this.popupService.closePopup();
+  }
 
   prepareSave(): FilterType {
     const formModel = this.formGroup.value;

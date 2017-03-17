@@ -47,12 +47,16 @@ export class EquipmentAssignmentsModifyComponent implements OnInit, OnDestroy{
       id: [this.equipmentAssignment['id'], Validators.required ],
       equipment: [this.equipmentAssignment['equipment'], Validators.required ],
       filter: [this.equipmentAssignment['filter'], Validators.required ],
-      active: [this.equipmentAssignment['active'], Validators.required ]
+      active: [(this.equipmentAssignment['active']===true ? 'TRUE':'FALSE') , Validators.required ]
     });
   }
 
   onSubmit(): void {
     this.collectionService.addEditItem(this.prepareSave(), 'assignments');
+    this.popupService.closePopup();
+  }
+  onCancel(): void {
+    this.formGroup.reset();
     this.popupService.closePopup();
   }
 
