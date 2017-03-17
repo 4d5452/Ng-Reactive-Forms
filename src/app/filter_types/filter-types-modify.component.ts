@@ -47,10 +47,10 @@ export class FilterTypesModifyComponent implements OnInit, OnDestroy{
 
   prepareSave(): FilterType {
     const formModel = this.formGroup.value;
-    const saveFilter: FilterType = {
+    const saveModel: FilterType = {
       id: formModel.id
     }
-    return saveFilter;
+    return saveModel;
   }
   getFilterType(): Observable<FilterType> {
     return this.popupTask$

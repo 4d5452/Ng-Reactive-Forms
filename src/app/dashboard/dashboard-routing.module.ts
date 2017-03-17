@@ -16,6 +16,7 @@ import { EquipmentComponent } from '../equipment/equipment.component';
 import { EquipmentModifyComponent } from '../equipment/equipment-modify.component';
 
 import { EquipmentAssignmentsComponent } from '../equipment_assignments/assignments.component';
+import { EquipmentAssignmentsModifyComponent } from '../equipment_assignments/assignments-modify.component';
 
 import { PopupComponent } from '../popup/popup.component';
 import { PopupGuardService } from '../core/popup-guard.service';
@@ -41,7 +42,10 @@ const dashboardRoutes: Routes = [
         { path: '', component: EquipmentComponent },
         { path: 'modify', component: EquipmentModifyComponent, outlet: 'popup' }
       ] },
-      { path: 'assignments', component: EquipmentAssignmentsComponent }
+      { path: 'assignments', children: [
+        { path: '', component: EquipmentAssignmentsComponent },
+        { path: 'modify', component: EquipmentAssignmentsModifyComponent, outlet: 'popup' }
+      ] }
     ]
   }
 ];

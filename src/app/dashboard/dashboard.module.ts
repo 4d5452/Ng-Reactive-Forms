@@ -24,6 +24,7 @@ import { EquipmentComponent } from '../equipment/equipment.component';
 import { EquipmentModifyComponent } from '../equipment/equipment-modify.component';
 
 import { EquipmentAssignmentsComponent } from '../equipment_assignments/assignments.component';
+import { EquipmentAssignmentsModifyComponent } from '../equipment_assignments/assignments-modify.component';
 
 import { PopupComponent } from '../popup/popup.component';
 import { PopupControllerComponent } from '../popup/popup-controller.component';
@@ -49,6 +50,7 @@ import { PopupControllerComponent } from '../popup/popup-controller.component';
     EquipmentComponent,
     EquipmentModifyComponent,
     EquipmentAssignmentsComponent,
+    EquipmentAssignmentsModifyComponent,
     PopupComponent,
     PopupControllerComponent
  ],
