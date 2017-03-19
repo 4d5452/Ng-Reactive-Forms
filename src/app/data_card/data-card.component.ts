@@ -21,6 +21,7 @@ export class DataCardComponent implements OnInit, OnDestroy {
   collectionMeta$: Observable<MetaObject[]>;
   collectionId$: Subscription;
   collectionId: string;
+  filter$: Observable<string>;
   isPopupOpen$: Observable<boolean>;
 
   constructor(private tableService: TableService, private popupService: PopupService,
@@ -34,6 +35,7 @@ export class DataCardComponent implements OnInit, OnDestroy {
       .subscribe((id)=> {
         this.collectionId = id;
       })
+    this.filter$ = this.tableService.getFilter();
     this.isPopupOpen$ = this.popupService.isPopupOpen();
   }
   ngOnDestroy() {

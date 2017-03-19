@@ -4,6 +4,7 @@
       [addActive]="!(isPopupOpen$ | async)"
       [editActive]="!(isPopupOpen$ | async) && (selectedItem$ | async)"
       [removeActive]="selectedItem$ | async"
+      [searchValue]="filter$ | async"
       (add)="openPopup('add')"
       (edit)="openPopup('edit')"
       (remove)="removeSelectedItem()"

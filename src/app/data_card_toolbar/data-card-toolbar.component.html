@@ -4,8 +4,8 @@
       style="vertical-align: middle">search</md-icon>
 
     <md-input-container type="search">
-      <input mdInput placeholder= "search" [ngModel]="value"
-        (ngModelChange)="setSearch($event)"/>
+      <input mdInput placeholder= "search" [ngModel]="searchValue"
+        (ngModelChange)="setSearch($event)" />
     </md-input-container>
   </div>
   <span class="toolbar-fill"></span>

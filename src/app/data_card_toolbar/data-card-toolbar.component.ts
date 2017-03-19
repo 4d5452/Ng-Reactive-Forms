@@ -11,13 +11,12 @@ export class DataCardToolbarComponent {
   @Input() addActive: boolean;
   @Input() editActive: boolean;
   @Input() removeActive: boolean;
+  @Input() searchValue: string;
 
   @Output() add = new EventEmitter<void>();
   @Output() edit = new EventEmitter<void>();
   @Output() remove = new EventEmitter<void>();
   @Output() search = new EventEmitter<string>();
-
-  value: string = ''; // place holder for ngModel value
 
   toggle(view: string): void {
     switch(view) {
