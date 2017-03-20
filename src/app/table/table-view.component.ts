@@ -1,4 +1,5 @@
-import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, Output, 
+  EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 
 import { MetaObject, Type } from '../store/models/collection.models';
 

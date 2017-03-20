@@ -1,4 +1,5 @@
-import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy,
+OnChanges, SimpleChanges } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
 import { TableService } from '../core/table.service';
@@ -11,7 +12,7 @@ import { MetaObject } from '../store/models/collection.models';
   templateUrl: './table.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TableComponent {
+export class TableComponent implements OnChanges{
   @Input() items: any[];
   @Input() selectedItem: string;
   @Input() collectionMeta: MetaObject[];
@@ -26,6 +27,20 @@ export class TableComponent {
     this.selectedColumn$ = tableService.getSelectedColumn();
     this.sortOrder$ = tableService.getSortOrder();
     this.filter$ = tableService.getFilter();
+  }
+
+  
+  ngOnChanges(changes: SimpleChanges): void {
+    for(let propName in changes) {
+      if(propName==="collectionMeta"){
+        this.resetTable();
+      }
+    }
+  }
+  resetTable(): void {
+    this.setSelectedItem('');
+    this.setSelectedColumn(0);
+    this.tableService.setFilter('');
   }
 
   setSelectedItem(selectedItem: string) {
