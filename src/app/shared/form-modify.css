@@ -1,20 +1,30 @@
+
+.collection-form {
+  height: 100%;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+}
 .collection-form .header {
   font-size: 1.2em;
   font-weight: 300;
   color: hsl(0, 0%, 45%);
   margin: 0px 0px 10px 0px;
 }
-.input-invalid {
-  color: #f44336;
-}
-.form-group {
-  margin: 5px 0px;
+.form-group-wrapper {
+  flex: 1;
+  max-height: 55vh;
+  overflow: auto;
+  margin: 0px 0px 10px 0px;
 }
 .action-buttons {
+  position: absolute;
+  bottom: 0px; left: 0px; right: 0px;
   display: flex;
   flex-direction: row;
-  margin: 10px 0px 0px 0px;
+  margin: 1em 0px 0px 0px;
 }
+
 .modify-cancel-button {
   width: 50%;
 }
@@ -25,4 +35,10 @@
   padding: 0px 5px 0px 5px;
   color: #f44336;
   font-size: .8em;
+}
+.input-invalid {
+  color: #f44336;
+}
+.form-group {
+  margin: 5px 0px;
 }
