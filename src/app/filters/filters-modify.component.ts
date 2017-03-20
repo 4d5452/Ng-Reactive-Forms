@@ -8,61 +8,131 @@ import { Filter, FilterType } from '../store/models/app.models';
 import { CollectionService } from '../core/collection.service';
 import { PopupService } from '../core/popup.service';
 
+import { memberOfValidator } from '../shared/member-of';
+import { isUniqueValidator } from '../shared/is-unique';
+
 @Component({
   moduleId: module.id,
   templateUrl: './filters-modify.component.html',
   styleUrls: ['../shared/form-modify.css']
 })
-export class FiltersModifyComponent implements OnInit, OnDestroy{
+export class FiltersModifyComponent implements OnInit, OnDestroy {
   formGroup: FormGroup;
-  filterTypes$: Observable<FilterType[]>;
-  popupTask$: Observable<string>;
-  filter$: Subscription;
+  filters: Filter[];
+  filterTypes: FilterType[];
+  task: string;
   filter: Filter;
+  formErrors = {
+    id: '',
+    type: ''
+  };
+  validationMessages = {
+    'id': {
+      'required': 'ID is required',
+      'isUnique': 'ID is not unique'
+    },
+    'type': {
+      'required': 'Filter type is required',
+      'memberOf': 'Filter type does not exist'
+    }
+  };
+  valueChanges$: Subscription;
 
   constructor(private fb: FormBuilder, private collectionService: CollectionService,
     private popupService: PopupService) {
-    this.filterTypes$ = this.collectionService.getCollection('filterTypes');
-    this.popupTask$ = this.popupService.getPopupTask();
   }
   
   ngOnInit() {
-    this.filter$ = this.getFilter().subscribe((filter)=> {
-      this.filter = filter;
-    });
+    this.popupService.getPopupTask()
+      .subscribe((task)=>this.task=task).unsubscribe();
+
+    this.collectionService.getCollection('filterTypes')
+      .map((types)=>{
+        return types.map((val)=>val['id']);
+      })
+      .subscribe((types)=> {
+        this.filterTypes=types
+      }).unsubscribe();
+
+    this.collectionService.getCollection('filters')
+      .map((filters)=>{
+        return filters.map((val)=>val['id']);
+      })
+      .subscribe((filters)=>{
+        this.filters=filters;
+      }).unsubscribe();    
+    
+    this.getFilter()
+      .subscribe((filter)=> {
+        this.filter = filter;
+      }).unsubscribe();
+
     this.createForm();
   }
-  ngOnDestroy() {
-    this.filter$.unsubscribe();
+
+  ngOnDestroy(): void {
+    this.valueChanges$.unsubscribe();
   }
 
   createForm() {
     this.formGroup = this.fb.group({
-      id: [this.filter['id'], Validators.required ],
-      filterType: [this.filter['type'], Validators.required ]
+      id: [
+        {value: this.filter['id'], disabled: (this.task==="edit"?true:false)}, 
+        Validators.compose([
+          Validators.required,
+          isUniqueValidator(this.filters)
+        ])
+      ],
+      type: [
+        this.filter['type'], 
+        Validators.compose([
+          Validators.required,
+          memberOfValidator(this.filterTypes)
+        ])
+      ]
     });
+
+    this.valueChanges$ = this.formGroup.valueChanges
+      .subscribe(data=> this.onValueChanged(data));
+
+    this.onValueChanged();
   }
 
   prepareSave(): Filter {
-    const formModel = this.formGroup.value;
+    const formModel = this.formGroup.getRawValue();
     const saveFilter: Filter = {
       id: formModel.id,
-      type: formModel.filterType,
+      type: formModel.type,
       created: this.filter.created,
       modified: Date.now()
     }
+    console.log(saveFilter);
     return saveFilter;
   }
 
   getFilter(): Observable<Filter> {
-    return this.popupTask$
-      .switchMap((task)=> {
-        return task==='edit' ? this.collectionService.getSelectedItem() : Observable.of(<Filter>{
-          id: '', type: '', created: Date.now(), modified: Date.now()
-        })
+    return this.task==='edit' ? this.collectionService.getSelectedItem() : Observable.of(<Filter>{
+        id: '', type: '', created: Date.now(), modified: Date.now()
       })
   }
-  
+
+  onValueChanged(data?: any): void {
+    if(!this.formGroup) { return; }
+    const form = this.formGroup;
+
+    for(const field in this.formErrors) {
+      // clear previous error message (if any)
+      this.formErrors[field] = '';
+      const control = form.get(field);
+      if(control && control.dirty && !control.valid) {
+        const messages = this.validationMessages[field];
+        for(const key in control.errors) {
+          this.formErrors[field] += messages[key] + ' ';
+        }
+      }
+    }
+  }
+
   onSubmit(): void {
     this.collectionService.addEditItem(this.prepareSave(), 'filters');
     this.popupService.closePopup();

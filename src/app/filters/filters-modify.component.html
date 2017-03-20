@@ -2,38 +2,46 @@
   <div class="header">
     Filter
   </div>
+
   <form [formGroup]="formGroup" novalidate>
+
     <div class="form-group">
-      <md-input-container class="full-width" type="text">
+      <md-input-container class="full-width" type="text"
+        [class.input-invalid]="formErrors.id ? true : false"
+        [hintLabel]="formErrors.id ? formErrors.id : ''">
         <input mdInput placeholder="Filter ID" formControlName="id"/>
       </md-input-container>
     </div>
+
     <div class="form-group">
-      <md-input-container class="full-width" type="text">
+      <md-input-container class="full-width" type="text"
+        [class.input-invalid]="formErrors.type ? true : false"
+        [hintLabel]="formErrors.type ? formErrors.type : ''">
         <input mdInput placeholder="Filter Type" 
           [mdAutocomplete]="filterAuto"
-          formControlName="filterType">
+          formControlName="type">
       </md-input-container>
     </div>
   </form>
+  <div class="action-buttons">
+    <button class="modify-cancel-button"
+      md-button (click)="onCancel()"
+      color="warn">
+      Cancel
+    </button>
 
-  <button class="modify-cancel-button"
-    md-button (click)="onCancel()"
-    color="warn">
-    Cancel
-  </button>
-
-  <button class="modify-submit-button" 
-    md-button (click)="onSubmit()"
-    color="primary"
-    [disabled]="formGroup.status==='INVALID' || formGroup.pristine">
-    Submit
-  </button>
+    <button class="modify-submit-button" 
+      md-button (click)="onSubmit()"
+      color="primary"
+      [disabled]="formGroup.status==='INVALID' || formGroup.pristine">
+      Submit
+    </button>
+  </div>
 </div>
 
 <md-autocomplete #filterAuto="mdAutocomplete">
-  <md-option *ngFor="let type of filterTypes$ | async" [value]="type.id">
-    {{type.id}}
+  <md-option *ngFor="let type of filterTypes" [value]="type">
+    {{type}}
   </md-option>
 </md-autocomplete>
 
