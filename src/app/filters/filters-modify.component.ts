@@ -18,8 +18,8 @@ import { isUniqueValidator } from '../shared/is-unique';
 })
 export class FiltersModifyComponent implements OnInit, OnDestroy {
   formGroup: FormGroup;
-  filters: Filter[];
-  filterTypes: FilterType[];
+  filters: string[];
+  filterTypes: string[];
   task: string;
   filter: Filter;
   formErrors = {
@@ -46,18 +46,12 @@ export class FiltersModifyComponent implements OnInit, OnDestroy {
     this.popupService.getPopupTask()
       .subscribe((task)=>this.task=task).unsubscribe();
 
-    this.collectionService.getCollection('filterTypes')
-      .map((types)=>{
-        return types.map((val)=>val['id']);
-      })
+    this.ids('filterTypes')
       .subscribe((types)=> {
         this.filterTypes=types
       }).unsubscribe();
 
-    this.collectionService.getCollection('filters')
-      .map((filters)=>{
-        return filters.map((val)=>val['id']);
-      })
+    this.ids('filters')
       .subscribe((filters)=>{
         this.filters=filters;
       }).unsubscribe();    
@@ -106,7 +100,6 @@ export class FiltersModifyComponent implements OnInit, OnDestroy {
       created: this.filter.created,
       modified: Date.now()
     }
-    console.log(saveFilter);
     return saveFilter;
   }
 
@@ -140,5 +133,12 @@ export class FiltersModifyComponent implements OnInit, OnDestroy {
   onCancel(): void {
     this.formGroup.reset();
     this.popupService.closePopup();
+  }
+
+  ids(collection: string): Observable<string[]> {
+    return this.collectionService.getCollection(collection)
+      .map((types)=>{
+        return types.map((val)=>val['id']);
+      })
   }
 }
