@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { Subscription} from 'rxjs/Subscription';
 
 import { FilterType } from '../store/models/app.models';
+import { isUniqueValidator } from '../shared/is-unique';
 
 import { CollectionService } from '../core/collection.service';
 import { PopupService } from '../core/popup.service';
@@ -15,29 +16,72 @@ import { PopupService } from '../core/popup.service';
 })
 export class FilterTypesModifyComponent implements OnInit, OnDestroy{
   formGroup: FormGroup;
-  popupTask$: Observable<string>;
-  filterType$: Subscription;
+  task: string;
   filterType: FilterType;
+  types: string[];
+    formErrors = {
+    id: ''
+  };
+  validationMessages = {
+    'id': {
+      'required': 'ID is required',
+      'isUnique': 'ID is not unique'
+    }
+  };
+  valueChanges$: Subscription;
 
   constructor(private fb: FormBuilder, private collectionService: CollectionService,
-    private popupService: PopupService) {
-    this.popupTask$ = this.popupService.getPopupTask();
-  }
+    private popupService: PopupService) {}
   
   ngOnInit() {
-    this.filterType$ = this.getFilterType().subscribe((filterType)=> {
-      this.filterType = filterType;
-    });
+    this.popupService.getPopupTask()
+      .subscribe((task)=>this.task=task).unsubscribe();
+    
+    this.ids('filterTypes')
+      .subscribe((types)=> this.types=types)
+      .unsubscribe();
+
+    this.getFilterType()
+      .subscribe((filterType)=> {
+        this.filterType = filterType;
+      }).unsubscribe();
+
     this.createForm();
   }
   ngOnDestroy() {
-    this.filterType$.unsubscribe();
+    this.valueChanges$.unsubscribe();
   }
 
   createForm() {
     this.formGroup = this.fb.group({
-      id: [this.filterType['id'], Validators.required ]
+      id: [
+        this.filterType['id'], 
+        Validators.compose([
+          Validators.required,
+          isUniqueValidator(this.types)
+        ])
+      ]
     });
+    this.valueChanges$ = this.formGroup.valueChanges
+      .subscribe(data=> this.onValueChanged(data));
+
+    this.onValueChanged();
+  }
+  onValueChanged(data?: any): void {
+    if(!this.formGroup) { return; }
+    const form = this.formGroup;
+
+    for(const field in this.formErrors) {
+      // clear previous error message (if any)
+      this.formErrors[field] = '';
+      const control = form.get(field);
+      if(control && control.dirty && !control.valid) {
+        const messages = this.validationMessages[field];
+        for(const key in control.errors) {
+          this.formErrors[field] += messages[key] + ' ';
+        }
+      }
+    }
   }
 
   onSubmit(): void {
@@ -57,11 +101,15 @@ export class FilterTypesModifyComponent implements OnInit, OnDestroy{
     return saveModel;
   }
   getFilterType(): Observable<FilterType> {
-    return this.popupTask$
-      .switchMap((task)=> {
-        return task==='edit' ? this.collectionService.getSelectedItem() : Observable.of(<FilterType>{
-          id: ''
-        })
+    return this.task==='edit' ? this.collectionService.getSelectedItem() : Observable.of(<FilterType>{
+      id: ''
+    });
+  }
+
+  ids(collection: string): Observable<string[]> {
+    return this.collectionService.getCollection(collection)
+      .map((types)=>{
+        return types.map((val)=>val['id']);
       })
   }
 }

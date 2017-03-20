@@ -168,7 +168,7 @@ export class RecordsModifyComponent implements OnInit, OnDestroy{
     })
   }
 
-    ids(collection: string): Observable<string[]> {
+  ids(collection: string): Observable<string[]> {
     return this.collectionService.getCollection(collection)
       .map((types)=>{
         return types.map((val)=>val['id']);

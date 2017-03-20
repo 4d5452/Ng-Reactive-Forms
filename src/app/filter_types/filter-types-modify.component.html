@@ -2,26 +2,29 @@
   <div class="header">
     Filter Type
   </div>
-  <form [formGroup]="formGroup" novalidate>
+  <form [formGroup]="formGroup" novalidate class="form-group-wrapper">
     <div class="form-group">
-      <md-input-container class="full-width" type="text">
+      <md-input-container class="full-width" type="text"
+        [class.input-invalid]="formErrors.id ? true : false"
+        [hintLabel]="formErrors.id ? formErrors.id : ''">
         <input mdInput placeholder="UPC" formControlName="id"/>
       </md-input-container>
     </div>
   </form>
+  <div class="action-buttons">
+    <button class="modify-cancel-button"
+      md-button (click)="onCancel()"
+      color="warn">
+      Cancel
+    </button>
 
-  <button class="modify-cancel-button"
-    md-button (click)="onCancel()"
-    color="warn">
-    Cancel
-  </button>
-
-  <button class="modify-submit-button" 
-    md-button (click)="onSubmit()"
-    color="primary"
-    [disabled]="formGroup.status==='INVALID' || formGroup.pristine">
-    Submit
-  </button>
+    <button class="modify-submit-button" 
+      md-button (click)="onSubmit()"
+      color="primary"
+      [disabled]="formGroup.status==='INVALID' || formGroup.pristine">
+      Submit
+    </button>
+  </div>
 </div>
 
 <!--<p>Form Value: {{formGroup.value | json }}</p>-->
