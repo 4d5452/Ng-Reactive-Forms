@@ -19,7 +19,7 @@ export class FilterTypesModifyComponent implements OnInit, OnDestroy{
   task: string;
   filterType: FilterType;
   types: string[];
-    formErrors = {
+  formErrors = {
     id: ''
   };
   validationMessages = {
